@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
@@ -38,7 +38,7 @@ class ArchivedPage extends StatelessWidget {
             shrinkWrap: true,
             itemCount: data.conversationList.length,
             itemBuilder: ((context, index) {
-              return CustomListTile(
+              return ChatTile(
                 leading: CircleAvatar(
                   radius: 25.0,
                   backgroundImage: AssetImage(
