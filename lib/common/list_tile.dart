@@ -6,22 +6,20 @@ class CustomListTile extends StatelessWidget {
     super.key,
     this.leading,
     required this.title,
-    required this.time,
+    this.trailingWidget,
     required this.subTitle,
-    this.trailingIcon,
   });
 
   final Widget? leading;
   final String title;
-  final String time;
+  final Widget? trailingWidget;
   final String subTitle;
-  final IconData? trailingIcon;
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(20.0),
       child: Row(
         children: [
           leading != null
@@ -32,37 +30,36 @@ class CustomListTile extends StatelessWidget {
               : Container(),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       title,
-                      style: kTitleTextStyle,
-                    ),
-                    Text(
-                      time,
-                      style: kTimeTextStyle,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 3.0),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: leading == null
-                          ? screenWidth - 55
-                          : screenWidth - 120,
-                      child: Text(
-                        subTitle,
-                        style: kSubTitleTextStyle,
-                        overflow: TextOverflow.ellipsis,
+                      style: kTitleTextStyle.copyWith(
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
-                    Icon(trailingIcon),
+                    trailingWidget != null
+                        ? Container(
+                            constraints: const BoxConstraints(maxHeight: 0.0),
+                            child: trailingWidget,
+                          )
+                        : Container(),
                   ],
                 ),
+                const SizedBox(height: 5.0),
+                SizedBox(
+                  width:
+                      leading == null ? screenWidth - 120 : screenWidth - 120,
+                  child: Text(
+                    subTitle,
+                    style: kSubTitleTextStyle,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                )
               ],
             ),
           )
