@@ -29,7 +29,7 @@ class ChatTile extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 12.0),
                   child: leading,
                 )
-              : Container(),
+              : const SizedBox.shrink(),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
