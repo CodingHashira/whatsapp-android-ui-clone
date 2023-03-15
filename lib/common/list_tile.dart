@@ -27,7 +27,7 @@ class CustomListTile extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 12.0),
                   child: leading,
                 )
-              : Container(),
+              : const SizedBox.shrink(),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class CustomListTile extends StatelessWidget {
                             constraints: const BoxConstraints(maxHeight: 0.0),
                             child: trailingWidget,
                           )
-                        : Container(),
+                        : const SizedBox.shrink(),
                   ],
                 ),
                 const SizedBox(height: 5.0),
