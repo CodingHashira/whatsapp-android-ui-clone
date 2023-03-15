@@ -50,4 +50,28 @@ class Data {
         time: '2/02/23',
         subTitle: 'I\'m really excited about our plans this weekend!'),
   ];
+
+  final Map<String, String> popUpList = {
+    'Archive Settings': '/archiveSettingsPage',
+    'Archives Settings': '/archiveSettingsPage',
+    'Archivess Settings': '/archiveSettingsPage'
+  };
+
+  final Map chatPopupMenuItems = {
+    'View contact': '/testPage',
+    'Media, links, and docs': '/testPage',
+    'Search': '/testPage',
+    'Mute notifications': '/testPage',
+    'Disappearing messages': '/testPage',
+    'Wallpaper': '/testPage',
+    'More': morePopupMenuItems,
+  };
+
+  static const Map<String, String> morePopupMenuItems = {
+    'Report': '1',
+    'Block': '2',
+    'Clear chat': '3',
+    'Export chat': '4',
+    'Add shortcut': '5',
+  };
 }
