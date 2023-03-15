@@ -17,13 +17,12 @@ const kDividerColor = Color(0xff232d34);
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
   fontSize: 16.5,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
 );
 
 const kSubTitleTextStyle = TextStyle(
   color: kSecondaryColor,
   fontSize: 14.0,
-  fontWeight: FontWeight.w500,
 );
 
 const kTimeTextStyle = TextStyle(
