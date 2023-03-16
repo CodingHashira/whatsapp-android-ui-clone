@@ -26,7 +26,9 @@ class CustomAppBar extends StatelessWidget {
       color: kAppBarColor,
       child: Column(
         children: [
-          if (imageUrl != null) const SizedBox(height: 40.0),
+          imageUrl != null
+              ? const SizedBox(height: 40.0)
+              : const SizedBox(height: 50.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -36,7 +38,7 @@ class CustomAppBar extends StatelessWidget {
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
                       child: const Padding(
-                        padding: EdgeInsets.only(left: 10.0, right: 5.0),
+                        padding: EdgeInsets.only(left: 15.0, right: 5.0),
                         child: Icon(
                           Icons.arrow_back,
                           color: Colors.white,
@@ -52,7 +54,7 @@ class CustomAppBar extends StatelessWidget {
                     )
                   else
                     const SizedBox.shrink(),
-                  const SizedBox(width: 12.0),
+                  const SizedBox(width: 20.0),
                   Text(
                     title,
                     style: const TextStyle(
