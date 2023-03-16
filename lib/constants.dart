@@ -14,6 +14,14 @@ const kPopupMenuColor = Color(0xff233239);
 
 const kDividerColor = Color(0xff232d34);
 
+const kPopupMenuIconColor = Color(0xffbbc0c3);
+
+const kMyTextBubbleColor = Color(0xff005d4b);
+
+const kCheckColor = Color(0xff7eafa5);
+
+const kActiveCheckColor = Colors.blue;
+
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
   fontSize: 16.5,
@@ -27,10 +35,23 @@ const kSubTitleTextStyle = TextStyle(
 
 const kTimeTextStyle = TextStyle(
   color: kSecondaryColor,
-  fontSize: 12.0,
+  fontSize: 12.5,
 );
 
 const kInfoTextStyle = TextStyle(
   color: kSecondaryColor,
-  fontSize: 14.0,
+  fontSize: 14.5,
+);
+
+final kThemeData = ThemeData(
+  scaffoldBackgroundColor: kPrimaryColor,
+  iconTheme: const IconThemeData(color: kSecondaryColor),
+  appBarTheme: const AppBarTheme(backgroundColor: kAppBarColor),
+  textSelectionTheme: TextSelectionThemeData(
+    selectionColor: kAccentColor.withOpacity(0.5),
+    selectionHandleColor: kAccentColor,
+  ),
+  splashColor: Colors.transparent,
+  highlightColor: Colors.transparent,
+  splashFactory: NoSplash.splashFactory,
 );
