@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-
 import '../../constants.dart';
 
 class ChatBox extends StatelessWidget {
   const ChatBox({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
+
+  static const iconSize = 23.0;
+  static final double screenWidth =
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,6 @@ class ChatBox extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25.0),
               ),
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const Expanded(
                     child: TextField(
@@ -45,9 +47,8 @@ class ChatBox extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 3.2,
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  SizedBox(
+                    width: screenWidth / 3.3,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -56,7 +57,7 @@ class ChatBox extends StatelessWidget {
                           child: const Icon(
                             Icons.attachment_rounded,
                             color: kSecondaryColor,
-                            size: 23.0,
+                            size: iconSize,
                           ),
                         ),
                         Container(

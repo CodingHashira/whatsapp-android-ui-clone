@@ -3,12 +3,12 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
-    super.key,
+    Key? key,
     this.leading,
     required this.title,
     this.trailingWidget,
     required this.subTitle,
-  });
+  }) : super(key: key);
 
   final Widget? leading;
   final String title;
@@ -17,17 +17,16 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Row(
         children: [
-          leading != null
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
-                  child: leading,
-                )
-              : const SizedBox.shrink(),
+          if (leading != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: leading,
+            ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,12 +40,11 @@ class CustomListTile extends StatelessWidget {
                         fontWeight: FontWeight.normal,
                       ),
                     ),
-                    trailingWidget != null
-                        ? Container(
-                            constraints: const BoxConstraints(maxHeight: 0.0),
-                            child: trailingWidget,
-                          )
-                        : const SizedBox.shrink(),
+                    if (trailingWidget != null)
+                      SizedBox(
+                        height: 0.0,
+                        child: trailingWidget,
+                      ),
                   ],
                 ),
                 const SizedBox(height: 5.0),

@@ -34,7 +34,9 @@ class ChatScreen extends StatelessWidget {
                 imageUrl: 'images/p3.jpg',
                 title: 'Monica',
                 isChildWidget: true,
-                actions: ChatPageActions(),
+                actions: Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: ChatPageActions()),
               ),
               const Spacer(),
               Padding(
