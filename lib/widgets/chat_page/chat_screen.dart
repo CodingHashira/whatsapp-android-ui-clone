@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 
 import '../../common/appbar.dart';
 import 'actions.dart';
 import 'chat_box.dart';
+import 'chat_bubble.dart';
 import 'mic_button.dart';
+
+const data = Data();
+
+const List<Map<String, String>> testList = [
+  {
+    'sender': 'me',
+    'text': 'Sure, I\'d be happy to help. Let\'s plan a fun trip!',
+  },
+];
+
+final Size size =
+    MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({
@@ -14,15 +29,15 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ColorFiltered(
-          colorFilter: ColorFilter.mode(
+        ImageFiltered(
+          imageFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.35),
             BlendMode.darken,
           ),
           child: Image.asset(
             'images/bg.jpg',
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+            height: size.height,
+            width: size.width,
             fit: BoxFit.cover,
           ),
         ),
@@ -35,10 +50,24 @@ class ChatScreen extends StatelessWidget {
                 title: 'Monica',
                 isChildWidget: true,
                 actions: Padding(
-                    padding: EdgeInsets.only(right: 8.0),
-                    child: ChatPageActions()),
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: ChatPageActions(),
+                ),
               ),
-              const Spacer(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      CustomListBuilder(
+                        itemCount: data.messageList.length,
+                        list: data.messageList,
+                        startIndex: 0,
+                        widgetType: ChatBubble,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
