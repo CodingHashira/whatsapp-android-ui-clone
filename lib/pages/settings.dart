@@ -5,6 +5,8 @@ import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
+import '../common/divider.dart';
+
 const data = Data();
 
 class SettingsPage extends StatelessWidget {
@@ -37,10 +39,7 @@ class SettingsPage extends StatelessWidget {
                       size: 27.0,
                     ),
                   ),
-                  const Divider(
-                    color: kDividerColor,
-                    height: 0.7,
-                  ),
+                  const CustomDivider(),
                   CustomListBuilder(
                     itemCount: data.settingsMenu.length,
                     leadingWidth: 10.0,
