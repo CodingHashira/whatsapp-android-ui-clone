@@ -15,8 +15,9 @@ class CustomPopupMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      // offset: const Offset(0, -20),
       color: kPopupMenuColor,
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.only(right: 5.0),
         child: Icon(
           Icons.more_vert_rounded,
@@ -34,8 +35,10 @@ class CustomPopupMenuButton extends StatelessWidget {
       final value = entry.value;
       if (value is Map<String, dynamic>) {
         return PopupMenuItem(
+          height: 40,
           padding: EdgeInsets.zero,
           child: ListTile(
+            visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
             title: Text(
               label,
               style: const TextStyle(
@@ -54,10 +57,8 @@ class CustomPopupMenuButton extends StatelessWidget {
         );
       } else {
         return PopupMenuItem(
-          onTap: () => Future(() {
-            Navigator.pop(context);
-            Navigator.pushNamed(context, value);
-          }),
+          height: 40,
+          onTap: () => Future(() => Navigator.pushNamed(context, value)),
           child: Text(
             label,
             style: const TextStyle(
