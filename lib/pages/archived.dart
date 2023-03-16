@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 import '../common/appbar.dart';
+import '../common/divider.dart';
 
 const data = Data();
 
@@ -20,8 +22,7 @@ class ArchivedPage extends StatelessWidget {
             isChildWidget: true,
             title: 'Archived',
             actions: CustomPopupMenuButton(
-              // popupMenuItems: data.archivedPopupMenuItems,
-              popupMenuItems: data.chatPopupMenuItems,
+              popupMenuItems: data.archivedPopupMenuItems,
             ),
           ),
           Padding(
@@ -32,32 +33,14 @@ class ArchivedPage extends StatelessWidget {
               style: kInfoTextStyle,
             ),
           ),
-          const Divider(
-            color: kDividerColor,
-            height: 0.7,
-          ),
-          ListView.builder(
-            padding: const EdgeInsets.only(top: 0.0),
-            shrinkWrap: true,
+          const CustomDivider(),
+          CustomListBuilder(
             itemCount: data.conversaionList.length,
-            itemBuilder: ((context, index) {
-              return ChatTile(
-                leading: CircleAvatar(
-                  radius: 25.0,
-                  backgroundImage: AssetImage(
-                    data.conversaionList[index].imageUrl,
-                  ),
-                ),
-                title: data.conversaionList[index].title,
-                time: data.conversaionList[index].time,
-                subTitle: data.conversaionList[index].subTitle,
-              );
-            }),
+            list: data.conversaionList,
+            startIndex: 0,
+            widgetType: ChatTile,
           ),
-          const Divider(
-            color: kDividerColor,
-            height: 0.7,
-          ),
+          const CustomDivider(),
           const SizedBox(height: 15.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
