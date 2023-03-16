@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../common/popup_menu_button.dart';
 import '../../constants.dart';
+import '../../model/data.dart';
+
+final data = Data();
 
 class ChatPageActions extends StatelessWidget {
   const ChatPageActions({
@@ -27,8 +30,9 @@ class ChatPageActions extends StatelessWidget {
           ),
           Container(
             constraints: const BoxConstraints(maxWidth: 25.0, maxHeight: 25),
-            child: const CustomPopupMenuButton(
+            child: CustomPopupMenuButton(
               popButtonColor: kTextPrimaryColor,
+              popupMenuItems: data.chatPopupMenuItems,
             ),
           )
         ],
