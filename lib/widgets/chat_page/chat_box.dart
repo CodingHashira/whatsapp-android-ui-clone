@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../common/text_field.dart';
 import '../../constants.dart';
 
 class ChatBox extends StatelessWidget {
@@ -24,31 +25,17 @@ class ChatBox extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Expanded(
-                    child: TextField(
-                      maxLines: null,
-                      cursorColor: kAccentColor,
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.white,
-                      ),
-                      decoration: InputDecoration(
-                        suffixIconColor: kSecondaryColor,
+                  Expanded(
+                    child: Container(
+                      constraints: const BoxConstraints(maxHeight: 40),
+                      child: const CustomTextField(
                         hintText: 'Message',
-                        hintStyle: TextStyle(
-                          color: kSecondaryColor,
-                          fontSize: 18.0,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.mood,
-                          color: kSecondaryColor,
-                        ),
-                        border: InputBorder.none,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: screenWidth / 3.3,
+                  Container(
+                    margin: const EdgeInsets.only(right: 8.0),
+                    width: screenWidth / 3.7,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -61,11 +48,11 @@ class ChatBox extends StatelessWidget {
                           ),
                         ),
                         Container(
+                          padding: const EdgeInsets.all(2.8),
                           decoration: const BoxDecoration(
                             color: kSecondaryColor,
                             shape: BoxShape.circle,
                           ),
-                          padding: const EdgeInsets.all(2.8),
                           child: const Icon(
                             Icons.currency_rupee_rounded,
                             color: kPrimaryColor,
