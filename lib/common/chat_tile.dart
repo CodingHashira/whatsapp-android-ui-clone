@@ -4,14 +4,14 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 class ChatTile extends StatelessWidget {
   const ChatTile({
     super.key,
-    this.leading,
+    required this.leading,
     required this.title,
     required this.time,
     required this.subTitle,
     this.trailingIcon,
   });
 
-  final Widget? leading;
+  final Widget leading;
   final String title;
   final String time;
   final String subTitle;
@@ -21,15 +21,13 @@ class ChatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12.0),
       child: Row(
         children: [
-          leading != null
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
-                  child: leading,
-                )
-              : const SizedBox.shrink(),
+          Padding(
+            padding: const EdgeInsets.only(right: 12.0),
+            child: leading,
+          ),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,9 +49,7 @@ class ChatTile extends StatelessWidget {
                 Row(
                   children: [
                     SizedBox(
-                      width: leading == null
-                          ? screenWidth - 55
-                          : screenWidth - 120,
+                      width: screenWidth - 120,
                       child: Text(
                         subTitle,
                         style: kSubTitleTextStyle,
