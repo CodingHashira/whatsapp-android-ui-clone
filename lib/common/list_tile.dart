@@ -9,10 +9,15 @@ class CustomListTile extends StatelessWidget {
     this.leadingWidth,
     this.contentPadding,
     this.titleSize,
+    this.titleColor,
     required this.title,
     this.trailingWidget,
     this.subTitleSize,
     this.subTitle,
+    this.subTitleWidthOffset,
+    this.setLeadingAtTop,
+    this.onTap,
+    this.subTitleWidget,
   }) : super(key: key);
 
   final EdgeInsetsGeometry? padding;
@@ -20,18 +25,28 @@ class CustomListTile extends StatelessWidget {
   final double? leadingWidth;
   final double? contentPadding;
   final double? titleSize;
+  final Color? titleColor;
   final String title;
   final Widget? trailingWidget;
   final double? subTitleSize;
   final String? subTitle;
+  final double? subTitleWidthOffset;
+  final bool? setLeadingAtTop;
+  final VoidCallback? onTap;
+  final Widget? subTitleWidget;
 
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: onTap,
       child: Padding(
         padding: padding ?? const EdgeInsets.all(20.0),
         child: Row(
+          crossAxisAlignment: setLeadingAtTop == true
+              ? CrossAxisAlignment.start
+              : CrossAxisAlignment.center,
           children: [
             if (leading != null)
               Padding(
@@ -45,17 +60,22 @@ class CustomListTile extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: kTitleTextStyle.copyWith(
-                          fontWeight: FontWeight.normal,
-                          fontSize: titleSize,
+                      SizedBox(
+                        width: screenWidth - 120,
+                        child: Text(
+                          title,
+                          style: kTitleTextStyle.copyWith(
+                            color: titleColor,
+                            fontSize: titleSize,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                       if (trailingWidget != null)
                         SizedBox(
-                          height: 0.0,
+                          height: 22.0,
                           child: trailingWidget,
                         ),
                     ],
@@ -65,8 +85,8 @@ class CustomListTile extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: SizedBox(
-                        width: leading == null
-                            ? screenWidth - 120
+                        width: subTitleWidthOffset != null
+                            ? screenWidth - subTitleWidthOffset!
                             : screenWidth - 120,
                         child: Text(
                           subTitle!,
@@ -77,7 +97,8 @@ class CustomListTile extends StatelessWidget {
                           maxLines: 4,
                         ),
                       ),
-                    )
+                    ),
+                  if (subTitleWidget != null) subTitleWidget!
                 ],
               ),
             )
