@@ -238,54 +238,98 @@ class Data {
     {
       'title': 'Last seen and online',
       'subTitle': 'Nobody',
-      'pageRoute': '/testPage'
+      'pageRoute': '/lastseenOnlinePage'
     },
     {
       'title': 'Profile photo',
       'subTitle': 'My contacts',
-      'pageRoute': '/testPage'
+      'pageRoute': '/profilePhotoPage'
     },
     {
       'title': 'About',
       'subTitle': 'My contacts',
-      'pageRoute': '/testPage',
+      'pageRoute': '/aboutPage',
     },
     {
       'title': 'Status',
       'subTitle': '404 contacts excluded',
-      'pageRoute': '/testPage'
+      'pageRoute': '/statusPrivacyPage'
     },
     {
       'title': 'Disappearing messages',
       'subTitle': 'Default message timer, Apply timer to chats',
-      'pageRoute': '/testPage'
-    },
-    {
-      'title': 'Disappearing messages',
-      'subTitle': '404 contacts excluded',
-      'pageRoute': '/testPage'
+      'pageRoute': '/disappearingMessagesPage'
     },
     {
       'title': 'Groups',
       'subTitle': '404 contacts excluded',
-      'pageRoute': '/testPage'
+      'pageRoute': '/groupsPage'
     },
     {
       'title': 'Live location',
       'subTitle': 'None',
-      'pageRoute': '/testPage',
+      'pageRoute': '/liveLocationPage',
     },
     {
       'title': 'Blocked contacts',
       'subTitle': '1',
-      'pageRoute': '/testPage',
+      'pageRoute': '/blockedContactsPage',
     },
     {
       'title': 'Fingerprint lock',
       'subTitle': 'Disabled',
-      'pageRoute': '/testPage'
+      'pageRoute': '/fingerprintLockPage'
     },
   ];
 
   get privacyMenu => _privacyMenu;
+
+  static const List<String> _genericPrivacyRadioList = [
+    'Everyone',
+    'My contacts',
+    'My contacts except...',
+    'Nobody'
+  ];
+
+  get genericPrivacyRadioList => _genericPrivacyRadioList;
+
+  static const List _securityNotificationsInfoList = [
+    {
+      'leading': Icon(
+        Icons.chat_outlined,
+        size: 20.0,
+      ),
+      'title': 'Text and voice messages',
+    },
+    {
+      'leading': Icon(
+        Icons.call_rounded,
+        size: 20.0,
+      ),
+      'title': 'Audio and video calls',
+    },
+    {
+      'leading': Icon(
+        Icons.attachment_rounded,
+        size: 20.0,
+      ),
+      'title': 'Photos, videos and documents',
+    },
+    {
+      'leading': Icon(
+        Icons.location_on,
+        size: 20.0,
+      ),
+      'title': 'Location sharing',
+    },
+    {
+      'leading': Icon(
+        Icons.offline_bolt_outlined,
+        size: 20.0,
+      ),
+      'title': 'Status updates',
+    },
+  ];
+
+  get securityNotificationsInfoList => _securityNotificationsInfoList;
 }
