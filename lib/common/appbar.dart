@@ -36,6 +36,7 @@ class CustomAppBar extends StatelessWidget {
                 children: [
                   if (isChildWidget)
                     GestureDetector(
+                      behavior: HitTestBehavior.translucent,
                       onTap: () => Navigator.pop(context),
                       child: const Padding(
                         padding: EdgeInsets.only(left: 15.0, right: 5.0),
