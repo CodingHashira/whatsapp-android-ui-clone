@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 
 import '../../model/data.dart';
 
@@ -24,6 +25,7 @@ class AccountPage extends StatelessWidget {
             leadingWidth: 8.0,
             list: data.accountMenu,
             startIndex: 0,
+            returnWidgetType: CustomListTile,
           ),
         ],
       ),
