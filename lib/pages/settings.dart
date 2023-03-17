@@ -45,6 +45,7 @@ class SettingsPage extends StatelessWidget {
                     leadingWidth: 10.0,
                     list: data.settingsMenu,
                     startIndex: 0,
+                    returnWidgetType: CustomListTile,
                   ),
                   const SizedBox(height: 20.0),
                   Row(
