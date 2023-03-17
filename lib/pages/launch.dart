@@ -8,24 +8,33 @@ class LaunchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Launch Page'),
-      body: Center(
-        child: MaterialButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
+      body: Column(
+        children: [
+          const CustomAppBar(
+            title: 'Launch Page',
+            isChildWidget: false,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-          color: kAccentColor,
-          onPressed: () => Navigator.pushNamed(context, '/archivedPage'),
-          child: const Text(
-            'Launch Page',
-            style: TextStyle(
-              color: kTextPrimaryColor,
-              fontSize: 15.0,
-              fontWeight: FontWeight.w500,
+          const SizedBox(height: 400),
+          Center(
+            child: MaterialButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+              color: kAccentColor,
+              onPressed: () => Navigator.pushNamed(context, '/chatScreen'),
+              child: const Text(
+                'Launch Page',
+                style: TextStyle(
+                  color: kTextPrimaryColor,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
