@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
 
 import '../common/list_tile.dart';
 
@@ -14,16 +14,12 @@ class ArchiveSettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-          const CustomAppBar(isChildWidget: true, title: 'Archive Settings'),
+        children: const [
+          CustomAppBar(isChildWidget: true, title: 'Archive Settings'),
           CustomListTile(
             title: 'Keep chats archived',
             subTitle: info,
-            trailingWidget: Switch(
-              activeColor: kAccentColor,
-              value: true,
-              onChanged: (p0) {},
-            ),
+            trailingWidget: CustomSwitch(),
           ),
         ],
       ),
