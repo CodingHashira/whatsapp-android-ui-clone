@@ -22,6 +22,16 @@ const kCheckColor = Color(0xff7eafa5);
 
 const kActiveCheckColor = Colors.blue;
 
+const kTextLinkColor = Color(0xff56bde9);
+
+const kThumbActiveColor = MaterialStatePropertyAll(Color(0xff00a682));
+
+const kThumbInctiveColor = MaterialStatePropertyAll(Color(0xff82939d));
+
+const kTrackActiveColor = MaterialStatePropertyAll(Color(0xff0d463f));
+
+const kTrackInctiveColor = MaterialStatePropertyAll(Color(0xff334048));
+
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
   fontSize: 16.5,
@@ -41,6 +51,12 @@ const kTimeTextStyle = TextStyle(
 const kInfoTextStyle = TextStyle(
   color: kSecondaryColor,
   fontSize: 14.5,
+  height: 1.5,
+);
+
+const kInfoTextStyle2 = TextStyle(
+  color: Colors.white,
+  fontSize: 15.5,
 );
 
 final kThemeData = ThemeData(
@@ -54,4 +70,5 @@ final kThemeData = ThemeData(
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
   splashFactory: NoSplash.splashFactory,
+  unselectedWidgetColor: const Color(0xff3c4a55),
 );
