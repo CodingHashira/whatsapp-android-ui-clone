@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/widgets/chat_page/chat_bubble.dart';
 
 import 'chat_tile.dart';
@@ -11,38 +12,62 @@ class CustomListBuilder extends StatelessWidget {
     required this.list,
     required this.startIndex,
     this.leadingWidth,
-    this.widgetType,
+    required this.returnWidgetType,
+    this.padding,
+    this.listTilePadding,
+    this.titleColor,
+    this.titleSize,
   });
 
   final int itemCount;
   final List list;
   final int startIndex;
   final double? leadingWidth;
-  final Type? widgetType;
+  final Type returnWidgetType;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? listTilePadding;
+  final Color? titleColor;
+  final double? titleSize;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: itemCount,
-      padding: const EdgeInsets.only(top: 0.0),
+      padding: padding ?? const EdgeInsets.only(top: 0.0),
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        if (widgetType != null && widgetType == ChatBubble) {
+        if (returnWidgetType == ChatBubble) {
           return _buildChatBubble(index);
-        } else if (widgetType != null && widgetType == ChatTile) {
+        } else if (returnWidgetType == ChatTile) {
           return _buildChatTile(index);
+        } else if (returnWidgetType == CustomRadioButton) {
+          return _buildRadioButton(index);
         }
-        return _buildCustomListTile(index);
+        return _buildCustomListTile(index, context);
       },
     );
   }
 
-  CustomListTile _buildCustomListTile(int index) {
+  CustomRadioButton _buildRadioButton(int index) {
+    return CustomRadioButton(
+      value: list[index],
+      optionsList: list,
+      currentOption: list.first,
+    );
+  }
+
+  CustomListTile _buildCustomListTile(int index, BuildContext context) {
     return CustomListTile(
+      onTap: () =>
+          Navigator.pushNamed(context, list[index + startIndex]['pageRoute']),
+      padding: listTilePadding ??
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
       leading: list[index + startIndex]['leading'],
       leadingWidth: leadingWidth,
       title: list[index + startIndex]['title'],
+      titleColor: titleColor,
+      titleSize: titleSize,
       subTitle: list[index + startIndex]['subTitle'],
     );
   }
