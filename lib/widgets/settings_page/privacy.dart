@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 
 import '../../common/list_builder.dart';
@@ -46,25 +47,20 @@ class PrivacyPage extends StatelessWidget {
                     startIndex: 0,
                     itemCount: 4,
                     list: data.privacyMenu,
+                    returnWidgetType: CustomListTile,
                   ),
-                  CustomListTile(
+                  const CustomListTile(
                     title: 'Read receipts',
                     subTitle:
                         ' If turned Off, you won\'t send or receive Read receipts. Read receipts are always sent for group chats.',
-                    trailingWidget: Switch(
-                      thumbColor:
-                          const MaterialStatePropertyAll(kSecondaryColor),
-                      trackColor:
-                          const MaterialStatePropertyAll(Color(0xff334048)),
-                      value: false,
-                      onChanged: (p0) {},
-                    ),
+                    trailingWidget: CustomSwitch(),
                   ),
                   const CustomDivider(),
                   CustomListBuilder(
                     startIndex: 4,
-                    itemCount: 6,
+                    itemCount: 5,
                     list: data.privacyMenu,
+                    returnWidgetType: CustomListTile,
                   ),
                 ],
               ),
