@@ -62,7 +62,7 @@ class ChatScreen extends StatelessWidget {
                         itemCount: data.messageList.length,
                         list: data.messageList,
                         startIndex: 0,
-                        widgetType: ChatBubble,
+                        returnWidgetType: ChatBubble,
                       ),
                     ],
                   ),
