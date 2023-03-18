@@ -10,7 +10,7 @@ class CustomListTile extends StatelessWidget {
     this.contentPadding,
     this.titleSize,
     this.titleColor,
-    required this.title,
+    this.title,
     this.trailingWidget,
     this.subTitleSize,
     this.subTitle,
@@ -18,6 +18,7 @@ class CustomListTile extends StatelessWidget {
     this.setLeadingAtTop,
     this.onTap,
     this.subTitleWidget,
+    this.titleWidget,
   }) : super(key: key);
 
   final EdgeInsetsGeometry? padding;
@@ -26,7 +27,7 @@ class CustomListTile extends StatelessWidget {
   final double? contentPadding;
   final double? titleSize;
   final Color? titleColor;
-  final String title;
+  final String? title;
   final Widget? trailingWidget;
   final double? subTitleSize;
   final String? subTitle;
@@ -34,6 +35,7 @@ class CustomListTile extends StatelessWidget {
   final bool? setLeadingAtTop;
   final VoidCallback? onTap;
   final Widget? subTitleWidget;
+  final Widget? titleWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +64,19 @@ class CustomListTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: screenWidth - 120,
-                        child: Text(
-                          title,
-                          style: kTitleTextStyle.copyWith(
-                            color: titleColor,
-                            fontSize: titleSize,
-                            fontWeight: FontWeight.normal,
+                      if (title != null)
+                        SizedBox(
+                          width: title!.length > 30 ? screenWidth - 120 : null,
+                          child: Text(
+                            title!,
+                            style: kTitleTextStyle.copyWith(
+                              color: titleColor,
+                              fontSize: titleSize,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
-                      ),
+                      if (titleWidget != null) titleWidget!,
                       if (trailingWidget != null)
                         SizedBox(
                           height: 22.0,

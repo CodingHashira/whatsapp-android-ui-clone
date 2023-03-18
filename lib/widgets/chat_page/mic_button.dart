@@ -5,7 +5,12 @@ import '../../constants.dart';
 class MicButton extends StatelessWidget {
   const MicButton({
     super.key,
+    required this.iconSize,
+    required this.padding,
   });
+
+  final double iconSize;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +19,10 @@ class MicButton extends StatelessWidget {
         color: kAccentColor,
         shape: BoxShape.circle,
       ),
-      padding: const EdgeInsets.all(10.0),
-      child: const Icon(
+      padding: EdgeInsets.all(padding),
+      child: Icon(
         Icons.mic_rounded,
+        size: iconSize,
         color: Colors.white,
       ),
     );

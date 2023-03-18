@@ -7,10 +7,14 @@ class PaddedSettingsTextInfo extends StatelessWidget {
     super.key,
     required this.text,
     this.padding,
+    this.textStyle,
+    this.textAlign,
   });
 
   final String text;
   final EdgeInsetsGeometry? padding;
+  final TextStyle? textStyle;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,8 @@ class PaddedSettingsTextInfo extends StatelessWidget {
             ),
       child: Text(
         text,
-        style: kInfoTextStyle,
+        style: textStyle ?? kInfoTextStyle,
+        textAlign: textAlign,
       ),
     );
   }

@@ -12,11 +12,13 @@ class ChatBubble extends StatelessWidget {
     required this.text,
     required this.isMe,
     required this.textLength,
+    this.showTime,
   }) : super(key: key);
 
   final String text;
   final bool isMe;
   final int textLength;
+  final bool? showTime;
 
   @override
   Widget build(BuildContext context) {

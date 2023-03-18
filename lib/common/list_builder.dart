@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/radio_button.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/widgets/chat_page/chat_bubble.dart';
 
 import 'chat_tile.dart';
@@ -57,10 +58,26 @@ class CustomListBuilder extends StatelessWidget {
     );
   }
 
+  void handleNavigation(BuildContext context, int index) {
+    var pageRoute = list[index + startIndex]['pageRoute'];
+    if (pageRoute != null) {
+      Navigator.pushNamed(context, pageRoute);
+    }
+
+    var dialogWidget = list[index + startIndex]['dialogWidget'];
+    if (dialogWidget != null) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return dialogWidget;
+        },
+      );
+    }
+  }
+
   CustomListTile _buildCustomListTile(int index, BuildContext context) {
     return CustomListTile(
-      onTap: () =>
-          Navigator.pushNamed(context, list[index + startIndex]['pageRoute']),
+      onTap: () => handleNavigation(context, index),
       padding: listTilePadding ??
           const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
       leading: list[index + startIndex]['leading'],
@@ -69,6 +86,7 @@ class CustomListBuilder extends StatelessWidget {
       titleColor: titleColor,
       titleSize: titleSize,
       subTitle: list[index + startIndex]['subTitle'],
+      trailingWidget: list[index + startIndex]['trailing'],
     );
   }
 
@@ -83,7 +101,8 @@ class CustomListBuilder extends StatelessWidget {
   ChatTile _buildChatTile(int index) {
     return ChatTile(
       leading: CircleAvatar(
-        radius: 25.0,
+        radius: 23.0,
+        backgroundColor: Color.fromARGB(255, 78, 95, 105),
         backgroundImage: AssetImage(
           list[index].imageUrl,
         ),

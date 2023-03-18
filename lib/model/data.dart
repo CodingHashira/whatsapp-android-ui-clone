@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
 
 class Chat {
   const Chat({
     required this.imageUrl,
     this.imageStackIcon,
     required this.title,
-    required this.time,
+    this.time,
     required this.subTitle,
     this.trailingIcon,
   });
@@ -13,7 +16,7 @@ class Chat {
   final String imageUrl;
   final IconData? imageStackIcon;
   final String title;
-  final String time;
+  final String? time;
   final String subTitle;
   final IconData? trailingIcon;
 }
@@ -57,6 +60,76 @@ class Data {
   ];
 
   get conversaionList => _conversationList;
+
+  static const List<Chat> _inviteFriendList = [
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Janice Litman-Goralnik',
+      subTitle: '+91 9462736619',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Gunther',
+      subTitle: '+91 8386772630',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Gavin Mitchell',
+      subTitle: '+91 8893552671',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Paolo',
+      subTitle: '+91 7388930166',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Charlie Wheeler',
+      subTitle: '+91 637758391',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Tag Jones',
+      subTitle: '+91 9476628842',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Eddie Menuek',
+      subTitle: '+91 9947728462',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Barry Farber',
+      subTitle: '+91 883726539, +91 9687653321',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Amy Green',
+      subTitle: '+91 8277382946',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Paul Stevens',
+      subTitle: '+91 7534576288',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'David',
+      subTitle: '+91 9883745663',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Pete Becker',
+      subTitle: '+91 99472656482',
+    ),
+    Chat(
+      imageUrl: 'images/no_profile.jpg',
+      title: 'Elizabeth Stevens',
+      subTitle: '+91 89938827488',
+    ),
+  ];
+
+  get inviteFriendList => _inviteFriendList;
 
   static const Map<String, String> _archivedPopupMenuItems = {
     'Archive Settings': '/archiveSettingsPage',
@@ -151,25 +224,25 @@ class Data {
       'leading': Icon(Icons.account_circle_rounded),
       'title': 'Account',
       'subTitle': 'Security notifications, change number',
-      'pageRoute': '/testPage'
+      'pageRoute': '/accountPage'
     },
     {
       'leading': Icon(Icons.lock_rounded),
       'title': 'Privacy',
       'subTitle': 'Block contacts, disappearing messages',
-      'pageRoute': '/testPage'
+      'pageRoute': '/privacyPage'
     },
     {
       'leading': Icon(Icons.emoji_emotions_rounded),
       'title': 'Avatar',
       'subTitle': 'Create, edit, profile photo',
-      'pageRoute': '/testPage'
+      'pageRoute': '/avatarPage'
     },
     {
       'leading': Icon(Icons.chat_rounded),
       'title': 'Chats',
       'subTitle': 'Theme, wallpapers, chat history',
-      'pageRoute': '/testPage'
+      'pageRoute': '/chatsPage'
     },
     {
       'leading': Icon(Icons.notifications_rounded),
@@ -198,7 +271,7 @@ class Data {
     {
       'leading': Icon(Icons.group),
       'title': 'Invite a friend',
-      'pageRoute': '/testPage',
+      'pageRoute': '/inviteFriendPage',
     },
   ];
 
@@ -208,27 +281,27 @@ class Data {
     {
       'leading': Icon(Icons.security_rounded),
       'title': 'Security notifications',
-      'pageRoute': '/testPage'
+      'pageRoute': '/securityNotificationsPage'
     },
     {
       'leading': Icon(Icons.screen_lock_portrait_rounded),
       'title': 'Two-step verification',
-      'pageRoute': '/testPage'
+      'pageRoute': '/twoStepAuthPage'
     },
     {
       'leading': Icon(Icons.send_to_mobile_rounded),
       'title': 'Change number',
-      'pageRoute': '/testPage'
+      'pageRoute': '/changeNumberPage'
     },
     {
       'leading': Icon(Icons.description_rounded),
       'title': 'Request account info',
-      'pageRoute': '/testPage'
+      'pageRoute': '/requestAccountInfoPage'
     },
     {
       'leading': Icon(Icons.delete_rounded),
       'title': 'Delete my account',
-      'pageRoute': '/testPage'
+      'pageRoute': '/deleteAccountPage'
     },
   ];
 
@@ -254,11 +327,6 @@ class Data {
       'title': 'Status',
       'subTitle': '404 contacts excluded',
       'pageRoute': '/statusPrivacyPage'
-    },
-    {
-      'title': 'Disappearing messages',
-      'subTitle': 'Default message timer, Apply timer to chats',
-      'pageRoute': '/disappearingMessagesPage'
     },
     {
       'title': 'Groups',
@@ -332,4 +400,208 @@ class Data {
   ];
 
   get securityNotificationsInfoList => _securityNotificationsInfoList;
+
+  static const List<String> _delAccountInfoList = [
+    '• Delete your account from WhatsApp',
+    '• Erase your message history',
+    '• Delete you from all of your WhatsApp groups',
+    '• Delete your Google Drive backup',
+    '• Delete your payments info',
+  ];
+
+  get delAccountInfoList => _delAccountInfoList;
+
+  static const List _countryCodesList = [
+    {
+      'icon': '\ud83c\uddfa\ud83c\uddf8',
+      'code': '+1',
+      'name': 'United States',
+    },
+    {
+      'icon': '\ud83c\uddec\ud83c\udde7',
+      'code': '+44',
+      'name': 'United Kingdom'
+    },
+    {
+      'icon': '\ud83c\udde8\ud83c\udde6',
+      'code': '+1',
+      'name': 'Canada',
+    },
+    {
+      'icon': '\ud83c\udde6\ud83c\uddfa',
+      'code': '+61',
+      'name': 'Australia',
+    },
+    {
+      'icon': '\ud83c\uddee\ud83c\uddea',
+      'code': '+353',
+      'name': 'Ireland',
+    },
+    {
+      'icon': '\ud83c\uddfa\ud83c\uddff',
+      'code': '+64',
+      'name': 'New Zealand',
+    },
+    {
+      'icon': '\ud83c\udded\ud83c\uddf2',
+      'code': '+52',
+      'name': 'Mexico',
+    },
+    {
+      'icon': '\ud83c\uddef\ud83c\uddf5',
+      'code': '+81',
+      'name': 'Japan',
+    },
+    {
+      'icon': '\ud83c\udde7\ud83c\uddf7',
+      'code': '+55',
+      'name': 'Brazil',
+    },
+    {
+      'icon': '\ud83c\uddeb\ud83c\uddf7',
+      'code': '+33',
+      'name': 'France',
+    },
+    {
+      'icon': '\ud83c\udde8\ud83c\uddf3',
+      'code': '+86',
+      'name': 'China',
+    },
+    {
+      'icon': '\ud83c\udde9\ud83c\uddea',
+      'code': '+49',
+      'name': 'Germany',
+    },
+    {
+      'icon': '\ud83c\uddee\ud83c\uddf3',
+      'code': '+91',
+      'name': 'India',
+    },
+    {
+      'icon': '\ud83c\uddea\ud83c\uddf8',
+      'code': '+34',
+      'name': 'Spain',
+    },
+    {
+      'icon': '\ud83c\udde6\ud83c\uddea',
+      'code': '+971',
+      'name': 'United Arab Emirates'
+    },
+    {
+      'icon': '\ud83c\uddff\ud83c\uddf2',
+      'code': '+27',
+      'name': 'South Africa',
+    },
+    {
+      'icon': '\ud83c\uddf8\ud83c\udde6',
+      'code': '+966',
+      'name': 'Saudi Arabia'
+    },
+    {
+      'icon': '\ud83c\uddf0\ud83c\uddf7',
+      'code': '+82',
+      'name': 'South Korea',
+    },
+    {
+      'icon': '\ud83c\uddf3\ud83c\uddec',
+      'code': '+234',
+      'name': 'Nigeria',
+    }
+  ];
+
+  get countryCodesList => _countryCodesList;
+
+  static const List<String> _deafultMessageTimerList = [
+    '24 hours',
+    '7 days',
+    '90 days',
+    'Off',
+  ];
+
+  get deafultMessageTimerList => _deafultMessageTimerList;
+
+  static const _chatOptions = [
+    {
+      'leading': Icon(Icons.brightness_6_rounded),
+      'title': 'Theme',
+      'subTitle': 'System default',
+      'dialogWidget': SelectThemeDialog(),
+    },
+    {
+      'leading': Icon(Icons.wallpaper_rounded),
+      'title': 'Wallpaper',
+      'pageRoute': '/themeWallpaperPage',
+    },
+    {
+      'leading': Icon(Icons.cloud_upload_rounded),
+      'title': 'Chat backup',
+      'dialogWidget': ChatBackupDialog(),
+    },
+    {
+      'leading': Icon(Icons.history_rounded),
+      'title': 'Chat history',
+      'pageRoute': '/chatHistoryPage',
+    },
+  ];
+
+  get chatOptions => _chatOptions;
+
+  static const _chatSettings = [
+    {
+      'title': 'Enter is send',
+      'subTitle': 'Enter key will send your message',
+      'trailing': CustomSwitch(),
+    },
+    {
+      'title': 'Media visibility',
+      'subTitle': 'Show newly downloaded media in your device\'s gallery',
+      'trailing': CustomSwitch(),
+    },
+    {
+      'title': 'Font size',
+      'subTitle': 'Small',
+      'dialogRoute': '/SelectThemeDialog',
+    },
+  ];
+
+  get chatSettings => _chatSettings;
+
+  static const List _chatHistoryOptionsList = [
+    {
+      'leading': Icon(Icons.file_upload_outlined),
+      'title': 'Export chat',
+    },
+    {
+      'leading': Icon(Icons.archive_rounded),
+      'title': 'Archive all chats',
+    },
+    {
+      'leading': Icon(Icons.do_not_disturb_on_outlined),
+      'title': 'Clear all chats',
+    },
+    {
+      'leading': Icon(Icons.delete_rounded),
+      'title': 'Delete all chats',
+    },
+  ];
+
+  get chatHistoryOptionsList => _chatHistoryOptionsList;
+
+  static const List _themeDialogOptions = [
+    'System Default',
+    'Light',
+    'Dark',
+  ];
+
+  get themeDialogOptions => _themeDialogOptions;
+
+  static const List _chatBackupDialogOptions = [
+    'Never',
+    'Only when I tap "Back up"',
+    'Daily',
+    'Weekly',
+    'Monthly',
+  ];
+
+  get chatBackupDialogOptions => _chatBackupDialogOptions;
 }

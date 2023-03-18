@@ -74,7 +74,10 @@ class ChatScreen extends StatelessWidget {
                   children: const [
                     ChatBox(),
                     SizedBox(width: 5.0),
-                    MicButton()
+                    MicButton(
+                      iconSize: 25.0,
+                      padding: 10.0,
+                    )
                   ],
                 ),
               ),
