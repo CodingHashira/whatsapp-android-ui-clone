@@ -7,10 +7,12 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.title,
     this.routeName,
+    this.buttonColor,
   });
 
   final String title;
   final String? routeName;
+  final Color? buttonColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class CustomButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          color: const Color(0xff00a884),
+          color: buttonColor ?? const Color(0xff00a884),
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
           onPressed: () {},
           child: Text(

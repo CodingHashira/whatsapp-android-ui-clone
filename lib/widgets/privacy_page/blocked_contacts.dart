@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
@@ -26,9 +24,9 @@ class BlockedContactsPage extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 35.0),
-            padding: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
+            margin: const EdgeInsets.symmetric(vertical: 35.0),
+            padding: const EdgeInsets.all(10.0),
+            decoration: const BoxDecoration(
               color: Color(0xff0f3633),
               shape: BoxShape.circle,
             ),
@@ -48,15 +46,15 @@ class BlockedContactsPage extends StatelessWidget {
             'No blocked contacts',
             style: kInfoTextStyle2.copyWith(fontWeight: FontWeight.w500),
           ),
-          SizedBox(height: 15.0),
+          const SizedBox(height: 15.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Tap the ',
                 style: kInfoTextStyle2,
               ),
-              Icon(
+              const Icon(
                 Icons.person_add_rounded,
                 size: 22.0,
               ),
@@ -69,14 +67,14 @@ class BlockedContactsPage extends StatelessWidget {
               )
             ],
           ),
-          Padding(
+          const Padding(
               padding: EdgeInsets.only(right: 8.0),
               child: Text(' block.', style: kInfoTextStyle2)),
-          SizedBox(height: 20.0),
-          CustomDivider(),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
+          const CustomDivider(),
+          const SizedBox(height: 20.0),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               'Blocked contacts will no longer be able to call you or send you messages.',
               style: kInfoTextStyle.copyWith(height: 1.5),
@@ -96,19 +94,19 @@ class CustomSlashIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.0, right: 10.0),
+      padding: const EdgeInsets.only(bottom: 12.0, right: 10.0),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Container(
             height: 22.0,
             width: 22.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xff0f3633),
               shape: BoxShape.circle,
             ),
           ),
-          Icon(
+          const Icon(
             FeatherIcons.slash,
             color: kAccentColor,
             size: 20.0,

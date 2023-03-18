@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
@@ -36,51 +34,52 @@ class LastSeenOnlinePage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PaddedSettingsTextInfo(text: 'Who can see my last seen'),
+              const PaddedSettingsTextInfo(text: 'Who can see my last seen'),
               CustomListBuilder(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 itemCount: lastSeenRadioList.length,
                 list: lastSeenRadioList,
                 startIndex: 0,
                 returnWidgetType: CustomRadioButton,
               ),
-              SizedBox(height: 5.0),
-              CustomDivider(),
-              SizedBox(height: 5.0),
-              PaddedSettingsTextInfo(text: 'Who can see when I\'m online'),
+              const SizedBox(height: 5.0),
+              const CustomDivider(),
+              const SizedBox(height: 5.0),
+              const PaddedSettingsTextInfo(
+                  text: 'Who can see when I\'m online'),
               CustomListBuilder(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 itemCount: onlineIndicationRadioList.length,
                 list: onlineIndicationRadioList,
                 startIndex: 0,
                 returnWidgetType: CustomRadioButton,
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(text: 'If you don\'t share your '),
+                      const TextSpan(text: 'If you don\'t share your '),
                       TextSpan(
                         text: 'last seen',
                         style: kInfoTextStyle.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      TextSpan(text: ' and '),
+                      const TextSpan(text: ' and '),
                       TextSpan(
                         text: 'online',
                         style: kInfoTextStyle.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      TextSpan(
+                      const TextSpan(
                           text:
                               ', you won\'t be able to see other people\'s last seen and online.')
                     ],
                   ),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: kSecondaryColor,
                   ),
                   textAlign: TextAlign.center,

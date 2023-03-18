@@ -24,6 +24,8 @@ const kActiveCheckColor = Colors.blue;
 
 const kTextLinkColor = Color(0xff56bde9);
 
+const kIconSecondaryColor = Color(0xff627884);
+
 const kThumbActiveColor = MaterialStatePropertyAll(Color(0xff00a682));
 
 const kThumbInctiveColor = MaterialStatePropertyAll(Color(0xff82939d));
@@ -53,6 +55,8 @@ const kInfoTextStyle = TextStyle(
   fontSize: 14.5,
   height: 1.5,
 );
+
+const kRedColor = Color(0xfff05c6c);
 
 const kInfoTextStyle2 = TextStyle(
   color: Colors.white,

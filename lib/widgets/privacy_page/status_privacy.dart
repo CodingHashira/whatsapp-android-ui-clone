@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
@@ -25,15 +23,16 @@ class StatusPrivacyPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PaddedSettingsTextInfo(text: 'Who can see my status updates'),
+              const PaddedSettingsTextInfo(
+                  text: 'Who can see my status updates'),
               CustomListBuilder(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 itemCount: data.genericPrivacyRadioList.length,
                 list: data.genericPrivacyRadioList,
                 startIndex: 0,
                 returnWidgetType: CustomRadioButton,
               ),
-              PaddedSettingsTextInfo(
+              const PaddedSettingsTextInfo(
                   text:
                       'Changes to your privacy settings wont affect status updates that you\'ve sent already'),
             ],

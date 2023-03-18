@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
@@ -25,9 +23,10 @@ class ProfilePhotoPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PaddedSettingsTextInfo(text: 'Who can see my Profile Photo'),
+              const PaddedSettingsTextInfo(
+                  text: 'Who can see my Profile Photo'),
               CustomListBuilder(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 itemCount: data.genericPrivacyRadioList.length,
                 list: data.genericPrivacyRadioList,
                 startIndex: 0,

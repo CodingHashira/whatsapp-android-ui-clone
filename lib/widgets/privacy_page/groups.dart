@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
@@ -25,15 +23,15 @@ class GroupsPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PaddedSettingsTextInfo(text: 'Who canadd me to groups'),
+              const PaddedSettingsTextInfo(text: 'Who canadd me to groups'),
               CustomListBuilder(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 itemCount: 3,
                 list: data.genericPrivacyRadioList,
                 startIndex: 0,
                 returnWidgetType: CustomRadioButton,
               ),
-              PaddedSettingsTextInfo(
+              const PaddedSettingsTextInfo(
                   text:
                       'Admins who can\'t add you to a group chat will have the option of inviting you privately instead.'),
             ],
