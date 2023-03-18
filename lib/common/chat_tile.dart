@@ -6,14 +6,14 @@ class ChatTile extends StatelessWidget {
     Key? key,
     required this.leading,
     required this.title,
-    required this.time,
+    this.time,
     required this.subTitle,
     this.trailingIcon,
   }) : super(key: key);
 
   final Widget leading;
   final String title;
-  final String time;
+  final String? time;
   final String subTitle;
   final IconData? trailingIcon;
 
@@ -41,10 +41,11 @@ class ChatTile extends StatelessWidget {
                       title,
                       style: kTitleTextStyle,
                     ),
-                    Text(
-                      time,
-                      style: kTimeTextStyle,
-                    ),
+                    if (time != null)
+                      Text(
+                        time!,
+                        style: kTimeTextStyle,
+                      ),
                   ],
                 ),
                 const SizedBox(height: 3.0),
