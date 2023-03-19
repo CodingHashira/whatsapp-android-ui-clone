@@ -19,6 +19,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   feather_icons: ^1.2.0
   intl: ^0.18.0
+  flutter_chat_bubble: ^2.0.2
 
 
 dev_dependencies:
