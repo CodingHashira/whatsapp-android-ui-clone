@@ -1,110 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:ui_flutter_whatsapp/widgets/chat_page/delivery_indicator.dart';
 
 import '../../constants.dart';
 
-final double screenWidth =
-    MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
-
-class ChatBubble extends StatelessWidget {
-  const ChatBubble({
-    Key? key,
+class CustomChatBubble extends StatelessWidget {
+  const CustomChatBubble({
+    super.key,
     required this.text,
     required this.isMe,
-    required this.textLength,
-    this.showTime,
-  }) : super(key: key);
+    required this.time,
+    required this.verticalGap,
+  });
 
   final String text;
   final bool isMe;
-  final int textLength;
-  final bool? showTime;
+  final String time;
+  final double verticalGap;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment:
-          isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-      children: [
-        Stack(
-          alignment: Alignment.topRight,
+    return ChatBubble(
+      shadowColor: Colors.transparent,
+      clipper: ChatBubbleClipper1(
+        type: isMe ? BubbleType.sendBubble : BubbleType.receiverBubble,
+      ),
+      alignment: isMe ? Alignment.topRight : Alignment.topLeft,
+      margin: EdgeInsets.all(verticalGap),
+      backGroundColor: isMe ? kMyTextBubbleColor : kAppBarColor,
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width * 0.7,
+        ),
+        child: Stack(
+          alignment: Alignment.bottomRight,
           children: [
             Container(
-              constraints: BoxConstraints(
-                maxWidth: screenWidth / 1.2,
-              ),
-              margin:
-                  const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-              decoration: BoxDecoration(
-                color: isMe ? kMyTextBubbleColor : kAppBarColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: isMe
-                      ? const Radius.circular(10)
-                      : const Radius.circular(0),
-                  topRight: isMe
-                      ? const Radius.circular(0)
-                      : const Radius.circular(10),
-                  bottomLeft: const Radius.circular(10),
-                  bottomRight: const Radius.circular(10),
+              padding: text.length < 38
+                  ? isMe
+                      ? const EdgeInsets.only(right: 45.0)
+                      : const EdgeInsets.only(right: 33.0)
+                  : null,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: !isMe ? 5.0 : 0.0,
+                  right: isMe ? 5.0 : 0.0,
+                ),
+                child: Text(
+                  text,
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          // text,
-
-                          textLength > 38 && (textLength ~/ 38) < 2 ||
-                                  (textLength % 38) > 18
-                              ? '$text\n'
-                              : text,
-                          style: const TextStyle(
-                            color: kTextPrimaryColor,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 5.0),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          '12:34 PM',
-                          style: TextStyle(
-                            color: isMe
-                                ? const Color(0xff94c1bb)
-                                : const Color(0xff86969f),
-                            fontSize: 10,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 3.0),
-                      isMe
-                          ? const DeliveryIndicator()
-                          : const SizedBox.shrink(),
-                      // const SizedBox(width: 5.0),
-                    ],
-                  ),
-                ],
+            ),
+            Positioned(
+              bottom: -2.0,
+              right: isMe ? 20.0 : 2.0,
+              child: Text(
+                time,
+                style: TextStyle(
+                  color:
+                      isMe ? const Color(0xff94c1bb) : const Color(0xff86969f),
+                  fontSize: 10,
+                ),
               ),
             ),
-            // Container(
-            //   height: 20,
-            //   width: 20,
-            //   color: Colors.red,
-            // )
+            isMe
+                ? const Positioned(
+                    bottom: -2.0,
+                    child: DeliveryIndicator(
+                      isSeen: true,
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
-      ],
+      ),
     );
   }
 }
