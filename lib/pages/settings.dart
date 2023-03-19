@@ -15,9 +15,12 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Settings',
+      ),
       body: Column(
         children: [
-          const CustomAppBar(isChildWidget: true, title: 'Settings'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -36,7 +39,7 @@ class SettingsPage extends StatelessWidget {
                     trailingWidget: Icon(
                       Icons.qr_code_rounded,
                       color: kAccentColor,
-                      size: 27.0,
+                      size: 30.0,
                     ),
                   ),
                   const CustomDivider(),
