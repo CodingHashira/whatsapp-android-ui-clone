@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+
+final double screenWidth = Data.screen.width;
 
 class CustomPopupMenuButton extends StatelessWidget {
   const CustomPopupMenuButton({
@@ -29,12 +32,13 @@ class CustomPopupMenuButton extends StatelessWidget {
 
   List<PopupMenuEntry<dynamic>> _buildPopupMenuItems(
       BuildContext context, Map<String, dynamic> menuItems) {
+    final menuItemsLength = menuItems.length;
     return menuItems.entries.map((entry) {
       final label = entry.key;
       final value = entry.value;
       if (value is Map<String, dynamic>) {
         return PopupMenuItem(
-          height: 40,
+          height: menuItemsLength > 1 ? 40.0 : 30.0,
           padding: EdgeInsets.zero,
           child: ListTile(
             visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
@@ -56,7 +60,7 @@ class CustomPopupMenuButton extends StatelessWidget {
         );
       } else {
         return PopupMenuItem(
-          height: 40,
+          height: menuItemsLength > 1 ? 40.0 : 30.0,
           onTap: () => Future(() => Navigator.pushNamed(context, value)),
           child: Text(
             label,
