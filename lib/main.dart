@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ui_flutter_whatsapp/pages/settings.dart';
-import 'package:ui_flutter_whatsapp/widgets/account_page/change_number.dart';
-import 'package:ui_flutter_whatsapp/widgets/account_page/delete_account.dart';
-import 'package:ui_flutter_whatsapp/widgets/account_page/request_account_info.dart';
-import 'package:ui_flutter_whatsapp/widgets/account_page/security_notifications.dart';
-import 'package:ui_flutter_whatsapp/widgets/account_page/two_step_auth.dart';
-import 'package:ui_flutter_whatsapp/widgets/chat_page/chat_screen.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/change_number.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/delete_account.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/request_account_info.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/security_notifications.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/two_step_auth.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/pages/archived.dart';
 import 'package:ui_flutter_whatsapp/pages/testp.dart';
-import 'package:ui_flutter_whatsapp/widgets/disapperaring_messages_page/apply_chat_timer.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/about.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/blocked_contacts.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/default_message_timer.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/disappering_messages.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/fingerprint_lock.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/groups.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/last_seen_online.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/live_location.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/profile_photo.dart';
-import 'package:ui_flutter_whatsapp/widgets/privacy_page/status_privacy.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/account.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/avatar.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/chats.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/chats_page/chat_history.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/chats_page/theme_wallpaper.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/invite_friend.dart';
-import 'package:ui_flutter_whatsapp/widgets/settings_page/privacy.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/about.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/blocked_contacts.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/default_message_timer.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/disappering_messages.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/fingerprint_lock.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/groups.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/last_seen_online.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/live_location.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/profile_photo.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/status_privacy.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/account.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/avatar.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/chats.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/chats_page/chat_history.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/chats_page/theme_wallpaper.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/invite_friend.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/privacy.dart';
 
 import 'pages/archive_settings.dart';
 import 'pages/launch.dart';
@@ -48,7 +47,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      initialRoute: '/chatScreen',
+      initialRoute: '/applyChatTimer',
       routes: {
         '/': (context) => const LaunchPage(),
         '/archivedPage': (context) => const ArchivedPage(),
@@ -66,7 +65,6 @@ class MyApp extends StatelessWidget {
         '/fingerprintLockPage': (context) => const FingerprintLockPage(),
         '/blockedContactsPage': (context) => const BlockedContactsPage(),
         '/liveLocationPage': (context) => const LiveLocationPage(),
-        '/applyChatTimer': (context) => const ApplyChatTimer(),
         '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
         '/changeNumberPage': (context) => const ChangeNumberPage(),
         '/requestAccountInfoPage': (context) => const RequestAccountInfoPage(),
