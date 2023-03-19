@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      initialRoute: '/settingsPage',
+      initialRoute: '/chatScreen',
       routes: {
         '/': (context) => const LaunchPage(),
         '/archivedPage': (context) => const ArchivedPage(),
