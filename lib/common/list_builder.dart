@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/radio_button.dart';
-import 'package:ui_flutter_whatsapp/widgets/chat_page/chat_bubble.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/chat_bubble.dart';
 
 import 'chat_tile.dart';
 import 'list_tile.dart';
