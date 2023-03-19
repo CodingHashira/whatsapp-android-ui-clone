@@ -29,7 +29,11 @@ class ChatBox extends StatelessWidget {
                     child: Container(
                       constraints: const BoxConstraints(maxHeight: 40),
                       child: const CustomTextField(
-                        prefixIcon: Icons.emoji_emotions_rounded,
+                        hideBorder: true,
+                        prefix: Icon(
+                          Icons.emoji_emotions_rounded,
+                          color: kSecondaryColor,
+                        ),
                         hintText: 'Message',
                       ),
                     ),
