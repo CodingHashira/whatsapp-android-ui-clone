@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/chat_bubble.dart';
 
-import '../common/appbar.dart';
 import 'conversation_page/actions.dart';
 import 'conversation_page/chat_box.dart';
 import 'conversation_page/mic_button.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/common/appbar.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/chat_bubble.dart';
 
 const data = Data();
+final Size size = data.size;
 
-const List<Map<String, String>> testList = [
-  {
-    'sender': 'me',
-    'text': 'Sure, I\'d be happy to help. Let\'s plan a fun trip!',
-  },
-];
-
-final Size size =
-    MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
-
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({
+class ConversationPage extends StatelessWidget {
+  const ConversationPage({
     super.key,
   });
 
@@ -42,15 +33,15 @@ class ChatScreen extends StatelessWidget {
           ),
         ),
         Scaffold(
+          appBar: const CustomAppBar(
+            imageUrl: 'images/p3.jpg',
+            title: 'Monica',
+            isChildWidget: true,
+            actions: ChatPageActions(),
+          ),
           backgroundColor: Colors.transparent,
           body: Column(
             children: [
-              const CustomAppBar(
-                imageUrl: 'images/p3.jpg',
-                title: 'Monica',
-                isChildWidget: true,
-                actions: ChatPageActions(),
-              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(

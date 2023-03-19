@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/chat_bubble.dart';
-
-import 'chat_tile.dart';
-import 'list_tile.dart';
 
 var initIndex = 0;
 var previousSender = '';

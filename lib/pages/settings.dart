@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/appbar.dart';
-import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-
-import '../common/divider.dart';
+import 'package:ui_flutter_whatsapp/common/appbar.dart';
+import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 
 const data = Data();
 

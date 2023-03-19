@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../common/text_field.dart';
-import '../../constants.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/common/text_field.dart';
 
 class ChatBox extends StatelessWidget {
   const ChatBox({

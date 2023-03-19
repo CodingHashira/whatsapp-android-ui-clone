@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ui_flutter_whatsapp/pages/settings.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/change_number.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/delete_account.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/request_account_info.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/security_notifications.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/account_page/two_step_auth.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/pages/archived.dart';
-import 'package:ui_flutter_whatsapp/pages/testp.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/about.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/blocked_contacts.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/default_message_timer.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/disappering_messages.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/fingerprint_lock.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/groups.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/last_seen_online.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/live_location.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/profile_photo.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/status_privacy.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/account.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/avatar.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/chats.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/chats_page/chat_history.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/chats_page/theme_wallpaper.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/invite_friend.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy.dart';
 
-import 'pages/archive_settings.dart';
-import 'pages/launch.dart';
+import './constants.dart';
+import './pages/testp.dart';
+import './pages/launch.dart';
+import './pages/settings.dart';
+import './pages/archived.dart';
+import './pages/archive_settings.dart';
+import './pages/conversation_page.dart';
+import './pages/settings_page/chats.dart';
+import './pages/settings_page/avatar.dart';
+import './pages/settings_page/profile.dart';
+import './pages/settings_page/account.dart';
+import './pages/settings_page/privacy.dart';
+import './pages/settings_page/invite_friend.dart';
+import './pages/settings_page/privacy_page/about.dart';
+import './pages/settings_page/privacy_page/groups.dart';
+import './pages/settings_page/chats_page/chat_history.dart';
+import './pages/settings_page/account_page/change_number.dart';
+import './pages/settings_page/account_page/two_step_auth.dart';
+import './pages/settings_page/privacy_page/live_location.dart';
+import './pages/settings_page/privacy_page/profile_photo.dart';
+import './pages/settings_page/chats_page/theme_wallpaper.dart';
+import './pages/settings_page/privacy_page/status_privacy.dart';
+import './pages/settings_page/account_page/delete_account.dart';
+import './pages/settings_page/privacy_page/blocked_contacts.dart';
+import './pages/settings_page/privacy_page/fingerprint_lock.dart';
+import './pages/settings_page/privacy_page/last_seen_online.dart';
+import './pages/settings_page/privacy_page/disappering_messages.dart';
+import './pages/settings_page/account_page/request_account_info.dart';
+import './pages/settings_page/privacy_page/default_message_timer.dart';
+import './pages/settings_page/account_page/security_notifications.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,39 +48,40 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      initialRoute: '/applyChatTimer',
+      initialRoute: '/settingsPage',
       routes: {
         '/': (context) => const LaunchPage(),
-        '/archivedPage': (context) => const ArchivedPage(),
-        '/archiveSettingsPage': (context) => const ArchiveSettingsPage(),
-        '/chatScreen': (context) => const ChatScreen(),
         '/testPage': (context) => const TestpPage(),
-        '/settingsPage': (context) => const SettingsPage(),
+        '/chatsPage': (context) => const ChatsPage(),
+        '/aboutPage': (context) => const AboutPage(),
+        '/groupsPage': (context) => const GroupsPage(),
+        '/avatarPage': (context) => const AvatarPage(),
         '/accountPage': (context) => const AccountPage(),
         '/privacyPage': (context) => const PrivacyPage(),
-        '/lastseenOnlinePage': (context) => const LastSeenOnlinePage(),
+        '/profilePage': (context) => const ProfilePage(),
+        '/settingsPage': (context) => const SettingsPage(),
+        '/archivedPage': (context) => const ArchivedPage(),
+        '/chatHistoryPage': (context) => const ChatHistoryPage(),
+        '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
+        '/conversationPage': (context) => const ConversationPage(),
+        '/changeNumberPage': (context) => const ChangeNumberPage(),
+        '/inviteFriendPage': (context) => const InviteFriendPage(),
+        '/liveLocationPage': (context) => const LiveLocationPage(),
         '/profilePhotoPage': (context) => const ProfilePhotoPage(),
-        '/aboutPage': (context) => const AboutPage(),
+        '/deleteAccountPage': (context) => const DeleteAccountPage(),
         '/statusPrivacyPage': (context) => const StatusPrivacyPage(),
-        '/groupsPage': (context) => const GroupsPage(),
+        '/themeWallpaperPage': (context) => const ThemeWallpaperPage(),
+        '/lastseenOnlinePage': (context) => const LastSeenOnlinePage(),
+        '/archiveSettingsPage': (context) => const ArchiveSettingsPage(),
         '/fingerprintLockPage': (context) => const FingerprintLockPage(),
         '/blockedContactsPage': (context) => const BlockedContactsPage(),
-        '/liveLocationPage': (context) => const LiveLocationPage(),
-        '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
-        '/changeNumberPage': (context) => const ChangeNumberPage(),
         '/requestAccountInfoPage': (context) => const RequestAccountInfoPage(),
-        '/deleteAccountPage': (context) => const DeleteAccountPage(),
-        '/avatarPage': (context) => const AvatarPage(),
-        '/chatsPage': (context) => const ChatsPage(),
-        '/inviteFriendPage': (context) => const InviteFriendPage(),
-        '/chatHistoryPage': (context) => const ChatHistoryPage(),
-        '/themeWallpaperPage': (context) => const ThemeWallpaperPage(),
         '/deafultMessageTimerPage': (context) =>
             const DeafultMessageTimerPage(),
-        '/securityNotificationsPage': (context) =>
-            const SecurityNotificationsPage(),
         '/disappearingMessagesPage': (context) =>
             const DisappearingMessagesPage(),
+        '/securityNotificationsPage': (context) =>
+            const SecurityNotificationsPage(),
       },
     );
   }

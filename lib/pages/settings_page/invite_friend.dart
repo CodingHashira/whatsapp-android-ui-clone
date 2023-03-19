@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/appbar.dart';
-import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
+
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-
-import '../../common/chat_tile.dart';
-import '../../common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/common/appbar.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 
 const data = Data();
 
@@ -16,19 +16,19 @@ class InviteFriendPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Invite a friend',
+        actions: Padding(
+          padding: EdgeInsets.only(right: 10.0),
+          child: Icon(
+            Icons.search,
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Column(
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Invite a friend',
-            actions: Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-            ),
-          ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(

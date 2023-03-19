@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
+import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
-import 'package:ui_flutter_whatsapp/common/radio_button.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-
-import '../../../model/data.dart';
 
 const data = Data();
 
@@ -15,12 +15,12 @@ class DeafultMessageTimerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Default message timer',
+      ),
       body: Column(
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Default message timer',
-          ),
           PaddedSettingsTextInfo(
             padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 5.0),
             textStyle: kInfoTextStyle.copyWith(fontSize: 14.0, height: 1.2),
@@ -39,8 +39,7 @@ class DeafultMessageTimerPage extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                    text:
-                        'When turned on, all new individual chats will start with disappearing messages set to the duration you select. This setting will not affect your existing chats.',
+                    text: data.textData['defaultMessageTimer']![0],
                     style: kInfoTextStyle.copyWith(
                       fontSize: 14.0,
                       height: 1.2,

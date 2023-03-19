@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/text_field.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-
-import '../../../model/data.dart';
 
 const data = Data();
 
@@ -77,7 +77,7 @@ class DeleteAccountPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'To delete your account, confirm your country code and enter your phone number.',
+                        data.textData['deleteAccount']![0],
                         style: kInfoTextStyle2.copyWith(
                           fontSize: 14.5,
                         ),

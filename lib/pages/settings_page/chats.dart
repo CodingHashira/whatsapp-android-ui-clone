@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/appbar.dart';
-import 'package:ui_flutter_whatsapp/common/divider.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
-import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
-import 'package:ui_flutter_whatsapp/common/switch.dart';
+
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/common/appbar.dart';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
+import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 
 const data = Data();
 
@@ -15,13 +16,13 @@ class ChatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Chats',
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Chats',
-          ),
           const PaddedSettingsTextInfo(text: 'Display'),
           CustomListBuilder(
             itemCount: 2,

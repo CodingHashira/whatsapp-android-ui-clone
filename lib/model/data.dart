@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
-import 'package:ui_flutter_whatsapp/common/switch.dart';
 
 class Chat {
   const Chat({
@@ -23,6 +24,12 @@ class Chat {
 
 class Data {
   const Data();
+
+  static final Size _size =
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
+
+  get size => _size;
+
   final archiveInfo =
       'These chats stay archived when new messages are received. Tap to change';
 
@@ -59,7 +66,7 @@ class Data {
     ),
   ];
 
-  get conversaionList => _conversationList;
+  List<Chat> get conversaionList => _conversationList;
 
   static const List<Chat> _inviteFriendList = [
     Chat(
@@ -129,13 +136,61 @@ class Data {
     ),
   ];
 
-  get inviteFriendList => _inviteFriendList;
+  List<Chat> get inviteFriendList => _inviteFriendList;
+
+  static const Map<String, List> _textData = {
+    'securityNotifications': [
+      'End-to-end encryption keeps your personal messages and calls between you and the people you choose. Not even WhatsApp can read or listen to them. This includes your:',
+      'Get notified when your security code changes for a contact\'s phone in an end-to-end encrypted chat. If you have multiple devices, this setting must be enabled on each device where you want to get notifications.',
+    ],
+    'twoStepAuth': [
+      'For extra security, turn on two-step verification, which will require a PIN when registering your phone number with WhatsApp again.',
+    ],
+    'changeNumber': [
+      'Changing your phone number will migrate your account info, groups & settings.',
+      'Before proceeding, please confirm that you are able to receive SMS or calls at your new number.',
+      'If you have both a new phone & a new number, first change your number on your Old phone.',
+    ],
+    'requestAccountInfo': [
+      'Create a report of your WhatsApp account information and settings, which you can access or port to another app. This report does not include your messages.',
+      'Your report will be ready in about 3 days. You\'ll have a few weeks to download your report after it\'s available.',
+      'Your request will be canceled if you make changes to your account such as changing your number or deleting your account.',
+    ],
+    'deleteAccount': [
+      'To delete your account, confirm your country code and enter your phone number.',
+    ],
+    'readReceiptSwitch': [
+      'If turned Off, you won\'t send or receive Read receipts. Read receipts are always sent for group chats.',
+    ],
+    'fingerPrintLock': [
+      'When enabled, you\'ll need to use fingerprint to open WhatsApp. You can still answer calls if WhatsApp is locked.',
+    ],
+    'groups': [
+      'Admins who can\'t add you to a group chat will have the option of inviting you privately instead.',
+    ],
+    'statusPrivacy': [
+      'Changes to your privacy settings wont affect status updates that you\'ve sent already',
+    ],
+    'themeWallpaper': [
+      'To change your wallpaper for light theme, turn on light theme from Settings > Chats > Theme.',
+    ],
+    // 'themeWallpaper': [
+    //   'To change your wallpaper for light theme, turn on light theme from Settings > Chats > Theme.',
+    // ],
+  };
+
+  Map<String, List> get textData => _textData;
+
+// TODO remove
+  static const List<String> _textData3 = [
+    'For added privacy, new messages will disappear for everyone from the chat after the duration you select. Chat participants will see you turned this on.',
+  ];
 
   static const Map<String, String> _archivedPopupMenuItems = {
     'Archive Settings': '/archiveSettingsPage',
   };
 
-  get archivedPopupMenuItems => _archivedPopupMenuItems;
+  Map<String, String> get archivedPopupMenuItems => _archivedPopupMenuItems;
 
   static const Map<String, dynamic> _chatPopupMenuItems = {
     'View contact': '/testPage',
@@ -147,7 +202,7 @@ class Data {
     'More': morePopupMenuItems,
   };
 
-  get chatPopupMenuItems => _chatPopupMenuItems;
+  Map<String, dynamic> get chatPopupMenuItems => _chatPopupMenuItems;
 
   static const Map<String, String> morePopupMenuItems = {
     'Report': '1',
@@ -157,7 +212,7 @@ class Data {
     'Add shortcut': '5',
   };
 
-  static const List<Map<String, String>> _messageList = [
+  static const List<Map<String, Object>> _messageList = [
     {
       'sender': 'other',
       'text': 'Hey',
@@ -217,7 +272,7 @@ class Data {
     },
   ];
 
-  get messageList => _messageList;
+  List<Map<String, Object>> get messageList => _messageList;
 
   static const List _settingsMenu = [
     {
@@ -411,7 +466,7 @@ class Data {
 
   get delAccountInfoList => _delAccountInfoList;
 
-  static const List _countryCodesList = [
+  static const List<Map<String, Object>> _countryCodesList = [
     {
       'icon': '\ud83c\uddfa\ud83c\uddf8',
       'code': '+1',
@@ -509,7 +564,7 @@ class Data {
     }
   ];
 
-  get countryCodesList => _countryCodesList;
+  List<Map<String, Object>> get countryCodesList => _countryCodesList;
 
   static const List<String> _deafultMessageTimerList = [
     '24 hours',
@@ -518,9 +573,9 @@ class Data {
     'Off',
   ];
 
-  get deafultMessageTimerList => _deafultMessageTimerList;
+  List<String> get deafultMessageTimerList => _deafultMessageTimerList;
 
-  static const _chatOptions = [
+  static const List<Map<String, Object>> _chatOptions = [
     {
       'leading': Icon(Icons.brightness_6_rounded),
       'title': 'Theme',
@@ -544,9 +599,9 @@ class Data {
     },
   ];
 
-  get chatOptions => _chatOptions;
+  List<Map<String, Object>> get chatOptions => _chatOptions;
 
-  static const _chatSettings = [
+  static const List<Map<String, Object>> _chatSettings = [
     {
       'title': 'Enter is send',
       'subTitle': 'Enter key will send your message',
@@ -564,9 +619,9 @@ class Data {
     },
   ];
 
-  get chatSettings => _chatSettings;
+  List<Map<String, Object>> get chatSettings => _chatSettings;
 
-  static const List _chatHistoryOptionsList = [
+  static const List<Map<String, Object>> _chatHistoryOptionsList = [
     {
       'leading': Icon(Icons.file_upload_outlined),
       'title': 'Export chat',
@@ -585,7 +640,8 @@ class Data {
     },
   ];
 
-  get chatHistoryOptionsList => _chatHistoryOptionsList;
+  List<Map<String, Object>> get chatHistoryOptionsList =>
+      _chatHistoryOptionsList;
 
   static const List _themeDialogOptions = [
     'System Default',
@@ -595,7 +651,7 @@ class Data {
 
   get themeDialogOptions => _themeDialogOptions;
 
-  static const List _chatBackupDialogOptions = [
+  static const List<String> _chatBackupDialogOptions = [
     'Never',
     'Only when I tap "Back up"',
     'Daily',
@@ -603,5 +659,21 @@ class Data {
     'Monthly',
   ];
 
-  get chatBackupDialogOptions => _chatBackupDialogOptions;
+  List<String> get chatBackupDialogOptions => _chatBackupDialogOptions;
+
+  static const List<String> _lastSeenRadioList = [
+    'Everyone',
+    'My contacts',
+    'My contacts except...',
+    'Nobody'
+  ];
+
+  List<String> get lastSeenRadioList => _lastSeenRadioList;
+
+  static const List<String> _onlineIndicationRadioList = [
+    'Everyone',
+    'Same as last seen',
+  ];
+
+  List<String> get onlineIndicationRadioList => _onlineIndicationRadioList;
 }

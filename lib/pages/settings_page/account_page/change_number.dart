@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
+import '../privacy_page/live_location.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/button.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/live_location.dart';
 
-import '../../../constants.dart';
+const data = Data();
 
 class ChangeNumberPage extends StatelessWidget {
   const ChangeNumberPage({super.key});
@@ -11,12 +14,12 @@ class ChangeNumberPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Change Number',
+      ),
       body: Column(
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Change Number',
-          ),
           const CustomImageContainer(
             margin: EdgeInsets.only(top: 40.0, bottom: 20.0),
             imageUrl: 'images/change_number.jpg',
@@ -27,7 +30,7 @@ class ChangeNumberPage extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
             child: Text(
-              'Changing your phone number will migrate your account info, groups & settings.',
+              data.textData['changeNumber']![0],
               style: kInfoTextStyle2.copyWith(height: 1.5),
             ),
           ),
@@ -35,7 +38,7 @@ class ChangeNumberPage extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
             child: Text(
-              'Before proceeding, please confirm that you are able to receive SMS or calls at your new number.',
+              data.textData['changeNumber']![1],
               style: kInfoTextStyle.copyWith(
                 color: const Color(0xff677077),
               ),
@@ -45,7 +48,7 @@ class ChangeNumberPage extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
             child: Text(
-              'If you have both a new phone & a new number, first change your number on your Old phone.',
+              data.textData['changeNumber']![2],
               style: kInfoTextStyle.copyWith(
                 color: const Color(0xff677077),
               ),

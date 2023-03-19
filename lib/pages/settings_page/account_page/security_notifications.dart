@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/switch.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
-
-import '../../../common/padded_settings_textinfo.dart';
-import '../../../constants.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 
 const data = Data();
 
@@ -46,7 +45,7 @@ class SecurityNotificationsPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              'End-to-end encryption keeps your personal messages and calls between you and the people you choose. Not even WhatsApp can read or listen to them. This includes your:',
+              data.textData['securityNotifications']![0],
               style: kInfoTextStyle.copyWith(
                 color: const Color(0xff677077),
               ),
@@ -75,15 +74,14 @@ class SecurityNotificationsPage extends StatelessWidget {
             title: 'Show security notifications on this device',
             subTitleWidget: SizedBox(
               width: screenWidth - 100,
-              child: const Text.rich(
+              child: Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
-                      text:
-                          'Get notified when your security code changes for a contact\'s phone in an end-to-end encrypted chat. If you have multiple devices, this setting must be enabled on each device where you want to get notifications.',
+                      text: data.textData['securityNotifications']![0],
                       style: kSubTitleTextStyle,
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: ' Learn more',
                       style: TextStyle(
                         color: kTextLinkColor,
@@ -93,7 +91,7 @@ class SecurityNotificationsPage extends StatelessWidget {
                 ),
               ),
             ),
-            trailingWidget: CustomSwitch(),
+            trailingWidget: const CustomSwitch(),
           ),
         ],
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-
-import '../../model/data.dart';
 
 const data = Data();
 
@@ -17,13 +17,13 @@ class AvatarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Avatar',
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Avatar',
-          ),
           Container(
             color: const Color(0xff0b141b),
             height: screenHeight / 2.4,

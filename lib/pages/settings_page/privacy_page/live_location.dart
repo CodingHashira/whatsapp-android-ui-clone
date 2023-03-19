@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
-
-import '../../../constants.dart';
 
 class LiveLocationPage extends StatelessWidget {
   const LiveLocationPage({super.key});
@@ -10,12 +10,12 @@ class LiveLocationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Live location',
+      ),
       body: Column(
         children: const [
-          CustomAppBar(
-            isChildWidget: true,
-            title: 'Live location',
-          ),
           CustomImageContainer(
             imageUrl: 'images/location.jpg',
             width: 72,

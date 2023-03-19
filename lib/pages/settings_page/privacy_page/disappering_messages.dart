@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-
-import '../../../common/padded_settings_textinfo.dart';
-import '../../../constants.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/call_dialog.dart';
+import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 
 class DisappearingMessagesPage extends StatelessWidget {
   const DisappearingMessagesPage({super.key});
@@ -12,13 +13,13 @@ class DisappearingMessagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Disappearing messages',
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Disappearing messages',
-          ),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 35.0),
@@ -43,10 +44,10 @@ class DisappearingMessagesPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15.0),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              'For added privacy, new messages will disappear for everyone from the chat after the duration you select. Chat participants will see you turned this on.',
+              data.textData['readReceiptSwitch']![0],
               style: kInfoTextStyle,
               textAlign: TextAlign.center,
             ),

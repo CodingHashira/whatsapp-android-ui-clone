@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:feather_icons/feather_icons.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:feather_icons/feather_icons.dart';
 
 class BlockedContactsPage extends StatelessWidget {
   const BlockedContactsPage({super.key});
@@ -10,19 +11,19 @@ class BlockedContactsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Blocked contacts',
+        actions: Padding(
+          padding: EdgeInsets.only(right: 10.0),
+          child: Icon(
+            Icons.person_add_rounded,
+            color: kTextPrimaryColor,
+          ),
+        ),
+      ),
       body: Column(
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Blocked contacts',
-            actions: Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Icon(
-                Icons.person_add_rounded,
-                color: kTextPrimaryColor,
-              ),
-            ),
-          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 35.0),
             padding: const EdgeInsets.all(10.0),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+
+import './preview_chatbox.dart';
+import './preview_chat_bubble.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/mic_button.dart';
-
-import 'preview_chat_bubble.dart';
-import 'preview_chatbox.dart';
 
 final double screenWidth =
     MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;

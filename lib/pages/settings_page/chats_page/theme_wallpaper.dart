@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
+import './theme_wallpaper/wallpaper_preview.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/call_dialog.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-
-import 'theme_wallpaper/wallpaper_preview.dart';
 
 class ThemeWallpaperPage extends StatefulWidget {
   const ThemeWallpaperPage({super.key});
@@ -69,8 +70,7 @@ class _ThemeWallpaperPageState extends State<ThemeWallpaperPage> {
             ),
           ),
           PaddedSettingsTextInfo(
-            text:
-                'To change your wallpaper for light theme, turn on light theme from Settings > Chats > Theme.',
+            text: data.textData['themeWallpaper']![0],
             textStyle: kInfoTextStyle.copyWith(
               fontSize: 14.5,
               height: 0.0,

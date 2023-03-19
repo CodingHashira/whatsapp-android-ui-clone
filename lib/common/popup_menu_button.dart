@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomPopupMenuButton extends StatelessWidget {
   const CustomPopupMenuButton({
@@ -15,7 +15,6 @@ class CustomPopupMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-      // offset: const Offset(0, -20),
       color: kPopupMenuColor,
       child: Container(
         padding: const EdgeInsets.only(right: 5.0),

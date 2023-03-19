@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../common/popup_menu_button.dart';
-import '../../constants.dart';
-import '../../model/data.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 
 class ChatPageActions extends StatelessWidget {
   static const data = Data();

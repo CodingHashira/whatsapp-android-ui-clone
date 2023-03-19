@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
-
-import '../../../common/list_tile.dart';
-import '../../../common/switch.dart';
-
-const String info =
-    'When enabled, you\'ll need to use fingerprint to open WhatsApp. You can still answer calls if WhatsApp is locked.';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/call_dialog.dart';
 
 class FingerprintLockPage extends StatelessWidget {
   const FingerprintLockPage({super.key});
@@ -13,16 +11,15 @@ class FingerprintLockPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: const [
-          CustomAppBar(isChildWidget: true, title: 'Fingerprint lock'),
-          CustomListTile(
-            title: 'Unlock with fingerprint',
-            subTitle: info,
-            subTitleWidthOffset: 90,
-            trailingWidget: CustomSwitch(),
-          ),
-        ],
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Fingerprint lock',
+      ),
+      body: CustomListTile(
+        title: 'Unlock with fingerprint',
+        subTitle: data.textData['fingerPrintLock']![0],
+        subTitleWidthOffset: 90,
+        trailingWidget: CustomSwitch(),
       ),
     );
   }

@@ -1,11 +1,14 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/privacy_page/live_location.dart';
-import 'package:intl/intl.dart';
+import '../privacy_page/live_location.dart';
 
-import '../../../constants.dart';
+const data = Data();
 
 class RequestAccountInfoPage extends StatefulWidget {
   const RequestAccountInfoPage({super.key});
@@ -33,12 +36,12 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Request Account Info',
+      ),
       body: Column(
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Request Account Info',
-          ),
           const CustomImageContainer(
             margin: EdgeInsets.only(top: 40.0, bottom: 20.0),
             imageUrl: 'images/account_info.jpg',
@@ -52,8 +55,7 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
               TextSpan(
                 children: [
                   TextSpan(
-                    text:
-                        'Create a report of your WhatsApp account information and settings, which you can access or port to another app. This report does not include your messages.',
+                    text: data.textData['requestAccountInfo']![0],
                     style: kInfoTextStyle2.copyWith(height: 1.5),
                   ),
                   TextSpan(
@@ -92,14 +94,14 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Column(
-                children: const [
+                children: [
                   Text(
-                    'Your report will be ready in about 3 days. You\'ll have a few weeks to download your report after it\'s available.',
+                    data.textData['requestAccountInfo']![1],
                     style: kInfoTextStyle,
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Text(
-                    'Your request will be canceled if you make changes to your account such as changing your number or deleting your account.',
+                    data.textData['requestAccountInfo']![2],
                     style: kInfoTextStyle,
                   )
                 ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
-
-import '../../../common/padded_settings_textinfo.dart';
-import '../../../common/radio_button.dart';
-import '../../../model/data.dart';
+import 'package:ui_flutter_whatsapp/common/radio_button.dart';
+import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 
 const data = Data();
 
@@ -14,29 +14,26 @@ class StatusPrivacyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Status privacy',
+      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Status privacy',
+          const PaddedSettingsTextInfo(
+            text: 'Who can see my status updates',
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const PaddedSettingsTextInfo(
-                  text: 'Who can see my status updates'),
-              CustomListBuilder(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                itemCount: data.genericPrivacyRadioList.length,
-                list: data.genericPrivacyRadioList,
-                startIndex: 0,
-                returnWidgetType: CustomRadioButton,
-              ),
-              const PaddedSettingsTextInfo(
-                  text:
-                      'Changes to your privacy settings wont affect status updates that you\'ve sent already'),
-            ],
-          )
+          CustomListBuilder(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            itemCount: data.genericPrivacyRadioList.length,
+            list: data.genericPrivacyRadioList,
+            startIndex: 0,
+            returnWidgetType: CustomRadioButton,
+          ),
+          PaddedSettingsTextInfo(
+            text: data.textData['statusPrivacy']![0],
+          ),
         ],
       ),
     );

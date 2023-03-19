@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import 'list_tile.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 
 class CustomRadioButton extends StatelessWidget {
   const CustomRadioButton({

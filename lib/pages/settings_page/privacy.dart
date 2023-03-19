@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
-import 'package:ui_flutter_whatsapp/common/switch.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
-
-import '../../common/list_builder.dart';
-import '../../model/data.dart';
 
 const data = Data();
 
@@ -51,11 +51,10 @@ class PrivacyPage extends StatelessWidget {
                     list: data.privacyMenu,
                     returnWidgetType: CustomListTile,
                   ),
-                  const CustomListTile(
+                  CustomListTile(
                     title: 'Read receipts',
-                    subTitle:
-                        ' If turned Off, you won\'t send or receive Read receipts. Read receipts are always sent for group chats.',
-                    trailingWidget: CustomSwitch(),
+                    subTitle: data.textData['readReceiptSwitch']![0],
+                    trailingWidget: const CustomSwitch(),
                   ),
                   const CustomDivider(),
                   const PaddedSettingsTextInfo(
@@ -70,7 +69,7 @@ class PrivacyPage extends StatelessWidget {
                         left: 20.0, bottom: 20.0, right: 30.0),
                     title: 'Default message timer',
                     subTitle:
-                        'Start new c ats wit set to your timer isappearing messages',
+                        'Start new chats wit set to your timer isappearing messages',
                     trailingWidget: const Text(
                       'Off',
                       style: kSubTitleTextStyle,
