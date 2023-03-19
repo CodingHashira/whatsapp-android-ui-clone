@@ -19,7 +19,7 @@ class TwoStepAuthPage extends StatelessWidget {
           ),
           const CustomImageContainer(
             margin: EdgeInsets.only(top: 40.0, bottom: 20.0),
-            imageUrl: 'images/password.png',
+            imageUrl: 'images/password.jpg',
             width: 75,
             paddingValue: 35,
           ),

@@ -94,10 +94,9 @@ class DeleteAccountPage extends StatelessWidget {
                         children: const [
                           Expanded(
                             child: CustomTextField(
-                              isReadOnly: true,
                               value: '+',
                               suffix: Padding(
-                                padding: EdgeInsets.only(top: 20),
+                                padding: EdgeInsets.only(left: 10.0, top: 25.0),
                                 child: Text(
                                   '91',
                                   style: TextStyle(

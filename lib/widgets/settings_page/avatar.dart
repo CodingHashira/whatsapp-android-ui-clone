@@ -35,7 +35,7 @@ class AvatarPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Image.asset(
-                      'images/avatar.png',
+                      'images/avatar.jpg',
                       fit: BoxFit.fitHeight,
                     ),
                   ),

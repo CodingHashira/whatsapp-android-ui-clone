@@ -33,7 +33,6 @@ class WallpaperPreview extends StatelessWidget {
           ),
           fit: BoxFit.cover,
         ),
-        // color: Colors.red,
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Column(

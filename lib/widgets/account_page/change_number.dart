@@ -19,7 +19,7 @@ class ChangeNumberPage extends StatelessWidget {
           ),
           const CustomImageContainer(
             margin: EdgeInsets.only(top: 40.0, bottom: 20.0),
-            imageUrl: 'images/change_number.png',
+            imageUrl: 'images/change_number.jpg',
             width: 86,
             paddingValue: 32,
           ),

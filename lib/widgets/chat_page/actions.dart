@@ -14,7 +14,6 @@ class ChatPageActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // widthFactor: 1 / 3.2,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -35,12 +34,9 @@ class ChatPageActions extends StatelessWidget {
             ),
           ),
           Builder(
-            builder: (context) => Container(
-              constraints: const BoxConstraints(maxWidth: 25.0, maxHeight: 25),
-              child: CustomPopupMenuButton(
-                popButtonColor: kTextPrimaryColor,
-                popupMenuItems: data.chatPopupMenuItems,
-              ),
+            builder: (context) => CustomPopupMenuButton(
+              popButtonColor: kTextPrimaryColor,
+              popupMenuItems: data.chatPopupMenuItems,
             ),
           ),
         ],

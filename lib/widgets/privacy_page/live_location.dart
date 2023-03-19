@@ -17,7 +17,7 @@ class LiveLocationPage extends StatelessWidget {
             title: 'Live location',
           ),
           CustomImageContainer(
-            imageUrl: 'images/location.png',
+            imageUrl: 'images/location.jpg',
             width: 72,
             paddingValue: 20,
           ),

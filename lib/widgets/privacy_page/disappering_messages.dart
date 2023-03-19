@@ -28,7 +28,7 @@ class DisappearingMessagesPage extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Image.asset(
-                'images/timer.png',
+                'images/timer.jpg',
                 height: 80,
               ),
             ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/widgets/chat_page/chat_bubble.dart';
 
 import '../../common/appbar.dart';
 import 'actions.dart';
 import 'chat_box.dart';
-import 'chat_bubble.dart';
 import 'mic_button.dart';
 
 const data = Data();
@@ -49,10 +49,7 @@ class ChatScreen extends StatelessWidget {
                 imageUrl: 'images/p3.jpg',
                 title: 'Monica',
                 isChildWidget: true,
-                actions: Padding(
-                  padding: EdgeInsets.only(right: 8.0),
-                  child: ChatPageActions(),
-                ),
+                actions: ChatPageActions(),
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -62,7 +59,7 @@ class ChatScreen extends StatelessWidget {
                         itemCount: data.messageList.length,
                         list: data.messageList,
                         startIndex: 0,
-                        returnWidgetType: ChatBubble,
+                        returnWidgetType: CustomChatBubble,
                       ),
                     ],
                   ),

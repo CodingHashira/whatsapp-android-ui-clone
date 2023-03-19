@@ -163,6 +163,10 @@ class Data {
       'text': 'Hey',
     },
     {
+      'sender': 'me',
+      'text': 'Hey',
+    },
+    {
       'sender': 'other',
       'text':
           'I was thinking of planning a trip to Hawaii. Would you like to join me?',
@@ -181,16 +185,12 @@ class Data {
     },
     {
       'sender': 'other',
-      'text': 'I was thinking of staying for a week. What about you?',
-    },
-    {
-      'sender': 'me',
-      'text': 'A week sounds good to me. Have you looked into flights yet?',
+      'text': 'I was thinking of staying for a week',
     },
     {
       'sender': 'other',
       'text':
-          'Yes, I have. There are a few options that are reasonably priced. Do you have any preferences?',
+          'There are a few options that are reasonably priced. Do you have any preferences?',
     },
     {
       'sender': 'me',

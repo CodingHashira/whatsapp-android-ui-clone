@@ -41,7 +41,7 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
           ),
           const CustomImageContainer(
             margin: EdgeInsets.only(top: 40.0, bottom: 20.0),
-            imageUrl: 'images/account_info.png',
+            imageUrl: 'images/account_info.jpg',
             width: 65,
             paddingValue: 23,
           ),
