@@ -174,9 +174,12 @@ class Data {
     'themeWallpaper': [
       'To change your wallpaper for light theme, turn on light theme from Settings > Chats > Theme.',
     ],
-    // 'themeWallpaper': [
-    //   'To change your wallpaper for light theme, turn on light theme from Settings > Chats > Theme.',
-    // ],
+    'defaultMessageTimer': [
+      'When turned on, all new individual chats will start with disappearing messages set to the duration you select. This setting will not affect your existing chats.',
+    ],
+    'lastSeenOnline': [
+      ', you won\'t be able to see other people\'s last seen and online.'
+    ],
   };
 
   Map<String, List> get textData => _textData;
