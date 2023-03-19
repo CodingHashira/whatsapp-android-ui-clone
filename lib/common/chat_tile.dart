@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+
+final double screenWidth = Data.screen.width;
 
 class ChatTile extends StatelessWidget {
   const ChatTile({
@@ -17,9 +20,6 @@ class ChatTile extends StatelessWidget {
   final String? time;
   final String subTitle;
   final IconData? trailingIcon;
-
-  static final double screenWidth =
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
 
   @override
   Widget build(BuildContext context) {

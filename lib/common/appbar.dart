@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? actions;
 
   @override
-  Size get preferredSize => const Size.fromHeight(55);
+  Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 8,
       automaticallyImplyLeading: true,
       elevation: 0.0,
-      leadingWidth: imageUrl != null ? 70 : 50,
+      toolbarHeight: 60,
+      leadingWidth: imageUrl != null ? 75 : 50,
       leading: isChildWidget
           ? GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Padding(
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min, //!
                   children: [
+                    const SizedBox(
+                      width: 5.0,
+                    ),
                     const Icon(
                       Icons.arrow_back,
                       color: Colors.white,

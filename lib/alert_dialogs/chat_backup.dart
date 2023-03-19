@@ -7,9 +7,7 @@ import 'package:ui_flutter_whatsapp/model/data.dart';
 import '../common/text_button.dart';
 
 const data = Data();
-
-final double screenWidth =
-    MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
+final double screenWidth = Data.screen.width;
 
 class ChatBackupDialog extends StatelessWidget {
   const ChatBackupDialog({super.key});

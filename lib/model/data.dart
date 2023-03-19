@@ -184,11 +184,6 @@ class Data {
 
   Map<String, List> get textData => _textData;
 
-// TODO remove
-  static const List<String> _textData3 = [
-    'For added privacy, new messages will disappear for everyone from the chat after the duration you select. Chat participants will see you turned this on.',
-  ];
-
   static const Map<String, String> _archivedPopupMenuItems = {
     'Archive Settings': '/archiveSettingsPage',
   };
@@ -324,7 +319,7 @@ class Data {
       'leading': Icon(Icons.help_outline),
       'title': 'Help',
       'subTitle': 'Help center, contact us, privacy policy',
-      'pageRoute': '/testPage'
+      'pageRoute': '/helpPage'
     },
     {
       'leading': Icon(Icons.group),
@@ -334,6 +329,9 @@ class Data {
   ];
 
   get settingsMenu => _settingsMenu;
+
+  static Size screen =
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
 
   static const List _accountMenu = [
     {
@@ -679,4 +677,35 @@ class Data {
   ];
 
   List<String> get onlineIndicationRadioList => _onlineIndicationRadioList;
+
+  static const List<Map<String, Object>> _helpOptionsList = [
+    {
+      'leading': Icon(Icons.help_outline_rounded),
+      'title': 'Help Center',
+      'pageRoute': '/testPage',
+    },
+    {
+      'leading': Icon(Icons.people_rounded),
+      'title': 'Contact us',
+      'subTitle': 'Questions? Need help?',
+      'pageRoute': '/contactUsPage',
+    },
+    {
+      'leading': SizedBox(width: 27.0),
+      'title': 'Terms and Privacy Policy',
+      'pageRoute': '/testPage',
+    },
+    {
+      'leading': Icon(Icons.description_rounded),
+      'title': 'Yearly reminder of our Terms of Service',
+      'pageRoute': '/testPage',
+    },
+    {
+      'leading': Icon(Icons.info_outline_rounded),
+      'title': 'App info',
+      'pageRoute': '/testPage',
+    },
+  ];
+
+  List<Map<String, Object>> get helpOptionsList => _helpOptionsList;
 }
