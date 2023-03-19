@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/help.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/help_page/contact_us.dart';
 
 import './constants.dart';
 import './pages/testp.dart';
@@ -48,9 +50,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      initialRoute: '/settingsPage',
+      initialRoute: '/contactUsPage',
       routes: {
         '/': (context) => const LaunchPage(),
+        '/helpPage': (context) => const HelpPage(),
         '/testPage': (context) => const TestpPage(),
         '/chatsPage': (context) => const ChatsPage(),
         '/aboutPage': (context) => const AboutPage(),
@@ -60,6 +63,7 @@ class MyApp extends StatelessWidget {
         '/privacyPage': (context) => const PrivacyPage(),
         '/profilePage': (context) => const ProfilePage(),
         '/settingsPage': (context) => const SettingsPage(),
+        '/contactUsPage': (context) => const ContactUsPage(),
         '/archivedPage': (context) => const ArchivedPage(),
         '/chatHistoryPage': (context) => const ChatHistoryPage(),
         '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
