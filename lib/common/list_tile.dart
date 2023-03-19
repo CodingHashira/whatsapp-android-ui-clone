@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+
+final double screenWidth = Data.screen.width;
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
@@ -40,7 +43,6 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: onTap,
@@ -67,7 +69,9 @@ class CustomListTile extends StatelessWidget {
                     children: [
                       if (title != null)
                         SizedBox(
-                          width: title!.length > 30 ? screenWidth - 120 : null,
+                          width: (title!.length > 30 && trailingWidget != null)
+                              ? screenWidth - 120
+                              : null,
                           child: Text(
                             title!,
                             style: kTitleTextStyle.copyWith(
@@ -80,7 +84,7 @@ class CustomListTile extends StatelessWidget {
                       if (titleWidget != null) titleWidget!,
                       if (trailingWidget != null)
                         SizedBox(
-                          height: 22.0,
+                          height: 30.0,
                           child: trailingWidget,
                         ),
                     ],
