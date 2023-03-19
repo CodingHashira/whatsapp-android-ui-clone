@@ -64,12 +64,12 @@ class CustomListBuilder extends StatelessWidget {
   void handleNavigation(BuildContext context, int index) {
     if (startIndex != null) initIndex = startIndex!;
 
-    var pageRoute = list[index]['pageRoute'];
+    var pageRoute = list[index + initIndex]['pageRoute'];
     if (pageRoute != null) {
       Navigator.pushNamed(context, pageRoute);
     }
 
-    var dialogWidget = list[index]['dialogWidget'];
+    var dialogWidget = list[index + initIndex]['dialogWidget'];
     if (dialogWidget != null) {
       showDialog(
         context: context,
