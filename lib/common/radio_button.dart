@@ -9,17 +9,21 @@ class CustomRadioButton extends StatelessWidget {
     required this.value,
     required this.optionsList,
     required this.currentOption,
+    this.padding,
+    this.leadingWidth,
   });
 
   final String value;
   final List optionsList;
   final dynamic currentOption;
+  final EdgeInsetsGeometry? padding;
+  final double? leadingWidth;
 
   @override
   Widget build(BuildContext context) {
     return CustomListTile(
-      padding: const EdgeInsets.all(0),
-      leadingWidth: 0.0,
+      leadingWidth: leadingWidth ?? 5.0,
+      padding: const EdgeInsets.only(top: 5.0),
       leading: Radio(
         activeColor: kAccentColor,
         value: value,

@@ -43,12 +43,13 @@ class ChatsPage extends StatelessWidget {
           const CustomDivider(),
           const PaddedSettingsTextInfo(text: 'Archived chats'),
           const CustomListTile(
-            padding: EdgeInsets.only(left: 70.0, top: 15.0, bottom: 10.0),
-            subTitleWidthOffset: 150,
+            // padding: EdgeInsets.only(left: 70.0, top: 15.0, bottom: 10.0),
+            // subTitleWidthOffset: 150,
             title: 'Keep chats archived',
             subTitle:
                 'Archived chats will remain archived when you receive a new message',
-            trailingWidget: CustomSwitch(),
+            subTitleIndent: 150,
+            trailing: CustomSwitch(),
           ),
           const SizedBox(height: 15.0),
           const CustomDivider(),

@@ -18,8 +18,9 @@ class FingerprintLockPage extends StatelessWidget {
       body: CustomListTile(
         title: 'Unlock with fingerprint',
         subTitle: data.textData['fingerPrintLock']![0],
-        subTitleWidthOffset: 90,
-        trailingWidget: CustomSwitch(),
+        // subTitleWidthOffset: 90,
+        subTitleIndent: 90.0,
+        trailing: const CustomSwitch(),
       ),
     );
   }

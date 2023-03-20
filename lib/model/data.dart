@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/light_dialog.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/vibrate_dialog.dart';
 
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
@@ -180,6 +182,12 @@ class Data {
     'lastSeenOnline': [
       ', you won\'t be able to see other people\'s last seen and online.'
     ],
+    'contactsUs': [
+      'Technical details like your model and settings can help us answer your question. ',
+      'For support with payments,',
+      ' go to '
+          'Help in your payments home screen.',
+    ],
   };
 
   Map<String, List> get textData => _textData;
@@ -272,7 +280,7 @@ class Data {
 
   List<Map<String, Object>> get messageList => _messageList;
 
-  static const List _settingsMenu = [
+  static const List<Map<String, Object>> _settingsMenu = [
     {
       'leading': Icon(Icons.account_circle_rounded),
       'title': 'Account',
@@ -301,7 +309,7 @@ class Data {
       'leading': Icon(Icons.notifications_rounded),
       'title': 'Notifications',
       'subTitle': 'Message, group & call tones',
-      'pageRoute': '/testPage'
+      'pageRoute': '/notificationsPage'
     },
     {
       'leading': Icon(Icons.storage_rounded),
@@ -328,12 +336,12 @@ class Data {
     },
   ];
 
-  get settingsMenu => _settingsMenu;
+  List<Map<String, Object>> get settingsMenu => _settingsMenu;
 
   static Size screen =
       MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
 
-  static const List _accountMenu = [
+  static const List<Map<String, Object>> _accountMenu = [
     {
       'leading': Icon(Icons.security_rounded),
       'title': 'Security notifications',
@@ -361,9 +369,9 @@ class Data {
     },
   ];
 
-  get accountMenu => _accountMenu;
+  List<Map<String, Object>> get accountMenu => _accountMenu;
 
-  static const List _privacyMenu = [
+  static const List<Map<String, Object>> _privacyMenu = [
     {
       'title': 'Last seen and online',
       'subTitle': 'Nobody',
@@ -406,7 +414,7 @@ class Data {
     },
   ];
 
-  get privacyMenu => _privacyMenu;
+  List<Map<String, Object>> get privacyMenu => _privacyMenu;
 
   static const List<String> _genericPrivacyRadioList = [
     'Everyone',
@@ -417,7 +425,7 @@ class Data {
 
   get genericPrivacyRadioList => _genericPrivacyRadioList;
 
-  static const List _securityNotificationsInfoList = [
+  static const List<Map<String, Object>> _securityNotificationsInfoList = [
     {
       'leading': Icon(
         Icons.chat_outlined,
@@ -455,7 +463,8 @@ class Data {
     },
   ];
 
-  get securityNotificationsInfoList => _securityNotificationsInfoList;
+  List<Map<String, Object>> get securityNotificationsInfoList =>
+      _securityNotificationsInfoList;
 
   static const List<String> _delAccountInfoList = [
     '• Delete your account from WhatsApp',
@@ -465,7 +474,7 @@ class Data {
     '• Delete your payments info',
   ];
 
-  get delAccountInfoList => _delAccountInfoList;
+  List<String> get delAccountInfoList => _delAccountInfoList;
 
   static const List<Map<String, Object>> _countryCodesList = [
     {
@@ -644,13 +653,13 @@ class Data {
   List<Map<String, Object>> get chatHistoryOptionsList =>
       _chatHistoryOptionsList;
 
-  static const List _themeDialogOptions = [
+  static const List<String> _themeDialogOptions = [
     'System Default',
     'Light',
     'Dark',
   ];
 
-  get themeDialogOptions => _themeDialogOptions;
+  List<String> get themeDialogOptions => _themeDialogOptions;
 
   static const List<String> _chatBackupDialogOptions = [
     'Never',
@@ -703,9 +712,86 @@ class Data {
     {
       'leading': Icon(Icons.info_outline_rounded),
       'title': 'App info',
-      'pageRoute': '/testPage',
+      'pageRoute': '/appInfoPage',
     },
   ];
 
   List<Map<String, Object>> get helpOptionsList => _helpOptionsList;
+
+  static const List<Map<String, Object>> _notificationsOptionList = [
+    {
+      'title': 'Notification  tone',
+      'subTitle': 'Default(Prism)',
+    },
+    {
+      'title': 'Vibrate',
+      'subTitle': 'Default',
+      'dialogWidget': VibrateDialog(),
+    },
+    {
+      'title': 'Popup notification',
+      'subTitle': 'Not available',
+      'pageRoute': '/testPage',
+      'isEnabled': false,
+    },
+    {
+      'title': 'Light',
+      'subTitle': 'White',
+      'dialogWidget': LightDialog(),
+    },
+    {
+      'title': 'Use high priority notifications',
+      'subTitle': 'Show previews of notifications at the top of the screen',
+      'trailing': CustomSwitch(),
+      'pageRoute': '/testPage',
+      'subTitleIndent': 90.0,
+    },
+    {
+      'title': 'Reaction Notifications',
+      'subTitle': 'Show notifications for reactions to messages you send',
+      'trailing': CustomSwitch(),
+      'pageRoute': '/testPage',
+      'subTitleIndent': 120.0,
+    },
+  ];
+
+  List<Map<String, Object>> get notificationsOptionList =>
+      _notificationsOptionList;
+
+  static const List<String> _vibrateDialogOptionList = [
+    'Off',
+    'Default',
+    'Short',
+    'Long',
+  ];
+
+  List<String> get vibrateDialogOptionList => _vibrateDialogOptionList;
+
+  static const List<String> _lightDialogOptionList = [
+    'None',
+    'White',
+    'Red',
+    'Yellow',
+    'Green',
+    'Cyan',
+    'Blue',
+    'Purple',
+  ];
+
+  List<String> get lightDialogOptionList => _lightDialogOptionList;
+
+  static const List<Map<String, Object>> _notificationsOptionListTwo = [
+    {
+      'title': 'Ringtone',
+      'subTitle': 'Default(Prism)',
+    },
+    {
+      'title': 'Vibrate',
+      'subTitle': 'Default',
+      'dialogWidget': VibrateDialog(),
+    },
+  ];
+
+  List<Map<String, Object>> get notificationsOptionListTwo =>
+      _notificationsOptionListTwo;
 }

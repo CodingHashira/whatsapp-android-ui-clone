@@ -17,76 +17,69 @@ class PrivacyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const CustomAppBar(
-            isChildWidget: true,
-            title: 'Privacy',
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 20.0,
-                          top: 20.0,
-                          bottom: 5.0,
-                        ),
-                        child: Text(
-                          'Who can see my personal info',
-                          style: kInfoTextStyle,
-                        ),
-                      ),
-                    ],
+      appBar: const CustomAppBar(
+        isChildWidget: true,
+        title: 'Privacy',
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 20.0,
+                    top: 20.0,
+                    bottom: 5.0,
                   ),
-                  CustomListBuilder(
-                    startIndex: 0,
-                    itemCount: 4,
-                    list: data.privacyMenu,
-                    returnWidgetType: CustomListTile,
+                  child: Text(
+                    'Who can see my personal info',
+                    style: kInfoTextStyle,
                   ),
-                  CustomListTile(
-                    title: 'Read receipts',
-                    subTitle: data.textData['readReceiptSwitch']![0],
-                    trailingWidget: const CustomSwitch(),
-                  ),
-                  const CustomDivider(),
-                  const PaddedSettingsTextInfo(
-                    padding:
-                        EdgeInsets.only(left: 20.0, top: 15.0, bottom: 15.0),
-                    text: 'Disappearing messages',
-                  ),
-                  CustomListTile(
-                    onTap: () => Navigator.pushNamed(
-                        context, '/deafultMessageTimerPage'),
-                    padding: const EdgeInsets.only(
-                        left: 20.0, bottom: 20.0, right: 30.0),
-                    title: 'Default message timer',
-                    subTitle:
-                        'Start new chats wit set to your timer isappearing messages',
-                    trailingWidget: const Text(
-                      'Off',
-                      style: kSubTitleTextStyle,
-                    ),
-                  ),
-                  const CustomDivider(),
-                  CustomListBuilder(
-                    startIndex: 4,
-                    itemCount: 4,
-                    list: data.privacyMenu,
-                    returnWidgetType: CustomListTile,
-                  ),
-                ],
+                ),
+              ],
+            ),
+            CustomListBuilder(
+              startIndex: 0,
+              itemCount: 4,
+              list: data.privacyMenu,
+              returnWidgetType: CustomListTile,
+            ),
+            CustomListTile(
+              title: 'Read receipts',
+              subTitle: data.textData['readReceiptSwitch']![0],
+              subTitleIndent: 90,
+              trailing: const CustomSwitch(),
+            ),
+            const CustomDivider(),
+            const PaddedSettingsTextInfo(
+              text: 'Disappearing messages',
+            ),
+            CustomListTile(
+              trailingAlignment: Alignment.centerRight,
+              subTitleIndent: 90,
+              onTap: () =>
+                  Navigator.pushNamed(context, '/deafultMessageTimerPage'),
+              title: 'Default message timer',
+              subTitle:
+                  'Start new chats  with disapearing messages set to your timer',
+              trailing: const Text(
+                'Off',
+                style: kSubTitleTextStyle,
               ),
             ),
-          ),
-        ],
+            const CustomDivider(),
+            CustomListBuilder(
+              startIndex: 4,
+              itemCount: 4,
+              list: data.privacyMenu,
+              returnWidgetType: CustomListTile,
+            ),
+          ],
+        ),
       ),
     );
   }

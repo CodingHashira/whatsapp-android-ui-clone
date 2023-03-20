@@ -14,7 +14,10 @@ final Size size = data.size;
 class ConversationPage extends StatelessWidget {
   const ConversationPage({
     super.key,
+    this.iconColor,
   });
+
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +36,12 @@ class ConversationPage extends StatelessWidget {
           ),
         ),
         Scaffold(
-          appBar: const CustomAppBar(
+          appBar: CustomAppBar(
             imageUrl: 'images/p3.jpg',
             title: 'Monica',
             isChildWidget: true,
-            actions: ChatPageActions(),
+            iconColor: iconColor,
+            actions: const ChatPageActions(),
           ),
           backgroundColor: Colors.transparent,
           body: Column(

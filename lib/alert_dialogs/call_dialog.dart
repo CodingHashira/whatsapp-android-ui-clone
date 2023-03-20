@@ -9,8 +9,8 @@ import '../common/text_button.dart';
 const data = Data();
 final double screenWidth = Data.screen.width;
 
-class ChatBackupDialog extends StatelessWidget {
-  const ChatBackupDialog({super.key});
+class CallDialog extends StatelessWidget {
+  const CallDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

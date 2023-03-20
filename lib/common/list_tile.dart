@@ -7,110 +7,114 @@ final double screenWidth = Data.screen.width;
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
-    Key? key,
-    this.padding,
-    this.leading,
-    this.leadingWidth,
+    super.key,
     this.contentPadding,
-    this.titleSize,
-    this.titleColor,
-    this.title,
-    this.trailingWidget,
-    this.subTitleSize,
+    this.leading,
+    required this.title,
+    this.titleStyle,
+    this.titleIndent,
     this.subTitle,
-    this.subTitleWidthOffset,
-    this.setLeadingAtTop,
-    this.onTap,
+    this.subTitleStyle,
     this.subTitleWidget,
-    this.titleWidget,
-  }) : super(key: key);
+    this.subTitleIndent,
+    this.trailing,
+    this.onTap,
+    this.trailingAlignment,
+    this.padding,
+    this.leadingWidth,
+    this.isEnabled,
+  });
 
-  final EdgeInsetsGeometry? padding;
-  final Widget? leading;
-  final double? leadingWidth;
   final double? contentPadding;
-  final double? titleSize;
-  final Color? titleColor;
-  final String? title;
-  final Widget? trailingWidget;
-  final double? subTitleSize;
+  final Widget? leading;
+  final String title;
+  final TextStyle? titleStyle;
+  final double? titleIndent;
   final String? subTitle;
-  final double? subTitleWidthOffset;
-  final bool? setLeadingAtTop;
-  final VoidCallback? onTap;
+  final TextStyle? subTitleStyle;
+  final double? subTitleIndent;
   final Widget? subTitleWidget;
-  final Widget? titleWidget;
+  final Widget? trailing;
+  final VoidCallback? onTap;
+  final Alignment? trailingAlignment;
+  final EdgeInsetsGeometry? padding;
+  final double? leadingWidth;
+  final bool? isEnabled;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
       onTap: onTap,
-      child: Padding(
-        padding: padding ?? const EdgeInsets.all(20.0),
-        child: Row(
-          crossAxisAlignment: setLeadingAtTop == true
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.center,
+      child: Container(
+        padding: padding ??
+            const EdgeInsets.only(
+                left: 10.0, top: 15.0, right: 25.0, bottom: 15.0),
+        child: Stack(
+          alignment: trailingAlignment ?? Alignment.topRight,
           children: [
-            if (leading != null)
-              Padding(
-                padding: const EdgeInsets.only(right: 12.0),
-                child: leading,
-              ),
-            SizedBox(width: leadingWidth ?? 0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Row(
+              children: [
+                SizedBox(width: leadingWidth ?? 10.0),
+                leading != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: leading!,
+                      )
+                    : const SizedBox.shrink(),
+                Expanded(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (title != null)
-                        SizedBox(
-                          width: (title!.length > 30 && trailingWidget != null)
-                              ? screenWidth - 120
-                              : null,
-                          child: Text(
-                            title!,
-                            style: kTitleTextStyle.copyWith(
-                              color: titleColor,
-                              fontSize: titleSize,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                      if (titleWidget != null) titleWidget!,
-                      if (trailingWidget != null)
-                        SizedBox(
-                          height: 30.0,
-                          child: trailingWidget,
-                        ),
-                    ],
-                  ),
-                  SizedBox(height: contentPadding),
-                  if (subTitle != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: SizedBox(
-                        width: subTitleWidthOffset != null
-                            ? screenWidth - subTitleWidthOffset!
-                            : screenWidth - 120,
+                      SizedBox(
+                        width: screenWidth - (titleIndent ?? 90),
                         child: Text(
-                          subTitle!,
-                          style: kSubTitleTextStyle.copyWith(
-                            fontSize: subTitleSize,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 4,
+                          title,
+                          style: titleStyle ??
+                              (isEnabled != false
+                                  ? kTitleTextStyle
+                                  : kTitleTextStyle.copyWith(
+                                      color: const Color(0xff3b4a55),
+                                    )),
                         ),
                       ),
-                    ),
-                  if (subTitleWidget != null) subTitleWidget!
-                ],
-              ),
-            )
+                      SizedBox(height: contentPadding ?? 5.0),
+                      subTitle != null || subTitleWidget != null
+                          ? SizedBox(
+                              width: screenWidth - (subTitleIndent ?? 0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  subTitle != null
+                                      ? Text(
+                                          subTitle!,
+                                          style: subTitleStyle ??
+                                              (isEnabled != false
+                                                  ? kSubTitleTextStyle
+                                                  : kSubTitleTextStyle.copyWith(
+                                                      color: const Color(
+                                                          0xff3b4a55),
+                                                    )),
+                                        )
+                                      : const SizedBox.shrink(),
+                                  subTitleWidget != null
+                                      ? subTitleWidget!
+                                      : const SizedBox.shrink(),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            trailing != null
+                ? Container(
+                    constraints:
+                        const BoxConstraints(maxWidth: 30, maxHeight: 30),
+                    child: trailing,
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
       ),

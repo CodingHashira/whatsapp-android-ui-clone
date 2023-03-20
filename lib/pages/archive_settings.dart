@@ -15,7 +15,7 @@ class ArchiveSettingsPage extends StatelessWidget {
         title: 'Keep chats archived',
         subTitle:
             'Archived chats will remain archived when you receive a new message',
-        trailingWidget: CustomSwitch(),
+        trailing: CustomSwitch(),
       ),
     );
   }

@@ -19,14 +19,8 @@ class PaddedSettingsTextInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding != null
-          ? padding!
-          : const EdgeInsets.only(
-              left: 20.0,
-              top: 20.0,
-              right: 20.0,
-              bottom: 5.0,
-            ),
+      padding: padding ??
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Text(
         text,
         style: textStyle ?? kInfoTextStyle,

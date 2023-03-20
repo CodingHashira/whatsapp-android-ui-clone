@@ -61,6 +61,9 @@ class CustomPopupMenuButton extends StatelessWidget {
       } else {
         return PopupMenuItem(
           height: menuItemsLength > 1 ? 40.0 : 30.0,
+          padding: menuItemsLength == 1
+              ? const EdgeInsets.only(left: 10.0)
+              : null, // !
           onTap: () => Future(() => Navigator.pushNamed(context, value)),
           child: Text(
             label,

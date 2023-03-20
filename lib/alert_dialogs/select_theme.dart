@@ -36,7 +36,6 @@ class SelectThemeDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
-              listTilePadding: const EdgeInsets.only(left: 1),
               padding: const EdgeInsets.only(left: 0),
               itemCount: data.themeDialogOptions.length,
               list: data.themeDialogOptions,

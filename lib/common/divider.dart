@@ -15,7 +15,7 @@ class CustomDivider extends StatelessWidget {
     return Divider(
       indent: indent,
       color: kDividerColor,
-      height: 0.7,
+      height: 0,
     );
   }
 }

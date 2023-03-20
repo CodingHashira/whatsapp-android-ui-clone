@@ -14,6 +14,7 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.keyBoardType,
     this.hideBorder,
+    this.textHeight,
   });
   final String? value;
   final String? hintText;
@@ -24,6 +25,7 @@ class CustomTextField extends StatefulWidget {
   final int? maxLength;
   final TextInputType? keyBoardType;
   final bool? hideBorder;
+  final double? textHeight;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -59,9 +61,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hintText,
         hoverColor: const Color(0xff757575),
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           color: kSecondaryColor,
-          height: 1.2,
+          height: widget.textHeight ?? 1.2,
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(

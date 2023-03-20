@@ -34,10 +34,12 @@ const kTrackActiveColor = MaterialStatePropertyAll(Color(0xff0d463f));
 
 const kTrackInctiveColor = MaterialStatePropertyAll(Color(0xff334048));
 
+const kTextBoxBorderColor = Color(0xff222e34);
+
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
   fontSize: 16.5,
-  fontWeight: FontWeight.w500,
+  // fontWeight: FontWeight.w500,
 );
 
 const kSubTitleTextStyle = TextStyle(
