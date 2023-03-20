@@ -66,21 +66,23 @@ class DisappearingMessagesPage extends StatelessWidget {
           const CustomDivider(),
           const PaddedSettingsTextInfo(text: 'Set for your account'),
           const CustomListTile(
-            setLeadingAtTop: true,
-            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            padding: EdgeInsets.only(top: 0.0),
+            // setLeadingAtTop: true,
+            // padding: EdgeInsets.only(left: 20.0, top: 10.0),
+
             title: 'Default message timer',
             leading: Icon(
               Icons.person_rounded,
             ),
-            leadingWidth: 10.0,
+            // leadingWidth: 10.0,
             subTitle: 'New chats will begin with a disappearing message timer',
           ),
           const PaddedSettingsTextInfo(text: 'Set for your current chats'),
           const CustomListTile(
-            setLeadingAtTop: true,
-            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            // setLeadingAtTop: true,
+            // padding: EdgeInsets.only(left: 20.0, top: 10.0),
             title: 'Apply timer to chats',
-            leadingWidth: 10.0,
+            // leadingWidth: 10.0,
             leading: Icon(
               Icons.list_alt_rounded,
             ),

@@ -5,6 +5,7 @@ import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/common/rich_text.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 
@@ -53,14 +54,12 @@ class SecurityNotificationsPage extends StatelessWidget {
           ),
           const SizedBox(height: 15.0),
           CustomListBuilder(
-            titleColor: const Color(0xff677077),
-            titleSize: 15,
-            listTilePadding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+            tileMargin: const EdgeInsets.symmetric(vertical: 5.0),
             itemCount: data.securityNotificationsInfoList.length,
             list: data.securityNotificationsInfoList,
             startIndex: 0,
             returnWidgetType: CustomListTile,
+            titleStyle: kSubTitleTextStyle,
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -74,24 +73,17 @@ class SecurityNotificationsPage extends StatelessWidget {
             title: 'Show security notifications on this device',
             subTitleWidget: SizedBox(
               width: screenWidth - 100,
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: data.textData['securityNotifications']![0],
-                      style: kSubTitleTextStyle,
-                    ),
-                    const TextSpan(
-                      text: ' Learn more',
-                      style: TextStyle(
-                        color: kTextLinkColor,
-                      ),
-                    )
-                  ],
-                ),
+              child: CustomRichText(
+                textList: [
+                  {
+                    data.textData['securityNotifications']![1]:
+                        kSubTitleTextStyle,
+                    ' Learn more': const TextStyle(color: kTextLinkColor),
+                  }
+                ],
               ),
             ),
-            trailingWidget: const CustomSwitch(),
+            trailing: const CustomSwitch(),
           ),
         ],
       ),

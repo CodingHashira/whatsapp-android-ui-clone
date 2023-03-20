@@ -4,6 +4,7 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/common/rich_text.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
@@ -45,24 +46,18 @@ class LastSeenOnlinePage extends StatelessWidget {
           const SizedBox(height: 20.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  const TextSpan(text: 'If you don\'t share your '),
-                  TextSpan(
-                    text: 'last seen',
-                    style: kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  const TextSpan(text: ' and '),
-                  TextSpan(
-                    text: 'online',
-                    style: kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  TextSpan(text: data.textData['lastSeenOnline']![0]),
-                ],
-              ),
-              style: const TextStyle(color: kSecondaryColor),
-              textAlign: TextAlign.left,
+            child: CustomRichText(
+              textList: [
+                {
+                  'If you don\'t share your ': kSubTitleTextStyle,
+                  'last seen':
+                      kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
+                  ' and ': kSubTitleTextStyle,
+                  'online':
+                      kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
+                  data.textData['lastSeenOnline']![0]: kSubTitleTextStyle,
+                }
+              ],
             ),
           )
         ],

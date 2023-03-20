@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -7,12 +8,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.imageUrl,
     this.actions,
+    this.iconColor,
   }) : super(key: key);
 
   final bool isChildWidget;
   final String title;
   final String? imageUrl;
   final Widget? actions;
+  final Color? iconColor;
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
@@ -20,37 +23,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      titleSpacing: 8,
-      automaticallyImplyLeading: true,
+      titleSpacing: 5,
       elevation: 0.0,
       toolbarHeight: 60,
-      leadingWidth: imageUrl != null ? 75 : 50,
-      leading: isChildWidget
-          ? GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    const Icon(
+      leadingWidth: imageUrl != null ? 80 : 60,
+      leading: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Row(
+          children: [
+            isChildWidget
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Icon(
                       Icons.arrow_back,
-                      color: Colors.white,
-                      size: 28,
+                      color: iconColor ?? kPopupMenuIconColor,
+                      size: 25,
                     ),
-                    imageUrl != null
-                        ? CircleAvatar(
-                            radius: 18.0,
-                            backgroundImage: AssetImage(imageUrl!),
-                          )
-                        : const SizedBox.shrink(),
-                  ],
-                ),
-              ),
-            )
-          : null,
+                  )
+                : const SizedBox.shrink(),
+            imageUrl != null
+                ? CircleAvatar(
+                    radius: 18.0,
+                    backgroundImage: AssetImage(imageUrl!),
+                  )
+                : const SizedBox.shrink(),
+          ],
+        ),
+      ),
       title: Text(
         title,
         style: const TextStyle(

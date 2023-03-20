@@ -19,77 +19,74 @@ class SettingsPage extends StatelessWidget {
         isChildWidget: true,
         title: 'Settings',
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const CustomListTile(
-                    contentPadding: 2.0,
-                    leading: CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: AssetImage('images/p1.jpg'),
-                    ),
-                    title: 'Joey',
-                    leadingWidth: 5.0,
-                    titleSize: 20,
-                    subTitle: 'Urgent calls only',
-                    subTitleSize: 13.5,
-                    trailingWidget: Icon(
-                      Icons.qr_code_rounded,
-                      color: kAccentColor,
-                      size: 30.0,
-                    ),
-                  ),
-                  const CustomDivider(),
-                  CustomListBuilder(
-                    itemCount: data.settingsMenu.length,
-                    leadingWidth: 10.0,
-                    list: data.settingsMenu,
-                    startIndex: 0,
-                    returnWidgetType: CustomListTile,
-                  ),
-                  const SizedBox(height: 20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'from',
-                            style: kInfoTextStyle.copyWith(
-                              fontSize: 13.0,
-                            ),
-                          ),
-                          const SizedBox(height: 3.0),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.line_axis_sharp,
-                                color: Color(0xffc7c8ca),
-                                size: 18.0,
-                              ),
-                              const SizedBox(width: 5.0),
-                              Text(
-                                'Meta',
-                                style: kSubTitleTextStyle.copyWith(
-                                  color: const Color(0xffc7c8ca),
-                                  fontSize: 13.0,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20.0),
-                ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomListTile(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
+              leading: const CircleAvatar(
+                radius: 30.0,
+                backgroundImage: AssetImage('images/p1.jpg'),
               ),
+              title: 'Joey',
+              titleStyle: kTitleTextStyle.copyWith(fontSize: 20.0),
+              subTitle: 'Urgent calls only',
+              trailing: const Icon(
+                Icons.qr_code_rounded,
+                color: kAccentColor,
+                size: 30.0,
+              ),
+              trailingAlignment: Alignment.centerRight,
             ),
-          ),
-        ],
+            const CustomDivider(),
+            const SizedBox(height: 10.0),
+            CustomListBuilder(
+              tileMargin:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
+              itemCount: data.settingsMenu.length,
+              leadingWidth: 10.0,
+              list: data.settingsMenu,
+              startIndex: 0,
+              returnWidgetType: CustomListTile,
+            ),
+            const SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'from',
+                      style: kInfoTextStyle.copyWith(
+                        fontSize: 13.0,
+                      ),
+                    ),
+                    const SizedBox(height: 3.0),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.line_axis_sharp,
+                          color: Color(0xffc7c8ca),
+                          size: 18.0,
+                        ),
+                        const SizedBox(width: 5.0),
+                        Text(
+                          'Meta',
+                          style: kSubTitleTextStyle.copyWith(
+                            color: const Color(0xffc7c8ca),
+                            fontSize: 13.0,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 20.0),
+          ],
+        ),
       ),
     );
   }

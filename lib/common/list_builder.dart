@@ -18,9 +18,9 @@ class CustomListBuilder extends StatelessWidget {
     this.leadingWidth,
     required this.returnWidgetType,
     this.padding,
-    this.listTilePadding,
-    this.titleColor,
-    this.titleSize,
+    this.tileMargin,
+    this.titleStyle,
+    this.skipItemList,
   });
 
   final int itemCount;
@@ -29,9 +29,9 @@ class CustomListBuilder extends StatelessWidget {
   final double? leadingWidth;
   final Type returnWidgetType;
   final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? listTilePadding;
-  final Color? titleColor;
-  final double? titleSize;
+  final EdgeInsetsGeometry? tileMargin;
+  final TextStyle? titleStyle;
+  final List<int>? skipItemList;
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +47,20 @@ class CustomListBuilder extends StatelessWidget {
           return _buildChatTile(index);
         } else if (returnWidgetType == CustomRadioButton) {
           return _buildRadioButton(index);
+        } else if (returnWidgetType == CustomListTile) {
+          if (skipItemList != null && skipItemList!.contains(index)) {
+            return const SizedBox.shrink();
+          } else {
+            return _buildCustomListTile(index, context);
+          }
         }
-        return _buildCustomListTile(index, context);
       },
     );
   }
 
   CustomRadioButton _buildRadioButton(int index) {
     return CustomRadioButton(
+      leadingWidth: leadingWidth,
       value: list[index],
       optionsList: list,
       currentOption: list.first,
@@ -85,15 +91,15 @@ class CustomListBuilder extends StatelessWidget {
 
     return CustomListTile(
       onTap: () => handleNavigation(context, index),
-      padding: listTilePadding ??
-          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-      leading: list[index + initIndex]['leading'],
       leadingWidth: leadingWidth,
+      padding: tileMargin,
+      leading: list[index + initIndex]['leading'],
       title: list[index + initIndex]['title'],
-      titleColor: titleColor,
-      titleSize: titleSize,
+      titleStyle: titleStyle,
       subTitle: list[index + initIndex]['subTitle'],
-      trailingWidget: list[index + initIndex]['trailing'],
+      subTitleIndent: list[index + initIndex]['subTitleIndent'],
+      trailing: list[index + initIndex]['trailing'],
+      isEnabled: list[index + initIndex]['isEnabled'],
     );
   }
 

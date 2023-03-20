@@ -5,6 +5,7 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/common/rich_text.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import '../privacy_page/live_location.dart';
 
@@ -51,30 +52,25 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: data.textData['requestAccountInfo']![0],
-                    style: kInfoTextStyle2.copyWith(height: 1.5),
-                  ),
-                  TextSpan(
-                    text: ' Learn more',
-                    style: kInfoTextStyle2.copyWith(color: kTextLinkColor),
-                  )
-                ],
-              ),
+            child: CustomRichText(
+              textList: [
+                {
+                  data.textData['requestAccountInfo']![0]:
+                      kInfoTextStyle2.copyWith(height: 1.5),
+                  ' Learn more':
+                      kInfoTextStyle2.copyWith(color: kTextLinkColor),
+                }
+              ],
             ),
           ),
           const SizedBox(height: 15.0),
           const CustomDivider(),
           CustomListTile(
             onTap: updateSelection,
-            padding:
-                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
             leading: isRequested
                 ? const Icon(Icons.schedule_rounded)
                 : const Icon(Icons.description_rounded),
+            title: 'Request report',
             subTitleWidget: Visibility(
               visible: isRequested,
               child: Padding(
@@ -85,7 +81,6 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
                 ),
               ),
             ),
-            title: 'Request report',
           ),
           const CustomDivider(),
           const SizedBox(height: 10.0),
