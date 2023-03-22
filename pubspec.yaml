@@ -20,6 +20,7 @@ dependencies:
   feather_icons: ^1.2.0
   intl: ^0.18.0
   flutter_chat_bubble: ^2.0.2
+  percent_indicator: ^4.2.3
 
 
 dev_dependencies:
