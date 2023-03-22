@@ -16,6 +16,10 @@ class CustomTextField extends StatefulWidget {
     this.hideBorder,
     this.textHeight,
     this.onTap,
+    this.borderColor,
+    this.borderWidth,
+    this.textAlign,
+    this.autoFocus,
   });
   final String? value;
   final String? hintText;
@@ -28,6 +32,10 @@ class CustomTextField extends StatefulWidget {
   final bool? hideBorder;
   final double? textHeight;
   final VoidCallback? onTap;
+  final Color? borderColor;
+  final double? borderWidth;
+  final TextAlign? textAlign;
+  final bool? autoFocus;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -46,6 +54,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: widget.autoFocus ?? false,
+      textAlign: widget.textAlign ?? TextAlign.start,
       onTap: widget.onTap,
       keyboardType: widget.keyBoardType,
       maxLength: widget.maxLength,
@@ -73,15 +83,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
             color: widget.hideBorder == true
                 ? Colors.transparent
                 : const Color(0xff757575),
-            width: 1.5,
+            width: widget.borderWidth ?? 1.5,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: widget.hideBorder == true
                 ? Colors.transparent
-                : const Color(0xff757575),
-            width: 1.5,
+                : widget.borderColor ?? const Color(0xff757575),
+            width: widget.borderWidth ?? 1.5,
           ),
         ),
         suffixIconColor: const Color(0xff757575),
