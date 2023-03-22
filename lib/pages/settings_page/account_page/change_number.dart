@@ -55,7 +55,10 @@ class ChangeNumberPage extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          const CustomButton(title: 'Next')
+          const CustomButton(
+            title: 'Next',
+            routeName: '',
+          )
         ],
       ),
     );

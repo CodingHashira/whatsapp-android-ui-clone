@@ -6,9 +6,11 @@ class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
     super.key,
     required this.title,
+    this.color,
   });
 
   final String title;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
-import 'package:ui_flutter_whatsapp/common/radio_button.dart';
+
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-
-import '../common/text_button.dart';
+import 'package:ui_flutter_whatsapp/common/text_button.dart';
+import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 
 const data = Data();
 final double screenWidth = Data.screen.width;
@@ -20,7 +20,7 @@ class ChatBackupDialog extends StatelessWidget {
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
         height: 335,
-        width: 280,
+        width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,9 +36,10 @@ class ChatBackupDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
+              startIndex: 0,
+              leadingWidth: 0.0,
               itemCount: data.chatBackupDialogOptions.length,
               list: data.chatBackupDialogOptions,
-              startIndex: 0,
               returnWidgetType: CustomRadioButton,
             ),
             Row(

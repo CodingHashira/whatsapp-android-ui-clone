@@ -47,7 +47,10 @@ class AvatarPage extends StatelessWidget {
                   Row(
                     children: const [
                       Expanded(
-                        child: CustomButton(title: 'Create your Avatar'),
+                        child: CustomButton(
+                          title: 'Create your Avatar',
+                          routeName: '',
+                        ),
                       ),
                     ],
                   ),

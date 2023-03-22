@@ -28,10 +28,9 @@ class DeafultMessageTimerPage extends StatelessWidget {
             text: 'Start new chats with a disappearing message timer set to',
           ),
           CustomListBuilder(
-            // padding: const EdgeInsets.only(left: 10.0),
-            itemCount: 4,
-            list: data.deafultMessageTimerList,
             startIndex: 0,
+            itemCount: data.deafultMessageTimerList.length,
+            list: data.deafultMessageTimerList,
             returnWidgetType: CustomRadioButton,
           ),
           Padding(

@@ -21,10 +21,10 @@ class AccountPage extends StatelessWidget {
         children: [
           const SizedBox(height: 8.0),
           CustomListBuilder(
+            startIndex: 0,
             itemCount: data.accountMenu.length,
             leadingWidth: 8.0,
             list: data.accountMenu,
-            startIndex: 0,
             returnWidgetType: CustomListTile,
           ),
         ],

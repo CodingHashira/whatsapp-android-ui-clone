@@ -15,8 +15,7 @@ class LightDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: kAppBarColor,
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 5.0),
       content: SizedBox(
         height: 480,
         width: screenWidth,
@@ -24,7 +23,7 @@ class LightDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
-              padding: EdgeInsets.only(left: 10.0, top: 15.0, bottom: 5.0),
+              padding: EdgeInsets.only(left: 20.0, top: 15.0, bottom: 5.0),
               child: Text(
                 'Light',
                 style: TextStyle(
@@ -35,9 +34,9 @@ class LightDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
+              startIndex: 0,
               itemCount: data.lightDialogOptionList.length,
               list: data.lightDialogOptionList,
-              startIndex: 0,
               returnWidgetType: CustomRadioButton,
             ),
           ],

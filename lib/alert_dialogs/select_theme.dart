@@ -20,7 +20,7 @@ class SelectThemeDialog extends StatelessWidget {
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
         height: 230,
-        width: 200,
+        width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,10 +36,11 @@ class SelectThemeDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
+              startIndex: 0,
               padding: const EdgeInsets.only(left: 0),
               itemCount: data.themeDialogOptions.length,
               list: data.themeDialogOptions,
-              startIndex: 0,
+              leadingWidth: 0,
               returnWidgetType: CustomRadioButton,
             ),
             Row(

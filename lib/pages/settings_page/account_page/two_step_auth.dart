@@ -37,7 +37,10 @@ class TwoStepAuthPage extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          const CustomButton(title: 'Turn on')
+          const CustomButton(
+            title: 'Turn on',
+            routeName: '',
+          )
         ],
       ),
     );

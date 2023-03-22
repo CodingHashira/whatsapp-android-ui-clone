@@ -47,17 +47,15 @@ class ConversationPage extends StatelessWidget {
           body: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      CustomListBuilder(
-                        itemCount: data.messageList.length,
-                        list: data.messageList,
-                        startIndex: 0,
-                        returnWidgetType: CustomChatBubble,
-                      ),
-                    ],
-                  ),
+                child: ListView(
+                  children: [
+                    CustomListBuilder(
+                      itemCount: data.messageList.length,
+                      list: data.messageList,
+                      startIndex: 0,
+                      returnWidgetType: CustomChatBubble,
+                    ),
+                  ],
                 ),
               ),
               Padding(

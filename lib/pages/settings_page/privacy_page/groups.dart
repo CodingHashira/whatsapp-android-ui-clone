@@ -25,10 +25,10 @@ class GroupsPage extends StatelessWidget {
             children: [
               const PaddedSettingsTextInfo(text: 'Who canadd me to groups'),
               CustomListBuilder(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                itemCount: 3,
-                list: data.genericPrivacyRadioList,
                 startIndex: 0,
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                itemCount: data.genericPrivacyRadioList.length,
+                list: data.genericPrivacyRadioList,
                 returnWidgetType: CustomRadioButton,
               ),
               PaddedSettingsTextInfo(text: data.textData['groups']![0]),

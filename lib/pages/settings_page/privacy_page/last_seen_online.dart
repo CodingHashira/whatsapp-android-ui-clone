@@ -26,10 +26,10 @@ class LastSeenOnlinePage extends StatelessWidget {
         children: [
           const PaddedSettingsTextInfo(text: 'Who can see my last seen'),
           CustomListBuilder(
+            startIndex: 0,
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             itemCount: data.lastSeenRadioList.length,
             list: data.lastSeenRadioList,
-            startIndex: 0,
             returnWidgetType: CustomRadioButton,
           ),
           const SizedBox(height: 5.0),
@@ -37,10 +37,10 @@ class LastSeenOnlinePage extends StatelessWidget {
           const SizedBox(height: 5.0),
           const PaddedSettingsTextInfo(text: 'Who can see when I\'m online'),
           CustomListBuilder(
+            startIndex: 0,
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             itemCount: data.onlineIndicationRadioList.length,
             list: data.onlineIndicationRadioList,
-            startIndex: 0,
             returnWidgetType: CustomRadioButton,
           ),
           const SizedBox(height: 20.0),

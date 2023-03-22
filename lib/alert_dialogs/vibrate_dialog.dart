@@ -34,10 +34,10 @@ class VibrateDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
+              startIndex: 0,
               leadingWidth: 0,
               itemCount: data.vibrateDialogOptionList.length,
               list: data.vibrateDialogOptionList,
-              startIndex: 0,
               returnWidgetType: CustomRadioButton,
             ),
           ],

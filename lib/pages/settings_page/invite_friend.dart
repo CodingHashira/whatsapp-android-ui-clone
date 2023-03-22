@@ -27,37 +27,34 @@ class InviteFriendPage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomListTile(
-              leading: Container(
-                decoration: const BoxDecoration(
-                  color: kAccentColor,
-                  shape: BoxShape.circle,
-                ),
-                padding: const EdgeInsets.all(8.0),
-                child: const Icon(
-                  Icons.share,
-                  color: Colors.white,
-                  size: 27.0,
-                ),
+      body: ListView(
+        children: [
+          CustomListTile(
+            leading: Container(
+              decoration: const BoxDecoration(
+                color: kAccentColor,
+                shape: BoxShape.circle,
               ),
-              title: 'Share link',
+              padding: const EdgeInsets.all(8.0),
+              child: const Icon(
+                Icons.share,
+                color: Colors.white,
+                size: 27.0,
+              ),
             ),
-            const PaddedSettingsTextInfo(
-              padding: EdgeInsets.only(left: 20.0, bottom: 15.0),
-              text: 'From Contacts',
-            ),
-            CustomListBuilder(
-              itemCount: data.inviteFriendList.length,
-              list: data.inviteFriendList,
-              startIndex: 0,
-              returnWidgetType: ChatTile,
-            ),
-          ],
-        ),
+            title: 'Share link',
+          ),
+          const PaddedSettingsTextInfo(
+            padding: EdgeInsets.only(left: 20.0, bottom: 15.0),
+            text: 'From Contacts',
+          ),
+          CustomListBuilder(
+            startIndex: 0,
+            itemCount: data.inviteFriendList.length,
+            list: data.inviteFriendList,
+            returnWidgetType: ChatTile,
+          ),
+        ],
       ),
     );
   }

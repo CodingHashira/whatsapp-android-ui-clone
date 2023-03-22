@@ -18,6 +18,7 @@ class HelpPage extends StatelessWidget {
         title: 'Help',
       ),
       body: CustomListBuilder(
+        startIndex: 0,
         padding: const EdgeInsets.only(top: 20.0),
         leadingWidth: 5.0,
         itemCount: data.helpOptionsList.length,

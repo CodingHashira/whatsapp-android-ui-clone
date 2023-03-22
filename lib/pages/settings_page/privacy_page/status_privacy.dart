@@ -25,11 +25,12 @@ class StatusPrivacyPage extends StatelessWidget {
             text: 'Who can see my status updates',
           ),
           CustomListBuilder(
+            startIndex: 0,
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             itemCount: data.genericPrivacyRadioList.length,
             list: data.genericPrivacyRadioList,
-            startIndex: 0,
             returnWidgetType: CustomRadioButton,
+            skipItemList: const [0, 3],
           ),
           PaddedSettingsTextInfo(
             text: data.textData['statusPrivacy']![0],

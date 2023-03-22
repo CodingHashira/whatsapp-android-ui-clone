@@ -36,9 +36,9 @@ class CallDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
+              startIndex: 0,
               itemCount: data.chatBackupDialogOptions.length,
               list: data.chatBackupDialogOptions,
-              startIndex: 0,
               returnWidgetType: CustomRadioButton,
             ),
             Row(

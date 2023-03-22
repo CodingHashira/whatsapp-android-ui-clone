@@ -15,6 +15,7 @@ class CustomTextField extends StatefulWidget {
     this.keyBoardType,
     this.hideBorder,
     this.textHeight,
+    this.onTap,
   });
   final String? value;
   final String? hintText;
@@ -26,6 +27,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? keyBoardType;
   final bool? hideBorder;
   final double? textHeight;
+  final VoidCallback? onTap;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -44,6 +46,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onTap: widget.onTap,
       keyboardType: widget.keyBoardType,
       maxLength: widget.maxLength,
       cursorColor: kAccentColor,

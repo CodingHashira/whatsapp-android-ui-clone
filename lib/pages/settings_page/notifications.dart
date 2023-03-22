@@ -24,43 +24,42 @@ class NotificationsPage extends StatelessWidget {
           popupMenuItems: {'Reset notification settings': '/testPage'},
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomListTile(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
-              title: 'Conversatioon tones',
-              subTitle: 'Play sounds for incoming and outgoing messages.',
-              subTitleIndent: 90.0,
-              trailing: CustomSwitch(),
-            ),
-            const CustomDivider(),
-            const PaddedSettingsTextInfo(text: 'Messages'),
-            CustomListBuilder(
-              itemCount: data.notificationsOptionList.length,
-              list: data.notificationsOptionList,
-              returnWidgetType: CustomListTile,
-            ),
-            const SizedBox(height: 10.0),
-            const CustomDivider(),
-            const SizedBox(height: 5.0),
-            const PaddedSettingsTextInfo(text: 'Groups'),
-            CustomListBuilder(
-              itemCount: data.notificationsOptionList.length,
-              list: data.notificationsOptionList,
-              returnWidgetType: CustomListTile,
-              skipItemList: const [2],
-            ),
-            const CustomDivider(),
-            CustomListBuilder(
-              itemCount: data.notificationsOptionListTwo.length,
-              list: data.notificationsOptionListTwo,
-              returnWidgetType: CustomListTile,
-              skipItemList: const [2],
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          const CustomListTile(
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
+            title: 'Conversatioon tones',
+            subTitle: 'Play sounds for incoming and outgoing messages.',
+            subTitleIndent: 90.0,
+            trailing: CustomSwitch(),
+          ),
+          const CustomDivider(),
+          const PaddedSettingsTextInfo(text: 'Messages'),
+          CustomListBuilder(
+            startIndex: 0,
+            itemCount: data.notificationsOptionList.length,
+            list: data.notificationsOptionList,
+            returnWidgetType: CustomListTile,
+          ),
+          const SizedBox(height: 10.0),
+          const CustomDivider(),
+          const SizedBox(height: 5.0),
+          const PaddedSettingsTextInfo(text: 'Groups'),
+          CustomListBuilder(
+            startIndex: 0,
+            itemCount: data.notificationsOptionList.length,
+            list: data.notificationsOptionList,
+            returnWidgetType: CustomListTile,
+            skipItemList: const [2],
+          ),
+          const CustomDivider(),
+          CustomListBuilder(
+            startIndex: 0,
+            itemCount: data.notificationsOptionListTwo.length,
+            list: data.notificationsOptionListTwo,
+            returnWidgetType: CustomListTile,
+          ),
+        ],
       ),
     );
   }

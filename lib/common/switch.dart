@@ -16,18 +16,13 @@ class _CustomSwitchState extends State<CustomSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.scale(
-      scale: 1,
-      child: Switch(
-        thumbColor:
-            switchValue == true ? kThumbActiveColor : kThumbInctiveColor,
-        trackColor:
-            switchValue == true ? kTrackActiveColor : kTrackInctiveColor,
-        value: switchValue,
-        onChanged: (p0) => setState(() {
-          switchValue = p0;
-        }),
-      ),
+    return Switch(
+      thumbColor: switchValue == true ? kThumbActiveColor : kThumbInctiveColor,
+      trackColor: switchValue == true ? kTrackActiveColor : kTrackInctiveColor,
+      value: switchValue,
+      onChanged: (p0) => setState(() {
+        switchValue = p0;
+      }),
     );
   }
 }

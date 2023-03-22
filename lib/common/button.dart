@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
       child: MaterialButton(
-        disabledTextColor: const Color(0xff3c4a55),
+        disabledTextColor: kDisabledTextColor,
         disabledColor: const Color(0xff1f2c34),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.0),
@@ -27,7 +28,9 @@ class CustomButton extends StatelessWidget {
         color: buttonColor ?? const Color(0xff00a884),
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
         onPressed: routeName != null
-            ? () => Navigator.pushNamed(context, routeName!)
+            ? routeName != ''
+                ? () => Navigator.pushNamed(context, routeName!)
+                : () {}
             : null,
         child: Text(
           title,

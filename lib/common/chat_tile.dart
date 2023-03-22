@@ -11,14 +11,14 @@ class ChatTile extends StatelessWidget {
     required this.leading,
     required this.title,
     this.time,
-    required this.subTitle,
+    this.subTitle,
     this.trailingIcon,
   }) : super(key: key);
 
   final Widget leading;
   final String title;
   final String? time;
-  final String subTitle;
+  final String? subTitle;
   final IconData? trailingIcon;
 
   @override
@@ -33,9 +33,10 @@ class ChatTile extends StatelessWidget {
           ),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -49,20 +50,24 @@ class ChatTile extends StatelessWidget {
                       ),
                   ],
                 ),
-                const SizedBox(height: 3.0),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: screenWidth - 120,
-                      child: Text(
-                        subTitle,
-                        style: kSubTitleTextStyle,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    Icon(trailingIcon),
-                  ],
-                ),
+                SizedBox(height: subTitle != null ? 3.0 : 0.0),
+                subTitle != null
+                    ? Row(
+                        children: [
+                          SizedBox(
+                            width: screenWidth - 120,
+                            child: subTitle != null
+                                ? Text(
+                                    subTitle!,
+                                    style: kSubTitleTextStyle,
+                                    overflow: TextOverflow.ellipsis,
+                                  )
+                                : const SizedBox.shrink(),
+                          ),
+                          Icon(trailingIcon),
+                        ],
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
           )

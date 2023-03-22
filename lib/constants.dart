@@ -4,7 +4,7 @@ const kPrimaryColor = Color(0xff121b22);
 
 const kSecondaryColor = Color(0xff8596a0);
 
-const kAccentColor = Color(0xff159e83);
+const kAccentColor = Color(0xff00a884);
 
 const kAppBarColor = Color(0xff1f2c34);
 
@@ -26,6 +26,8 @@ const kTextLinkColor = Color(0xff56bde9);
 
 const kIconSecondaryColor = Color(0xff627884);
 
+const kDisabledTextColor = Color(0xff3c4a55);
+
 const kThumbActiveColor = MaterialStatePropertyAll(Color(0xff00a682));
 
 const kThumbInctiveColor = MaterialStatePropertyAll(Color(0xff82939d));
@@ -36,10 +38,15 @@ const kTrackInctiveColor = MaterialStatePropertyAll(Color(0xff334048));
 
 const kTextBoxBorderColor = Color(0xff222e34);
 
+const kCountryCodeTextStyle = TextStyle(
+  color: kSecondaryColor,
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+);
+
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
   fontSize: 16.5,
-  // fontWeight: FontWeight.w500,
 );
 
 const kSubTitleTextStyle = TextStyle(
