@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
+import 'package:ui_flutter_whatsapp/common/checkbox.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/chat_bubble.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
+import 'package:ui_flutter_whatsapp/widgets/country_code_tile.dart';
+import 'package:ui_flutter_whatsapp/widgets/network_usage_page/network_tile.dart';
 
-var initIndex = 0;
 var previousSender = '';
 var verticalGap = 5.0;
 
@@ -14,24 +17,26 @@ class CustomListBuilder extends StatelessWidget {
     super.key,
     required this.itemCount,
     required this.list,
-    this.startIndex,
+    required this.startIndex,
     this.leadingWidth,
     required this.returnWidgetType,
     this.padding,
     this.tileMargin,
     this.titleStyle,
     this.skipItemList,
+    this.checkStyle,
   });
 
   final int itemCount;
   final List list;
-  final int? startIndex;
+  final int startIndex;
   final double? leadingWidth;
   final Type returnWidgetType;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? tileMargin;
   final TextStyle? titleStyle;
   final List<int>? skipItemList;
+  final TextStyle? checkStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +46,54 @@ class CustomListBuilder extends StatelessWidget {
       padding: padding ?? const EdgeInsets.only(top: 0.0),
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        if (returnWidgetType == CustomChatBubble) {
-          return _buildChatBubble(index);
-        } else if (returnWidgetType == ChatTile) {
-          return _buildChatTile(index);
-        } else if (returnWidgetType == CustomRadioButton) {
-          return _buildRadioButton(index);
-        } else if (returnWidgetType == CustomListTile) {
-          if (skipItemList != null && skipItemList!.contains(index)) {
-            return const SizedBox.shrink();
-          } else {
+        if (skipItemList != null && skipItemList!.contains(index)) {
+          return const SizedBox.shrink();
+        } else {
+          if (returnWidgetType == CustomChatBubble) {
+            return _buildChatBubble(index);
+          } else if (returnWidgetType == ChatTile) {
+            return _buildChatTile(index);
+          } else if (returnWidgetType == CustomRadioButton) {
+            return _buildRadioButton(index);
+          } else if (returnWidgetType == CustomCheckBox) {
+            return _buildCheckBox(index);
+          } else if (returnWidgetType == CountryCodeTile) {
+            return _buildCountryCodeTile(index);
+          } else if (returnWidgetType == NetworkTile) {
+            return _buildNetworkTile(index);
+          } else if (returnWidgetType == CustomListTile) {
             return _buildCustomListTile(index, context);
           }
         }
       },
+    );
+  }
+
+  NetworkTile _buildNetworkTile(int index) {
+    return NetworkTile(
+      icon: list[index]['leading'],
+      title: list[index]['title'],
+      subTitleList: list[index]['subTitle'],
+      percent: list[index]['percent'],
+      dataConsumptionList: list[index]['trailing'],
+    );
+  }
+
+  CustomCheckBox _buildCheckBox(int index) {
+    return CustomCheckBox(
+      verticalDensity: 0,
+      label: list[index],
+      style: checkStyle,
+    );
+  }
+
+  CountryCodeTile _buildCountryCodeTile(int index) {
+    return CountryCodeTile(
+      icon: list[index]['icon'],
+      title: list[index]['name'],
+      subTitle: list[index]['native'],
+      code: list[index]['code'],
+      isSelected: list[index]['isSelected'],
     );
   }
 
@@ -67,39 +106,23 @@ class CustomListBuilder extends StatelessWidget {
     );
   }
 
-  void handleNavigation(BuildContext context, int index) {
-    if (startIndex != null) initIndex = startIndex!;
-
-    var pageRoute = list[index + initIndex]['pageRoute'];
-    if (pageRoute != null) {
-      Navigator.pushNamed(context, pageRoute);
-    }
-
-    var dialogWidget = list[index + initIndex]['dialogWidget'];
-    if (dialogWidget != null) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return dialogWidget;
-        },
-      );
-    }
-  }
-
   CustomListTile _buildCustomListTile(int index, BuildContext context) {
-    if (startIndex != null) initIndex = startIndex!;
-
     return CustomListTile(
-      onTap: () => handleNavigation(context, index),
+      onTap: () => NavigationHelper.handle(
+        context: context,
+        list: list,
+        startIndex: startIndex,
+        index: index,
+      ),
       leadingWidth: leadingWidth,
       padding: tileMargin,
-      leading: list[index + initIndex]['leading'],
-      title: list[index + initIndex]['title'],
+      leading: list[index + startIndex]['leading'],
+      title: list[index + startIndex]['title'],
       titleStyle: titleStyle,
-      subTitle: list[index + initIndex]['subTitle'],
-      subTitleIndent: list[index + initIndex]['subTitleIndent'],
-      trailing: list[index + initIndex]['trailing'],
-      isEnabled: list[index + initIndex]['isEnabled'],
+      subTitle: list[index + startIndex]['subTitle'],
+      subTitleIndent: list[index + startIndex]['subTitleIndent'],
+      trailing: list[index + startIndex]['trailing'],
+      isEnabled: list[index + startIndex]['isEnabled'],
     );
   }
 
