@@ -10,6 +10,7 @@ class CustomListTile extends StatelessWidget {
     super.key,
     this.contentPadding,
     this.leading,
+    this.leadingAlignment,
     required this.title,
     this.titleStyle,
     this.titleIndent,
@@ -25,8 +26,12 @@ class CustomListTile extends StatelessWidget {
     this.isEnabled,
   });
 
+  final VoidCallback? onTap;
+  final EdgeInsetsGeometry? padding;
   final double? contentPadding;
   final Widget? leading;
+  final double? leadingWidth;
+  final CrossAxisAlignment? leadingAlignment;
   final String title;
   final TextStyle? titleStyle;
   final double? titleIndent;
@@ -35,24 +40,24 @@ class CustomListTile extends StatelessWidget {
   final double? subTitleIndent;
   final Widget? subTitleWidget;
   final Widget? trailing;
-  final VoidCallback? onTap;
   final Alignment? trailingAlignment;
-  final EdgeInsetsGeometry? padding;
-  final double? leadingWidth;
   final bool? isEnabled;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.translucent,
       child: Container(
+        constraints: const BoxConstraints(maxHeight: 180.0),
         padding: padding ??
             const EdgeInsets.only(
-                left: 10.0, top: 15.0, right: 25.0, bottom: 15.0),
+                left: 10.0, top: 15.0, right: 5.0, bottom: 15.0),
         child: Stack(
           alignment: trailingAlignment ?? Alignment.topRight,
           children: [
             Row(
+              crossAxisAlignment: leadingAlignment ?? CrossAxisAlignment.center,
               children: [
                 SizedBox(width: leadingWidth ?? 10.0),
                 leading != null
@@ -63,6 +68,7 @@ class CustomListTile extends StatelessWidget {
                     : const SizedBox.shrink(),
                 Expanded(
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
@@ -77,7 +83,7 @@ class CustomListTile extends StatelessWidget {
                                     )),
                         ),
                       ),
-                      SizedBox(height: contentPadding ?? 5.0),
+                      SizedBox(height: contentPadding ?? 0.0),
                       subTitle != null || subTitleWidget != null
                           ? SizedBox(
                               width: screenWidth - (subTitleIndent ?? 0),
@@ -109,10 +115,14 @@ class CustomListTile extends StatelessWidget {
               ],
             ),
             trailing != null
-                ? Container(
-                    constraints:
-                        const BoxConstraints(maxWidth: 30, maxHeight: 30),
-                    child: trailing,
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        height: 20.0,
+                        child: trailing!,
+                      ),
+                    ],
                   )
                 : const SizedBox.shrink(),
           ],
