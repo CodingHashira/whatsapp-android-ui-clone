@@ -17,7 +17,7 @@ class LightDialog extends StatelessWidget {
       backgroundColor: kAppBarColor,
       contentPadding: const EdgeInsets.symmetric(vertical: 5.0),
       content: SizedBox(
-        height: 480,
+        height: 440,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
