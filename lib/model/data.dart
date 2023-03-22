@@ -213,6 +213,26 @@ class Data {
       'Back up your messages and media to Google Drive. You can restore them when you reinstall WhatsApp. Your messages will also back up to your phone\'s internal storage.',
       'Back up your chat history and media to Google Drive so if you change phones, your chat history is safe.'
     ],
+    'profile': [
+      'This is not your username or pin. This name will be visible to your WhatsApp contacts.',
+    ],
+    'endToEndbackup': [
+      'When turned on, your backup will be\nend-to-end encrypted before it gets uploade\nto Google Drive. NO one, not even Google or WhatsApp, will be able to access it.',
+      [
+        'Your current Google Drive backup size is ',
+        '122\n \t\t\t\t\t\t\t\t\t\t\t\t\tMB ',
+        'including ',
+        '33 MB media.',
+      ],
+      'Your backup is end-to-end encrypted on\nGoogle Drive. No one, not even Google or\nWhatsApp, can access it.',
+      'You chose to protect your backup with a\n64-digit encryption key. If you would rather\nprotect it with a password, you can create\none.'
+    ],
+    'createEncryption': [
+      'To protect your end-to-end encrypted\nbackup, create a password. You will need\nthis password to restore your backup.',
+      'If you forget your password and lose your\nphone, WhatsApp cannot help you recover\nyour backup.',
+      'Instead of using a password, you can protect\nand restore your end-to-end encrypted\nbackup with your encryption key:',
+      'Save your key. WhatsApp does not have a\ncopy of it. If you forget your key and lose\nyour phone, WhatsApp cannot help you\nrecover your backup.'
+    ]
   };
 
   Map<String, List> get textData => _textData;
