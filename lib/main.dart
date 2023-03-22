@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/chats_page/chat_backup.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data_page/manage_storage.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data_page/network_usage.dart';
-import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data_page/proxy_settings.dart';
 
 import './constants.dart';
 import './pages/testp.dart';
@@ -18,29 +13,39 @@ import './pages/settings_page/avatar.dart';
 import './pages/settings_page/profile.dart';
 import './pages/settings_page/account.dart';
 import './pages/settings_page/privacy.dart';
+import 'pages/settings_page/storage_data.dart';
 import 'pages/settings_page/notifications.dart';
+import 'pages/settings_page/help/app_info.dart';
+import 'pages/settings_page/privacy/about.dart';
+import 'pages/settings_page/privacy/groups.dart';
 import './pages/settings_page/invite_friend.dart';
-import 'pages/settings_page/help_page/app_info.dart';
-import './pages/settings_page/privacy_page/about.dart';
-import './pages/settings_page/privacy_page/groups.dart';
-import './pages/settings_page/help_page/contact_us.dart';
-import './pages/settings_page/chats_page/chat_history.dart';
-import 'pages/settings_page/account_page/choose_country.dart';
-import './pages/settings_page/account_page/change_number.dart';
-import './pages/settings_page/account_page/two_step_auth.dart';
-import './pages/settings_page/privacy_page/live_location.dart';
-import './pages/settings_page/privacy_page/profile_photo.dart';
-import './pages/settings_page/chats_page/theme_wallpaper.dart';
-import './pages/settings_page/privacy_page/status_privacy.dart';
-import './pages/settings_page/account_page/delete_account.dart';
+import 'pages/settings_page/help/contact_us.dart';
+import 'pages/settings_page/chats/chat_backup.dart';
+import 'pages/settings_page/chats/chat_history.dart';
+import 'pages/settings_page/account/change_number.dart';
+import 'pages/settings_page/account/two_step_auth.dart';
+import 'pages/settings_page/privacy/live_location.dart';
+import 'pages/settings_page/privacy/profile_photo.dart';
+import 'pages/settings_page/chats/theme_wallpaper.dart';
+import 'pages/settings_page/privacy/status_privacy.dart';
+import 'pages/settings_page/account/choose_country.dart';
+import 'pages/settings_page/account/delete_account.dart';
+import 'pages/settings_page/privacy/blocked_contacts.dart';
+import 'pages/settings_page/privacy/fingerprint_lock.dart';
+import 'pages/settings_page/privacy/last_seen_online.dart';
+import 'pages/settings_page/chats/chat_backup/backup_on.dart';
+import 'pages/settings_page/chats/chat_backup/backup_off.dart';
+import 'pages/settings_page/chats/chat_backup/generate_key.dart';
+import 'pages/settings_page/account/request_account_info.dart';
+import 'pages/settings_page/privacy/disappering_messages.dart';
+import 'pages/settings_page/privacy/default_message_timer.dart';
+import 'pages/settings_page/account/security_notifications.dart';
+import 'pages/settings_page/storage_data_page/network_usage.dart';
+import 'pages/settings_page/storage_data_page/manage_storage.dart';
 import 'package:ui_flutter_whatsapp/pages/settings_page/help.dart';
-import './pages/settings_page/privacy_page/blocked_contacts.dart';
-import './pages/settings_page/privacy_page/fingerprint_lock.dart';
-import './pages/settings_page/privacy_page/last_seen_online.dart';
-import './pages/settings_page/privacy_page/disappering_messages.dart';
-import './pages/settings_page/account_page/request_account_info.dart';
-import './pages/settings_page/privacy_page/default_message_timer.dart';
-import './pages/settings_page/account_page/security_notifications.dart';
+import 'pages/settings_page/storage_data_page/proxy_settings.dart';
+import 'pages/settings_page/chats/chat_backup/create_encryption.dart';
+import 'pages/settings_page/chats/chat_backup/generate_password.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +63,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      initialRoute: '/settingsPage',
+      initialRoute: '/backupOffPage',
       routes: {
         '/': (context) => const LaunchPage(),
         '/helpPage': (context) => const HelpPage(),
@@ -66,6 +71,11 @@ class MyApp extends StatelessWidget {
         '/chatsPage': (context) => const ChatsPage(),
         '/aboutPage': (context) => const AboutPage(),
         '/launchPage': (context) => const LaunchPage(),
+        '/backupOnPage': (context) => const BackupOnPage(),
+        '/backupOffPage': (context) => const BackupOffPage(),
+        '/createEncryptionPage': (context) => const CreateEncryptionPage(),
+        '/generateKeyPage': (context) => const GenerateKeyPage(),
+        '/generatePasswordPage': (context) => const GeneratePasswordPage(),
         '/groupsPage': (context) => const GroupsPage(),
         '/avatarPage': (context) => const AvatarPage(),
         '/appInfoPage': (context) => const AppInfoPage(),
