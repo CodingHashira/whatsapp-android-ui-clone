@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/archive_chats.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/clear_all_chats.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/delete_all_chats.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/light_dialog.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/mobile_data.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/popup_notification_dialog.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/vibrate_dialog.dart';
+import 'package:ui_flutter_whatsapp/common/checkbox.dart';
 
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 
 class Chat {
   const Chat({
@@ -12,7 +19,7 @@ class Chat {
     this.imageStackIcon,
     required this.title,
     this.time,
-    required this.subTitle,
+    this.subTitle,
     this.trailingIcon,
   });
 
@@ -20,7 +27,7 @@ class Chat {
   final IconData? imageStackIcon;
   final String title;
   final String? time;
-  final String subTitle;
+  final String? subTitle;
   final IconData? trailingIcon;
 }
 
@@ -98,22 +105,22 @@ class Data {
     ),
     Chat(
       imageUrl: 'images/no_profile.jpg',
-      title: 'Tag Jones',
+      title: 'Carol',
       subTitle: '+91 9476628842',
     ),
     Chat(
       imageUrl: 'images/no_profile.jpg',
-      title: 'Eddie Menuek',
+      title: 'Estelle Leonard',
       subTitle: '+91 9947728462',
     ),
     Chat(
       imageUrl: 'images/no_profile.jpg',
-      title: 'Barry Farber',
+      title: 'Janice',
       subTitle: '+91 883726539, +91 9687653321',
     ),
     Chat(
       imageUrl: 'images/no_profile.jpg',
-      title: 'Amy Green',
+      title: 'Mike Hannigan',
       subTitle: '+91 8277382946',
     ),
     Chat(
@@ -128,12 +135,12 @@ class Data {
     ),
     Chat(
       imageUrl: 'images/no_profile.jpg',
-      title: 'Pete Becker',
+      title: 'Susan Bunch',
       subTitle: '+91 99472656482',
     ),
     Chat(
       imageUrl: 'images/no_profile.jpg',
-      title: 'Elizabeth Stevens',
+      title: 'Julie',
       subTitle: '+91 89938827488',
     ),
   ];
@@ -185,8 +192,26 @@ class Data {
     'contactsUs': [
       'Technical details like your model and settings can help us answer your question. ',
       'For support with payments,',
-      ' go to '
-          'Help in your payments home screen.',
+      ' go to ',
+      'Help in your payments home screen.',
+    ],
+    'manageStorage': [
+      'Stay in control of future storage needs and build privacy into your chats,',
+    ],
+    'proxy': [
+      'Only use a proxy if you\'re unable to connect to WhatsApp. Your IP address may be visible to the proxy provider, which is not WhatsApp.',
+    ],
+    'deleteAllChatsDialog': [
+      'Messages will only be removed from this device and your devices on the newer versions of WhatsApp.',
+      'Also delete media received in chats from the device gallery',
+    ],
+    'clearAllChatsDialog': [
+      'Messages will only be removed from this device and your devices on the newer versions of WhatsApp.',
+      'Also delete media received in chats from the device gallery',
+    ],
+    'chatBackup': [
+      'Back up your messages and media to Google Drive. You can restore them when you reinstall WhatsApp. Your messages will also back up to your phone\'s internal storage.',
+      'Back up your chat history and media to Google Drive so if you change phones, your chat history is safe.'
     ],
   };
 
@@ -203,8 +228,8 @@ class Data {
     'Media, links, and docs': '/testPage',
     'Search': '/testPage',
     'Mute notifications': '/testPage',
-    'Disappearing messages': '/testPage',
-    'Wallpaper': '/testPage',
+    'Disappearing messages': '/disapperingMessageForItem',
+    'Wallpaper': '/themeWallpaperPage',
     'More': morePopupMenuItems,
   };
 
@@ -315,13 +340,12 @@ class Data {
       'leading': Icon(Icons.storage_rounded),
       'title': 'Storage and data',
       'subTitle': 'Network usage, auto-download',
-      'pageRoute': '/testPage'
+      'pageRoute': '/storageDataPage'
     },
     {
       'leading': Icon(Icons.language_rounded),
       'title': 'App language',
       'subTitle': 'English (phone\'s language)',
-      'pageRoute': '/testPage'
     },
     {
       'leading': Icon(Icons.help_outline),
@@ -336,7 +360,7 @@ class Data {
     },
   ];
 
-  List<Map<String, Object>> get settingsMenu => _settingsMenu;
+  List<Map> get settingsMenu => _settingsMenu;
 
   static Size screen =
       MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
@@ -420,10 +444,11 @@ class Data {
     'Everyone',
     'My contacts',
     'My contacts except...',
-    'Nobody'
+    'Nobody',
+    'Only share with...'
   ];
 
-  get genericPrivacyRadioList => _genericPrivacyRadioList;
+  List<String> get genericPrivacyRadioList => _genericPrivacyRadioList;
 
   static const List<Map<String, Object>> _securityNotificationsInfoList = [
     {
@@ -477,6 +502,12 @@ class Data {
   List<String> get delAccountInfoList => _delAccountInfoList;
 
   static const List<Map<String, Object>> _countryCodesList = [
+    {
+      'icon': '\ud83c\uddee\ud83c\uddf3',
+      'code': '+91',
+      'name': 'India',
+      'isSelected': true,
+    },
     {
       'icon': '\ud83c\uddfa\ud83c\uddf8',
       'code': '+1',
@@ -538,11 +569,6 @@ class Data {
       'name': 'Germany',
     },
     {
-      'icon': '\ud83c\uddee\ud83c\uddf3',
-      'code': '+91',
-      'name': 'India',
-    },
-    {
       'icon': '\ud83c\uddea\ud83c\uddf8',
       'code': '+34',
       'name': 'Spain',
@@ -600,7 +626,7 @@ class Data {
     {
       'leading': Icon(Icons.cloud_upload_rounded),
       'title': 'Chat backup',
-      'dialogWidget': ChatBackupDialog(),
+      'pageRoute': '/chatBackupPage',
     },
     {
       'leading': Icon(Icons.history_rounded),
@@ -620,12 +646,13 @@ class Data {
     {
       'title': 'Media visibility',
       'subTitle': 'Show newly downloaded media in your device\'s gallery',
+      'subTitleIndent': 90.0,
       'trailing': CustomSwitch(),
     },
     {
       'title': 'Font size',
       'subTitle': 'Small',
-      'dialogRoute': '/SelectThemeDialog',
+      // 'dialogRoute': '/SelectThemeDialog',
     },
   ];
 
@@ -639,14 +666,17 @@ class Data {
     {
       'leading': Icon(Icons.archive_rounded),
       'title': 'Archive all chats',
+      'dialogWidget': ArchiveChatsDialog()
     },
     {
       'leading': Icon(Icons.do_not_disturb_on_outlined),
       'title': 'Clear all chats',
+      'dialogWidget': ClearAllChatsDialog()
     },
     {
       'leading': Icon(Icons.delete_rounded),
       'title': 'Delete all chats',
+      'dialogWidget': DeleteAllChatsDialog(),
     },
   ];
 
@@ -731,7 +761,7 @@ class Data {
     {
       'title': 'Popup notification',
       'subTitle': 'Not available',
-      'pageRoute': '/testPage',
+      'dialogWidget': PopupNotificationDialog(),
       'isEnabled': false,
     },
     {
@@ -743,14 +773,12 @@ class Data {
       'title': 'Use high priority notifications',
       'subTitle': 'Show previews of notifications at the top of the screen',
       'trailing': CustomSwitch(),
-      'pageRoute': '/testPage',
       'subTitleIndent': 90.0,
     },
     {
       'title': 'Reaction Notifications',
       'subTitle': 'Show notifications for reactions to messages you send',
       'trailing': CustomSwitch(),
-      'pageRoute': '/testPage',
       'subTitleIndent': 120.0,
     },
   ];
@@ -794,4 +822,176 @@ class Data {
 
   List<Map<String, Object>> get notificationsOptionListTwo =>
       _notificationsOptionListTwo;
+
+  static const List<Map<String, Object>> _storageDataOptionList = [
+    {
+      'leading': SizedBox(width: 20.0),
+      'title': 'When using mobile data',
+      'subTitle': 'No media',
+      'dialogWidget': MobileDataDialog(title: 'When using mobile data')
+    },
+    {
+      'leading': SizedBox(width: 20.0),
+      'title': 'When connected to Wi-Fi',
+      'subTitle': 'No media',
+      'dialogWidget': MobileDataDialog(title: 'When connected to Wi-Fi')
+    },
+    {
+      'leading': SizedBox(width: 20.0),
+      'title': 'When roaming',
+      'subTitle': 'No media',
+      'dialogWidget': MobileDataDialog(title: 'When roaming')
+    },
+  ];
+
+  List<Map<String, Object>> get storageDataOptionList => _storageDataOptionList;
+
+  static const List<Chat> _chatsList = [
+    Chat(
+      imageUrl: 'images/g1.jpg',
+      title: 'F.R.I.E.N.D.S',
+      time: '19.5 MB',
+    ),
+    Chat(
+      imageUrl: 'images/p1.jpg',
+      title: 'Joey',
+      time: '4.0 MB',
+    ),
+    Chat(
+      imageUrl: 'images/p2.jpg',
+      title: 'Rachael',
+      time: '1.5 MB',
+    ),
+    Chat(
+      imageUrl: 'images/p3.jpg',
+      title: 'Monica',
+      time: '867 kB',
+    ),
+    Chat(
+      imageUrl: 'images/p4.jpg',
+      title: 'Ross',
+      time: '592 kB',
+    ),
+    Chat(
+      imageUrl: 'images/p5.png',
+      title: 'Tag Jones',
+      time: '423 kB',
+    ),
+    Chat(
+      imageUrl: 'images/p6.jpg',
+      title: 'Eddie Meneuk',
+      time: '404 kB',
+    ),
+    Chat(
+      imageUrl: 'images/p7.jpg',
+      title: 'Barry Farber',
+      time: '120 kB',
+    ),
+    Chat(
+      imageUrl: 'images/p8.jpg',
+      title: 'Tag Jones',
+      time: '3.8 MB',
+    ),
+    Chat(
+      imageUrl: 'images/p9.jpg',
+      title: 'Amy Green',
+      time: '5.8 MB',
+    ),
+    Chat(
+      imageUrl: 'images/p10.jpg',
+      title: 'Pete Becker',
+      time: '3.0 MB',
+    ),
+  ];
+
+  List<Chat> get chatsList => _chatsList;
+
+  static const List<String> _photoQualityDialogList = [
+    'Auto (recommended)',
+    'Best quality',
+    'Data saver',
+  ];
+
+  List<String> get photoQualityDialogList => _photoQualityDialogList;
+
+  static const List<String> _mobileDataDialogList = [
+    'Photos',
+    'Audio',
+    'Videos',
+    'Documents',
+  ];
+
+  List<String> get mobileDataDialogList => _mobileDataDialogList;
+
+  static const List<Map<String, Object>> _networkTileList = [
+    {
+      'leading': Icons.call_rounded,
+      'title': 'Calls',
+      'subTitle': ['0 outgoing', '0 incoming'],
+      'percent': 0.0,
+      'trailing': ['0kB', '0kB']
+    },
+    {
+      'leading': Icons.perm_media_rounded,
+      'title': 'Media',
+      'subTitle': ['0 outgoing', '0 incoming'],
+      'percent': 0.2,
+      'trailing': ['21.0MB', '33.7MB']
+    },
+    {
+      'leading': Icons.add_to_drive,
+      'title': 'Google Drive',
+      'subTitle': ['0 outgoing', '0 incoming'],
+      'percent': 0.12,
+      'trailing': ['13.5MB', '0kB']
+    },
+    {
+      'leading': Icons.chat_rounded,
+      'title': 'Messages',
+      'subTitle': ['0 outgoing', '0 incoming'],
+      'percent': 0.05,
+      'trailing': ['1.9MB', '3.8MB']
+    },
+    {
+      'leading': Icons.timelapse_rounded,
+      'title': 'Status',
+      'subTitle': ['0 sent', '0 received'],
+      'percent': 0.6,
+      'trailing': ['0kB', '243.5MB']
+    },
+    {
+      'leading': Icons.language_rounded,
+      'title': 'Roaming',
+      'percent': 0.0,
+      'trailing': ['0kB', '0kB']
+    },
+  ];
+
+  List<Map<String, Object>> get networkTileList => _networkTileList;
+
+  static const List<Map<String, Object>> _chatBackupOptionsList = [
+    {
+      'leading': SizedBox(width: 30.0),
+      'title': 'Backup to Google Drive',
+      'subTitle': 'Never',
+      'dialogWidget': ChatBackupDialog(),
+    },
+    {
+      'leading': SizedBox(width: 30.0),
+      'title': 'Google Account',
+      'subTitle': 'example@protonmail.com',
+    },
+    {
+      'leading': SizedBox(width: 30.0),
+      'title': 'Backup using cellular',
+      'trailing': CustomSwitch(),
+    },
+    {
+      'leading': SizedBox(width: 30.0),
+      'title': 'Include videos',
+      'trailing': CustomSwitch(),
+    },
+  ];
+
+  List<Map<String, Object>> get chatBackupOptionsList => _chatBackupOptionsList;
 }
