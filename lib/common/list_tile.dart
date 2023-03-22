@@ -24,6 +24,7 @@ class CustomListTile extends StatelessWidget {
     this.padding,
     this.leadingWidth,
     this.isEnabled,
+    this.tileMaxHeight,
   });
 
   final VoidCallback? onTap;
@@ -42,14 +43,27 @@ class CustomListTile extends StatelessWidget {
   final Widget? trailing;
   final Alignment? trailingAlignment;
   final bool? isEnabled;
+  final double? tileMaxHeight;
 
   @override
   Widget build(BuildContext context) {
+    final defaultTitleStyle = kTitleTextStyle.copyWith(
+      color: const Color(0xff3b4a55),
+    );
+    final defaultSubTitleStyle = kSubTitleTextStyle.copyWith(
+      color: const Color(0xff3b4a55),
+    );
+    final hasSubTitle = subTitle != null || subTitleWidget != null;
+    final hasLeading = leading != null;
+    final hasTrailing = trailing != null;
+
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.translucent,
       child: Container(
-        constraints: const BoxConstraints(maxHeight: 180.0),
+        constraints: BoxConstraints(
+          maxHeight: tileMaxHeight ?? 180.0,
+        ),
         padding: padding ??
             const EdgeInsets.only(
                 left: 10.0, top: 15.0, right: 5.0, bottom: 15.0),
@@ -60,12 +74,11 @@ class CustomListTile extends StatelessWidget {
               crossAxisAlignment: leadingAlignment ?? CrossAxisAlignment.center,
               children: [
                 SizedBox(width: leadingWidth ?? 10.0),
-                leading != null
-                    ? Padding(
-                        padding: const EdgeInsets.only(right: 15.0),
-                        child: leading!,
-                      )
-                    : const SizedBox.shrink(),
+                if (hasLeading)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
+                    child: leading!,
+                  ),
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -76,55 +89,51 @@ class CustomListTile extends StatelessWidget {
                         child: Text(
                           title,
                           style: titleStyle ??
-                              (isEnabled != false
+                              (isEnabled ?? true
                                   ? kTitleTextStyle
-                                  : kTitleTextStyle.copyWith(
-                                      color: const Color(0xff3b4a55),
-                                    )),
+                                  : defaultTitleStyle),
                         ),
                       ),
-                      SizedBox(height: contentPadding ?? 0.0),
-                      subTitle != null || subTitleWidget != null
-                          ? SizedBox(
-                              width: screenWidth - (subTitleIndent ?? 0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  subTitle != null
-                                      ? Text(
-                                          subTitle!,
-                                          style: subTitleStyle ??
-                                              (isEnabled != false
-                                                  ? kSubTitleTextStyle
-                                                  : kSubTitleTextStyle.copyWith(
-                                                      color: const Color(
-                                                          0xff3b4a55),
-                                                    )),
-                                        )
-                                      : const SizedBox.shrink(),
-                                  subTitleWidget != null
-                                      ? subTitleWidget!
-                                      : const SizedBox.shrink(),
-                                ],
-                              ),
-                            )
-                          : const SizedBox.shrink(),
+                      if (hasSubTitle) SizedBox(height: contentPadding ?? 0.0),
+                      if (hasSubTitle)
+                        SizedBox(
+                          width: screenWidth - (subTitleIndent ?? 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (subTitle != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5.0),
+                                  child: Text(
+                                    subTitle!,
+                                    style: subTitleStyle ??
+                                        (isEnabled ?? true
+                                            ? kSubTitleTextStyle
+                                            : defaultSubTitleStyle),
+                                  ),
+                                ),
+                              subTitleWidget != null
+                                  ? subTitleWidget!
+                                  : const SizedBox.shrink(),
+                            ],
+                          ),
+                        ),
                     ],
                   ),
                 ),
               ],
             ),
-            trailing != null
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                        height: 20.0,
-                        child: trailing!,
-                      ),
-                    ],
-                  )
-                : const SizedBox.shrink(),
+            if (hasTrailing)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    height: 20.0,
+                    child: trailing!,
+                  ),
+                ],
+              )
           ],
         ),
       ),
