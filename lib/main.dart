@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/chats_page/chat_backup.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data_page/manage_storage.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data_page/network_usage.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/storage_data_page/proxy_settings.dart';
 
 import './constants.dart';
 import './pages/testp.dart';
@@ -53,34 +58,38 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      // initialRoute: '/chooseCountry',
-      initialRoute: '/deleteAccountPage',
+      initialRoute: '/settingsPage',
       routes: {
         '/': (context) => const LaunchPage(),
         '/helpPage': (context) => const HelpPage(),
         '/testPage': (context) => const TestpPage(),
         '/chatsPage': (context) => const ChatsPage(),
         '/aboutPage': (context) => const AboutPage(),
-        '/appInfoPage': (context) => const AppInfoPage(),
         '/launchPage': (context) => const LaunchPage(),
         '/groupsPage': (context) => const GroupsPage(),
         '/avatarPage': (context) => const AvatarPage(),
+        '/appInfoPage': (context) => const AppInfoPage(),
         '/accountPage': (context) => const AccountPage(),
         '/privacyPage': (context) => const PrivacyPage(),
         '/profilePage': (context) => const ProfilePage(),
         '/settingsPage': (context) => const SettingsPage(),
-        '/contactUsPage': (context) => const ContactUsPage(),
         '/archivedPage': (context) => const ArchivedPage(),
         '/chooseCountry': (context) => const ChooseCountry(),
+        '/contactUsPage': (context) => const ContactUsPage(),
+        '/chatBackupPage': (context) => const ChatBackupPage(),
         '/chatHistoryPage': (context) => const ChatHistoryPage(),
+        '/storageDataPage': (context) => const StorageDataPage(),
+        '/networkUsagePage': (context) => const NetworkUsagePage(),
         '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
         '/conversationPage': (context) => const ConversationPage(),
         '/changeNumberPage': (context) => const ChangeNumberPage(),
-        '/notificationsPage': (context) => const NotificationsPage(),
         '/inviteFriendPage': (context) => const InviteFriendPage(),
         '/liveLocationPage': (context) => const LiveLocationPage(),
         '/profilePhotoPage': (context) => const ProfilePhotoPage(),
         '/deleteAccountPage': (context) => const DeleteAccountPage(),
+        '/manageStoragePage': (context) => const ManageStoragePage(),
+        '/proxySettingsPage': (context) => const ProxySettingsPage(),
+        '/notificationsPage': (context) => const NotificationsPage(),
         '/statusPrivacyPage': (context) => const StatusPrivacyPage(),
         '/themeWallpaperPage': (context) => const ThemeWallpaperPage(),
         '/lastseenOnlinePage': (context) => const LastSeenOnlinePage(),
