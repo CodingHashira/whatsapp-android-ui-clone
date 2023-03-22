@@ -6,6 +6,7 @@ import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
 
@@ -21,31 +22,20 @@ class SettingsPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          // CustomListTile(
-          //   padding: const EdgeInsets.only(
-          //       left: 10.0, top: 18.0, right: 20.0, bottom: 18.0),
-          //   leading: const CircleAvatar(
-          //     radius: 32.0,
-          //     backgroundImage: AssetImage('images/p1.jpg'),
-          //   ),
-          //   title: 'Joey',
-          //   titleStyle: kTitleTextStyle.copyWith(fontSize: 22.0),
-          //   subTitle: 'Urgent calls only',
-          //   trailing: const Icon(
-          //     Icons.qr_code_rounded,
-          //     color: kAccentColor,
-          //     size: 30.0,
-          //   ),
-          //   trailingAlignment: Alignment.centerRight,
-          // ),
-
           ListTile(
+            onTap: () => NavigationHelper.openRoute(
+              context: context,
+              pageRoute: '/profilePage',
+            ),
             minVerticalPadding: 20.0,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-            leading: const CircleAvatar(
-              radius: 32.0,
-              backgroundImage: AssetImage('images/p1.jpg'),
+            leading: const Hero(
+              tag: 'profileImage',
+              child: CircleAvatar(
+                radius: 32.0,
+                backgroundImage: AssetImage('images/p1.jpg'),
+              ),
             ),
             title: Text(
               'Joey',
