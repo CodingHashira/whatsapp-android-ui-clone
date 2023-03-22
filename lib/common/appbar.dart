@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.imageUrl,
     this.actions,
     this.iconColor,
+    this.backgroundColor,
   }) : super(key: key);
 
   final bool isChildWidget;
@@ -16,6 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? imageUrl;
   final Widget? actions;
   final Color? iconColor;
+  final Color? backgroundColor;
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
@@ -23,6 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: backgroundColor,
       titleSpacing: 5,
       elevation: 0.0,
       toolbarHeight: 60,

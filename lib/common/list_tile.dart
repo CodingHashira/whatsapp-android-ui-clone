@@ -11,7 +11,7 @@ class CustomListTile extends StatelessWidget {
     this.contentPadding,
     this.leading,
     this.leadingAlignment,
-    required this.title,
+    this.title,
     this.titleStyle,
     this.titleIndent,
     this.subTitle,
@@ -33,7 +33,7 @@ class CustomListTile extends StatelessWidget {
   final Widget? leading;
   final double? leadingWidth;
   final CrossAxisAlignment? leadingAlignment;
-  final String title;
+  final String? title;
   final TextStyle? titleStyle;
   final double? titleIndent;
   final String? subTitle;
@@ -84,16 +84,18 @@ class CustomListTile extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: screenWidth - (titleIndent ?? 90),
-                        child: Text(
-                          title,
-                          style: titleStyle ??
-                              (isEnabled ?? true
-                                  ? kTitleTextStyle
-                                  : defaultTitleStyle),
-                        ),
-                      ),
+                      title != null
+                          ? SizedBox(
+                              width: screenWidth - (titleIndent ?? 90),
+                              child: Text(
+                                title!,
+                                style: titleStyle ??
+                                    (isEnabled ?? true
+                                        ? kTitleTextStyle
+                                        : defaultTitleStyle),
+                              ),
+                            )
+                          : const SizedBox.shrink(),
                       if (hasSubTitle) SizedBox(height: contentPadding ?? 0.0),
                       if (hasSubTitle)
                         SizedBox(
