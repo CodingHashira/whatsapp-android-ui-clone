@@ -18,12 +18,23 @@ class NavigationHelper {
     }
   }
 
+  static void openPage({
+    required BuildContext context,
+    Widget? page,
+  }) {
+    if (page != null) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return page;
+      }));
+    }
+  }
+
   static void openRoute({
     required BuildContext context,
     String? pageRoute,
   }) {
-    if (pageRoute != '' || pageRoute != null) {
-      Navigator.pushNamed(context, pageRoute!);
+    if (pageRoute != '' && pageRoute != null) {
+      Navigator.pushNamed(context, pageRoute);
     }
   }
 
