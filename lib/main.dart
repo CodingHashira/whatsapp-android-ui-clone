@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_about.dart';
 
 import './constants.dart';
 import './pages/testp.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      initialRoute: '/backupOffPage',
+      initialRoute: '/launchPage',
       routes: {
         '/': (context) => const LaunchPage(),
         '/helpPage': (context) => const HelpPage(),
@@ -71,11 +72,6 @@ class MyApp extends StatelessWidget {
         '/chatsPage': (context) => const ChatsPage(),
         '/aboutPage': (context) => const AboutPage(),
         '/launchPage': (context) => const LaunchPage(),
-        '/backupOnPage': (context) => const BackupOnPage(),
-        '/backupOffPage': (context) => const BackupOffPage(),
-        '/createEncryptionPage': (context) => const CreateEncryptionPage(),
-        '/generateKeyPage': (context) => const GenerateKeyPage(),
-        '/generatePasswordPage': (context) => const GeneratePasswordPage(),
         '/groupsPage': (context) => const GroupsPage(),
         '/avatarPage': (context) => const AvatarPage(),
         '/appInfoPage': (context) => const AppInfoPage(),
@@ -83,14 +79,17 @@ class MyApp extends StatelessWidget {
         '/privacyPage': (context) => const PrivacyPage(),
         '/profilePage': (context) => const ProfilePage(),
         '/settingsPage': (context) => const SettingsPage(),
+        '/backupOnPage': (context) => const BackupOnPage(),
         '/archivedPage': (context) => const ArchivedPage(),
         '/chooseCountry': (context) => const ChooseCountry(),
         '/contactUsPage': (context) => const ContactUsPage(),
+        '/backupOffPage': (context) => const BackupOffPage(),
         '/chatBackupPage': (context) => const ChatBackupPage(),
         '/chatHistoryPage': (context) => const ChatHistoryPage(),
         '/storageDataPage': (context) => const StorageDataPage(),
-        '/networkUsagePage': (context) => const NetworkUsagePage(),
+        '/generateKeyPage': (context) => const GenerateKeyPage(),
         '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
+        '/networkUsagePage': (context) => const NetworkUsagePage(),
         '/conversationPage': (context) => const ConversationPage(),
         '/changeNumberPage': (context) => const ChangeNumberPage(),
         '/inviteFriendPage': (context) => const InviteFriendPage(),
@@ -106,6 +105,8 @@ class MyApp extends StatelessWidget {
         '/archiveSettingsPage': (context) => const ArchiveSettingsPage(),
         '/fingerprintLockPage': (context) => const FingerprintLockPage(),
         '/blockedContactsPage': (context) => const BlockedContactsPage(),
+        '/createEncryptionPage': (context) => const CreateEncryptionPage(),
+        '/generatePasswordPage': (context) => const GeneratePasswordPage(),
         '/requestAccountInfoPage': (context) => const RequestAccountInfoPage(),
         '/deafultMessageTimerPage': (context) =>
             const DeafultMessageTimerPage(),

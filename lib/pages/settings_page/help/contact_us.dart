@@ -52,7 +52,7 @@ class ContactUsPage extends StatelessWidget {
               ),
             ),
             CustomListTile(
-              leadingWidth: 0.0,
+              leadingIndent: 0.0,
               padding: const EdgeInsets.symmetric(horizontal: 0.0),
               trailingAlignment: Alignment.topRight,
               title: 'Include device information? (optional)',
