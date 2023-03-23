@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
-import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
-import 'package:ui_flutter_whatsapp/common/divider.dart';
+
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
-
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/button_bar.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/content_gap.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/custom_tile.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
 
@@ -54,11 +53,14 @@ class ConversationAboutPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Icon(
-                  Icons.more_vert_rounded,
-                  color: Colors.white,
-                  size: 27.0,
-                )
+                Padding(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: CustomPopupMenuButton(
+                    popButtonColor: Colors.white,
+                    popButtonSize: 27.0,
+                    popupMenuItems: data.aboutPopupMenuItemsList,
+                  ),
+                ),
               ],
             ),
           ),
@@ -98,11 +100,73 @@ class ConversationAboutPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0),
                 const Text(
-                  'September 1, 2018',
+                  'March 20, 2023',
                   style: kSubTitleTextStyle,
                 ),
               ],
             ),
+          ),
+          const ContentGap(),
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const PaddedSettingsTextInfo(text: 'Media, links and docs'),
+                  GestureDetector(
+                    onTap: () => NavigationHelper.openRoute(
+                      context: context,
+                      pageRoute: '/conversationMediaPage',
+                    ),
+                    child: Row(
+                      children: const [
+                        Text(
+                          '20',
+                          style: kSubTitleTextStyle,
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 15.0,
+                        ),
+                        SizedBox(width: 5.0)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 120,
+                margin: const EdgeInsets.only(left: 22.0, bottom: 10.0),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    var imagePath = 'images/media/m${index + 1}.jpg';
+                    return GestureDetector(
+                      onTap: () => NavigationHelper.openPage(
+                        context: context,
+                        page: CustomImageView(imagePath: imagePath),
+                      ),
+                      child: Container(
+                        height: 70.0,
+                        width: 120.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(imagePath),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(width: 5.0);
+                  },
+                ),
+              )
+            ],
           ),
           const ContentGap(),
           CustomListBuilder(
