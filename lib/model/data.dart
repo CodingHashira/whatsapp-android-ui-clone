@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/alert_dialogs/archive_chats.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/clear_all_chats.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/delete_all_chats.dart';
@@ -6,12 +7,9 @@ import 'package:ui_flutter_whatsapp/alert_dialogs/light_dialog.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/mobile_data.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/popup_notification_dialog.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/vibrate_dialog.dart';
-import 'package:ui_flutter_whatsapp/common/checkbox.dart';
-
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
 
 class Chat {
   const Chat({
@@ -211,7 +209,7 @@ class Data {
     ],
     'chatBackup': [
       'Back up your messages and media to Google Drive. You can restore them when you reinstall WhatsApp. Your messages will also back up to your phone\'s internal storage.',
-      'Back up your chat history and media to Google Drive so if you change phones, your chat history is safe.'
+      'Back up your chat history and media to Google Drive so if you change phones, your chat history is safe. For added security, you can protect your backup with end-to-end encryption.'
     ],
     'profile': [
       'This is not your username or pin. This name will be visible to your WhatsApp contacts.',
@@ -1014,4 +1012,42 @@ class Data {
   ];
 
   List<Map<String, Object>> get chatBackupOptionsList => _chatBackupOptionsList;
+
+  static const List<String> _aboutPopupMenuItemsList = [
+    'Share',
+    'Edit',
+    'View in address book',
+    'Verify security code',
+  ];
+
+  List<String> get aboutPopupMenuItemsList => _aboutPopupMenuItemsList;
+
+  static const List<Map<String, Object>> _aboutPageOptionList = [
+    {
+      'leading': Icon(Icons.notifications_rounded),
+      'title': 'Mute notifications',
+      'trailing': CustomSwitch(),
+    },
+    {
+      'leading': Icon(Icons.music_note_rounded),
+      'title': 'Custom notifications',
+    },
+    {
+      'leading': Icon(Icons.perm_media_rounded),
+      'title': 'Media visibility',
+    },
+    {
+      'leading': Icon(Icons.lock_rounded),
+      'title': 'Encryption',
+      'subTitle': 'Messages and calls are end-to-end encrypted. Tap to verify.',
+      'subTitleIndent': 100.0,
+    },
+    {
+      'leading': Icon(Icons.timelapse_rounded),
+      'title': 'Disappearing messages',
+      'subTitle': 'Off',
+    },
+  ];
+
+  List<Map<String, Object>> get aboutPageOptionList => _aboutPageOptionList;
 }
