@@ -5,24 +5,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
     required this.isChildWidget,
-    required this.title,
+    this.title,
     this.imageUrl,
     this.actions,
     this.iconColor,
     this.backgroundColor,
     this.onTap,
+    this.titleStyle,
+    this.titleWidget,
+    this.appBarHeight,
   }) : super(key: key);
 
   final bool isChildWidget;
-  final String title;
+  final String? title;
   final String? imageUrl;
   final Widget? actions;
   final Color? iconColor;
   final Color? backgroundColor;
   final VoidCallback? onTap;
+  final TextStyle? titleStyle;
+  final Widget? titleWidget;
+  final double? appBarHeight;
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(appBarHeight ?? 60.0);
 
   @override
   Widget build(BuildContext context) {
@@ -60,14 +66,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
         ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+
+        title: titleWidget ??
+            Text(
+              title!,
+              style: titleStyle ??
+                  const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+        // stitle: titleWidget != null
+        //     ? title != null
+        //         ? Text(
+        //             title!,
+        //             style: titleStyle ??
+        //                 const TextStyle(
+        //                   color: Colors.white,
+        //                   fontSize: 18.0,
+        //                   fontWeight: FontWeight.w500,
+        //                 ),
+        //           )
+        //         : const SizedBox.shrink()
+        //     : const SizedBox.shrink(),
         actions: actions != null ? [actions!] : null,
       ),
     );
