@@ -10,10 +10,7 @@ final double screenWidth = Data.screen.width;
 class ResetNetworkUsageDialog extends StatelessWidget {
   const ResetNetworkUsageDialog({
     super.key,
-    this.title,
   });
-
-  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +24,6 @@ class ResetNetworkUsageDialog extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            title != null
-                ? Padding(
-                    padding: const EdgeInsets.only(
-                        left: 10.0, top: 15.0, bottom: 5.0),
-                    child: Text(
-                      title!,
-                      style: const TextStyle(
-                        color: kTextPrimaryColor,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  )
-                : const SizedBox.shrink(),
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),

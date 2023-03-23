@@ -10,10 +10,7 @@ final double screenWidth = Data.screen.width;
 class ArchiveChatsDialog extends StatelessWidget {
   const ArchiveChatsDialog({
     super.key,
-    this.title,
   });
-
-  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +24,9 @@ class ArchiveChatsDialog extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            title != null
-                ? Padding(
-                    padding: const EdgeInsets.only(
-                        left: 10.0, top: 15.0, bottom: 5.0),
-                    child: Text(
-                      title!,
-                      style: const TextStyle(
-                        color: kTextPrimaryColor,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  )
-                : const SizedBox.shrink(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
               child: Text(
                 'Are you sure you want to archive ALL chats?',
                 style: kSubTitleTextStyle.copyWith(fontSize: 15.5),
