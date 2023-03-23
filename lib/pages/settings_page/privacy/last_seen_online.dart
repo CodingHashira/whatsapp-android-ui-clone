@@ -44,21 +44,18 @@ class LastSeenOnlinePage extends StatelessWidget {
             returnWidgetType: CustomRadioButton,
           ),
           const SizedBox(height: 20.0),
-          Padding(
+          CustomRichText(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: CustomRichText(
-              textList: [
-                {
-                  'If you don\'t share your ': kSubTitleTextStyle,
-                  'last seen':
-                      kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
-                  ' and ': kSubTitleTextStyle,
-                  'online':
-                      kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
-                  data.textData['lastSeenOnline']![0]: kSubTitleTextStyle,
-                }
-              ],
-            ),
+            textList: [
+              {
+                'If you don\'t share your ': kSubTitleTextStyle,
+                'last seen':
+                    kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
+                ' and ': kSubTitleTextStyle,
+                'online': kInfoTextStyle.copyWith(fontWeight: FontWeight.w500),
+                data.textData['lastSeenOnline']![0]: kSubTitleTextStyle,
+              }
+            ],
           )
         ],
       ),

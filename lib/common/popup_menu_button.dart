@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 final double screenWidth = Data.screen.width;
 
@@ -10,9 +11,11 @@ class CustomPopupMenuButton extends StatelessWidget {
     Key? key,
     this.popButtonColor,
     required this.popupMenuItems,
+    this.popButtonSize,
   }) : super(key: key);
 
   final Color? popButtonColor;
+  final double? popButtonSize;
   final Map<String, dynamic> popupMenuItems;
 
   @override
@@ -24,6 +27,7 @@ class CustomPopupMenuButton extends StatelessWidget {
         child: Icon(
           Icons.more_vert_rounded,
           color: popButtonColor ?? kPopupMenuIconColor,
+          size: popButtonSize,
         ),
       ),
       itemBuilder: (context) => _buildPopupMenuItems(context, popupMenuItems),
@@ -64,7 +68,12 @@ class CustomPopupMenuButton extends StatelessWidget {
           padding: menuItemsLength == 1
               ? const EdgeInsets.only(left: 10.0)
               : null, // !
-          onTap: () => Future(() => Navigator.pushNamed(context, value)),
+          onTap: () => Future(
+            () => NavigationHelper.openRoute(
+              context: context,
+              pageRoute: value,
+            ),
+          ),
           child: Text(
             label,
             style: const TextStyle(

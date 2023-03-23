@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'checkbox.dart';
 
 final double screenWidth = Data.screen.width;
 
@@ -23,8 +24,9 @@ class CustomListTile extends StatelessWidget {
     this.trailingAlignment,
     this.padding,
     this.leadingIndent,
-    this.isEnabled,
+    this.isEnabled = true,
     this.leadingEndIndent,
+    this.tileColor,
   });
 
   final VoidCallback? onTap;
@@ -44,6 +46,7 @@ class CustomListTile extends StatelessWidget {
   final Widget? trailing;
   final Alignment? trailingAlignment;
   final bool? isEnabled;
+  final Color? tileColor;
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +61,10 @@ class CustomListTile extends StatelessWidget {
     final hasTrailing = trailing != null;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: isEnabled != false ? onTap : null,
       behavior: HitTestBehavior.translucent,
       child: Container(
+        color: tileColor,
         padding: padding ?? const EdgeInsets.fromLTRB(10.0, 15.0, 5.0, 15.0),
         child: Stack(
           alignment: trailingAlignment ?? Alignment.topRight,
@@ -130,7 +134,9 @@ class CustomListTile extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 20.0,
-                        child: trailing!,
+                        child: trailing! is CustomCheckBox
+                            ? CustomCheckBox(isEnabled: isEnabled)
+                            : trailing!,
                       ),
                     ],
                   )

@@ -33,23 +33,21 @@ class DeafultMessageTimerPage extends StatelessWidget {
             list: data.deafultMessageTimerList,
             returnWidgetType: CustomRadioButton,
           ),
-          Padding(
+          CustomRichText(
             padding: const EdgeInsets.only(left: 15.0, top: 10.0, right: 30.0),
-            child: CustomRichText(
-              textList: [
-                {
-                  data.textData['defaultMessageTimer']![0]:
-                      kInfoTextStyle.copyWith(
-                    fontSize: 14.0,
-                    height: 1.2,
-                  ),
-                  ' Learn more': kInfoTextStyle.copyWith(
-                    color: kAccentColor,
-                    height: 0.0,
-                  ),
-                }
-              ],
-            ),
+            textList: [
+              {
+                data.textData['defaultMessageTimer']![0]:
+                    kInfoTextStyle.copyWith(
+                  fontSize: 14.0,
+                  height: 1.2,
+                ),
+                ' Learn more': kInfoTextStyle.copyWith(
+                  color: kAccentColor,
+                  height: 0.0,
+                ),
+              }
+            ],
           )
         ],
       ),

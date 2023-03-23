@@ -8,7 +8,7 @@ import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
-import 'package:ui_flutter_whatsapp/widgets/network_usage_page/network_tile.dart';
+import 'package:ui_flutter_whatsapp/widgets/network_usage/network_tile.dart';
 
 const data = Data();
 final double screenWidth = Data.screen.width;

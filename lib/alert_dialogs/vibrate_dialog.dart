@@ -17,7 +17,7 @@ class VibrateDialog extends StatelessWidget {
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 260,
+        height: 250,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

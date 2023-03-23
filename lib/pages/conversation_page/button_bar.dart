@@ -12,7 +12,7 @@ class CustomButtonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: const [

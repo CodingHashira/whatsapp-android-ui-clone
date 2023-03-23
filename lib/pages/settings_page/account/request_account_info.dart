@@ -49,19 +49,16 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
             width: 65,
             paddingValue: 23,
           ),
-          Padding(
+          CustomRichText(
             padding:
                 const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
-            child: CustomRichText(
-              textList: [
-                {
-                  data.textData['requestAccountInfo']![0]:
-                      kInfoTextStyle2.copyWith(height: 1.5),
-                  ' Learn more':
-                      kInfoTextStyle2.copyWith(color: kTextLinkColor),
-                }
-              ],
-            ),
+            textList: [
+              {
+                data.textData['requestAccountInfo']![0]:
+                    kInfoTextStyle2.copyWith(height: 1.5),
+                ' Learn more': kInfoTextStyle2.copyWith(color: kTextLinkColor),
+              }
+            ],
           ),
           const SizedBox(height: 15.0),
           const CustomDivider(),
