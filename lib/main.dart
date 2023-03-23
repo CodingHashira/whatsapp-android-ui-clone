@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_about.dart';
 
 import './constants.dart';
 import './pages/testp.dart';
@@ -20,6 +19,7 @@ import 'pages/settings_page/help/app_info.dart';
 import 'pages/settings_page/privacy/about.dart';
 import 'pages/settings_page/privacy/groups.dart';
 import './pages/settings_page/invite_friend.dart';
+import 'pages/conversation_page/notifications.dart';
 import 'pages/settings_page/help/contact_us.dart';
 import 'pages/settings_page/chats/chat_backup.dart';
 import 'pages/settings_page/chats/chat_history.dart';
@@ -34,6 +34,9 @@ import 'pages/settings_page/account/delete_account.dart';
 import 'pages/settings_page/privacy/blocked_contacts.dart';
 import 'pages/settings_page/privacy/fingerprint_lock.dart';
 import 'pages/settings_page/privacy/last_seen_online.dart';
+import 'pages/conversation_page/verify_security_code.dart';
+import 'pages/conversation_page/disappearing_messages.dart';
+import 'pages/conversation_page/conversation_media_page.dart';
 import 'pages/settings_page/chats/chat_backup/backup_on.dart';
 import 'pages/settings_page/chats/chat_backup/backup_off.dart';
 import 'pages/settings_page/chats/chat_backup/generate_key.dart';
@@ -63,8 +66,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: kThemeData,
-      initialRoute: '/launchPage',
+      theme: kThemeData.copyWith(
+        tabBarTheme: const TabBarTheme(
+          labelColor: kAccentColor,
+          unselectedLabelColor: kSecondaryColor,
+          indicatorColor: kAccentColor,
+          indicator: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 2.5, color: kAccentColor),
+            ),
+          ),
+        ),
+      ),
+      initialRoute: '/settingsPage',
       routes: {
         '/': (context) => const LaunchPage(),
         '/helpPage': (context) => const HelpPage(),
@@ -107,13 +121,19 @@ class MyApp extends StatelessWidget {
         '/blockedContactsPage': (context) => const BlockedContactsPage(),
         '/createEncryptionPage': (context) => const CreateEncryptionPage(),
         '/generatePasswordPage': (context) => const GeneratePasswordPage(),
+        '/conversationMediaPage': (context) => const ConversationMediaPage(),
+        '/verifySecurityCodePage': (context) => const VerifySecurityCodePage(),
         '/requestAccountInfoPage': (context) => const RequestAccountInfoPage(),
+        '/conversationDisappearingMessagesPage': (context) =>
+            const ConversationDisappearingMessagesPage(),
         '/deafultMessageTimerPage': (context) =>
             const DeafultMessageTimerPage(),
         '/disappearingMessagesPage': (context) =>
             const DisappearingMessagesPage(),
         '/securityNotificationsPage': (context) =>
             const SecurityNotificationsPage(),
+        '/conversationNotificationsPage': (context) =>
+            const ConversationNotificationsPage(),
       },
     );
   }
