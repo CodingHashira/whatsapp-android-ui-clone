@@ -4,9 +4,11 @@ import 'package:ui_flutter_whatsapp/alert_dialogs/archive_chats.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/clear_all_chats.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/delete_all_chats.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/light_dialog.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/media_visibility.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/mobile_data.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/popup_notification_dialog.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/vibrate_dialog.dart';
+import 'package:ui_flutter_whatsapp/common/checkbox.dart';
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
@@ -230,7 +232,15 @@ class Data {
       'If you forget your password and lose your\nphone, WhatsApp cannot help you recover\nyour backup.',
       'Instead of using a password, you can protect\nand restore your end-to-end encrypted\nbackup with your encryption key:',
       'Save your key. WhatsApp does not have a\ncopy of it. If you forget your key and lose\nyour phone, WhatsApp cannot help you\nrecover your backup.'
-    ]
+    ],
+    'disappearingMessages': [
+      'For more privacy and storage, new messages will disappear from this chat for everyone after the selected duration except when kept. Anyone in the chat can change this setting. ',
+      'Learn more'
+    ],
+    'verifySecurityCode': [
+      'You have security notifications disabled, would you like to enable them?',
+      ' To verify that messages and calls with User\nare end-to-end encrypted, scan this code on their device. You can also compare the number above instead. ',
+    ],
   };
 
   Map<String, List> get textData => _textData;
@@ -242,10 +252,10 @@ class Data {
   Map<String, String> get archivedPopupMenuItems => _archivedPopupMenuItems;
 
   static const Map<String, dynamic> _chatPopupMenuItems = {
-    'View contact': '/testPage',
-    'Media, links, and docs': '/testPage',
-    'Search': '/testPage',
-    'Mute notifications': '/testPage',
+    'View contact': '',
+    'Media, links, and docs': '',
+    'Search': '',
+    'Mute notifications': '',
     'Disappearing messages': '/disapperingMessageForItem',
     'Wallpaper': '/themeWallpaperPage',
     'More': morePopupMenuItems,
@@ -739,7 +749,7 @@ class Data {
     {
       'leading': Icon(Icons.help_outline_rounded),
       'title': 'Help Center',
-      'pageRoute': '/testPage',
+      'pageRoute': '',
     },
     {
       'leading': Icon(Icons.people_rounded),
@@ -750,12 +760,12 @@ class Data {
     {
       'leading': SizedBox(width: 27.0),
       'title': 'Terms and Privacy Policy',
-      'pageRoute': '/testPage',
+      'pageRoute': '',
     },
     {
       'leading': Icon(Icons.description_rounded),
       'title': 'Yearly reminder of our Terms of Service',
-      'pageRoute': '/testPage',
+      'pageRoute': '',
     },
     {
       'leading': Icon(Icons.info_outline_rounded),
@@ -1013,14 +1023,14 @@ class Data {
 
   List<Map<String, Object>> get chatBackupOptionsList => _chatBackupOptionsList;
 
-  static const List<String> _aboutPopupMenuItemsList = [
-    'Share',
-    'Edit',
-    'View in address book',
-    'Verify security code',
-  ];
+  static const Map<String, String> _aboutPopupMenuItemsList = {
+    'Share': '',
+    'Edit': '',
+    'View in address book': '',
+    'Verify security code': '',
+  };
 
-  List<String> get aboutPopupMenuItemsList => _aboutPopupMenuItemsList;
+  Map<String, String> get aboutPopupMenuItemsList => _aboutPopupMenuItemsList;
 
   static const List<Map<String, Object>> _aboutPageOptionList = [
     {
@@ -1031,23 +1041,94 @@ class Data {
     {
       'leading': Icon(Icons.music_note_rounded),
       'title': 'Custom notifications',
+      'pageRoute': '/conversationNotificationsPage',
     },
     {
       'leading': Icon(Icons.perm_media_rounded),
       'title': 'Media visibility',
+      'dialogWidget': MediaVisibilityDialog(),
     },
     {
       'leading': Icon(Icons.lock_rounded),
       'title': 'Encryption',
       'subTitle': 'Messages and calls are end-to-end encrypted. Tap to verify.',
       'subTitleIndent': 100.0,
+      'pageRoute': '/verifySecurityCodePage'
     },
     {
       'leading': Icon(Icons.timelapse_rounded),
       'title': 'Disappearing messages',
       'subTitle': 'Off',
+      'pageRoute': '/conversationDisappearingMessagesPage'
     },
   ];
 
   List<Map<String, Object>> get aboutPageOptionList => _aboutPageOptionList;
+
+  static const List<Map<String, Object>> _coversationNotificationOptionsList = [
+    {
+      'title': 'Notification tone',
+      'subTitle': 'Default(Prism)',
+    },
+    {
+      'title': 'Vibrate',
+      'subTitle': 'Off',
+      'dialogWidget': VibrateDialog(),
+    },
+    {
+      'title': 'Popup notification',
+      'subTitle': 'Not available',
+      'isEnabled': false,
+    },
+    {
+      'title': 'Light',
+      'subTitle': 'White',
+      'dialogWidget': LightDialog(),
+    },
+    {
+      'title': 'Use high priority notifications',
+      'subTitle': 'Show previews of notifications at the tap of the screen',
+      'subTitleIndent': 90.0,
+      'trailing': CustomCheckBox(),
+    },
+    {
+      'title': 'Ringtone',
+      'subTitle': 'Default(Prism)',
+    },
+    {
+      'title': 'Vibrate',
+      'subTitle': 'Default',
+      'dialogWidget': VibrateDialog()
+    },
+  ];
+
+  List<Map<String, Object>> get coversationNotificationOptionsList =>
+      _coversationNotificationOptionsList;
+
+  static const List<String> _mediaVisibilityRadioList = [
+    'Default (Yes)',
+    'Yes',
+    'No',
+  ];
+
+  List<String> get mediaVisibilityRadioList => _mediaVisibilityRadioList;
+
+  static const Map<String, Object> _imageViewPopupMenuOptions = {
+    'Edit': '',
+    'All media': '',
+    'Show in chat': '',
+    'Share': '',
+    'Save': '',
+    'Set as...': {
+      'My profile photo': '',
+      'Group icon': '',
+    },
+    'View in gallery': '',
+    'Rotate': '',
+    'Delete': '',
+    'Report User': ''
+  };
+
+  Map<String, dynamic> get imageViewPopupMenuOptions =>
+      _imageViewPopupMenuOptions;
 }
