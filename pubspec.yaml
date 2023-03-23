@@ -35,5 +35,6 @@ flutter:
 
   assets:
     - images/
+    - images/media/
 
   
