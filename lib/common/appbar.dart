@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.iconColor,
     this.backgroundColor,
+    this.onTap,
   }) : super(key: key);
 
   final bool isChildWidget;
@@ -18,51 +19,57 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? actions;
   final Color? iconColor;
   final Color? backgroundColor;
+  final VoidCallback? onTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: backgroundColor,
-      titleSpacing: 5,
-      elevation: 0.0,
-      toolbarHeight: 60,
-      leadingWidth: imageUrl != null ? 80 : 60,
-      leading: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: Row(
-          children: [
-            isChildWidget
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: iconColor ?? kPopupMenuIconColor,
-                      size: 25,
-                    ),
-                  )
-                : const SizedBox.shrink(),
-            imageUrl != null
-                ? CircleAvatar(
-                    radius: 18.0,
-                    backgroundImage: AssetImage(imageUrl!),
-                  )
-                : const SizedBox.shrink(),
-          ],
+    return GestureDetector(
+      onTap: onTap,
+      child: AppBar(
+        backgroundColor: backgroundColor,
+        titleSpacing: 5,
+        elevation: 0.0,
+        toolbarHeight: 60,
+        leadingWidth: imageUrl != null ? 80 : 60,
+        leading: GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Row(
+            children: [
+              isChildWidget
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: iconColor ?? kPopupMenuIconColor,
+                        size: 25,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+              imageUrl != null
+                  ? Hero(
+                      tag: 'profileImage',
+                      child: CircleAvatar(
+                        radius: 18.0,
+                        backgroundImage: AssetImage(imageUrl!),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            ],
+          ),
         ),
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w500,
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+            fontWeight: FontWeight.w500,
+          ),
         ),
+        actions: actions != null ? [actions!] : null,
       ),
-      actions: actions != null ? [actions!] : null,
-      centerTitle: false,
     );
   }
 }
