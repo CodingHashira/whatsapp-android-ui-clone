@@ -33,7 +33,6 @@ class ChatTile extends StatelessWidget {
           ),
           Expanded(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,

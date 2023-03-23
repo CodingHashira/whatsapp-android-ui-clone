@@ -4,8 +4,10 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/alert_dialogs/call_dialog.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+
+const data = Data();
 
 class DisappearingMessagesPage extends StatelessWidget {
   const DisappearingMessagesPage({super.key});
@@ -74,7 +76,7 @@ class DisappearingMessagesPage extends StatelessWidget {
             leading: Icon(
               Icons.person_rounded,
             ),
-            // leadingWidth: 10.0,
+            // leadingIndent: 10.0,
             subTitle: 'New chats will begin with a disappearing message timer',
           ),
           const PaddedSettingsTextInfo(text: 'Set for your current chats'),
@@ -82,7 +84,7 @@ class DisappearingMessagesPage extends StatelessWidget {
             // setLeadingAtTop: true,
             // padding: EdgeInsets.only(left: 20.0, top: 10.0),
             title: 'Apply timer to chats',
-            // leadingWidth: 10.0,
+            // leadingIndent: 10.0,
             leading: Icon(
               Icons.list_alt_rounded,
             ),

@@ -40,7 +40,7 @@ class SelectThemeDialog extends StatelessWidget {
               padding: const EdgeInsets.only(left: 0),
               itemCount: data.themeDialogOptions.length,
               list: data.themeDialogOptions,
-              leadingWidth: 0,
+              leadingIndent: 0,
               returnWidgetType: CustomRadioButton,
             ),
             Row(

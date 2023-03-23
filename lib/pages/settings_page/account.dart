@@ -23,7 +23,7 @@ class AccountPage extends StatelessWidget {
           CustomListBuilder(
             startIndex: 0,
             itemCount: data.accountMenu.length,
-            leadingWidth: 8.0,
+            leadingIndent: 8.0,
             list: data.accountMenu,
             returnWidgetType: CustomListTile,
           ),

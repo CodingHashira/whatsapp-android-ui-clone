@@ -62,7 +62,8 @@ class SettingsPage extends StatelessWidget {
             tileMargin:
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             itemCount: data.settingsMenu.length,
-            leadingWidth: 10.0,
+            leadingIndent: 10.0,
+            leadingEndIndent: 20.0,
             list: data.settingsMenu,
             returnWidgetType: CustomListTile,
           ),

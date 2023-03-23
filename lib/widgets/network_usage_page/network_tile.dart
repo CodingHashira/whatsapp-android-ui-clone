@@ -25,7 +25,7 @@ class NetworkTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomListTile(
       leading: Icon(icon),
-      leadingWidth: 20.0,
+      leadingIndent: 20.0,
       leadingAlignment: CrossAxisAlignment.start,
       padding: const EdgeInsets.fromLTRB(15.0, 12.0, 25.0, 12.0),
       title: title,

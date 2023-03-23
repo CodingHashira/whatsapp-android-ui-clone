@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/alert_dialogs/call_dialog.dart';
+
+const data = Data();
 
 class FingerprintLockPage extends StatelessWidget {
   const FingerprintLockPage({super.key});

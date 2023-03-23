@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
@@ -6,6 +7,7 @@ import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
 
@@ -49,9 +51,11 @@ class ChatBackupPage extends StatelessWidget {
               ],
             ),
           ),
-          const CustomListTile(
+          CustomListTile(
+            onTap: () => NavigationHelper.openRoute(
+                context: context, pageRoute: '/backupOffPage'),
             leadingAlignment: CrossAxisAlignment.start,
-            leading: Icon(Icons.lock_rounded),
+            leading: const Icon(Icons.lock_rounded),
             title: 'End-to-end encrypted backup',
             subTitle: 'On',
           ),
@@ -61,7 +65,7 @@ class ChatBackupPage extends StatelessWidget {
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             leadingAlignment: CrossAxisAlignment.start,
             leading: const Icon(Icons.add_to_drive_rounded),
-            title: 'Last Backup',
+            title: 'Google Drive settings',
             titleStyle: kSubTitleTextStyle.copyWith(
               fontWeight: FontWeight.w500,
             ),

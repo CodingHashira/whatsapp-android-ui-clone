@@ -56,7 +56,7 @@ class BackupOffPage extends StatelessWidget {
                 Expanded(
                   child: CustomButton(
                     title: 'Turn on',
-                    routeName: '/backupOnPage',
+                    routeName: '/createEncryptionPage',
                   ),
                 ),
               ],

@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 25.0),
           CustomListTile(
             padding: const EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
-            leadingWidth: 15.0,
+            leadingIndent: 15.0,
             leadingAlignment: CrossAxisAlignment.start,
             leading: const Icon(
               Icons.person,

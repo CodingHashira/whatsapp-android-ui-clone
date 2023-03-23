@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/common/rupee_icon.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/text_field.dart';
@@ -53,18 +54,7 @@ class ChatBox extends StatelessWidget {
                             size: iconSize,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(2.8),
-                          decoration: const BoxDecoration(
-                            color: kSecondaryColor,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.currency_rupee_rounded,
-                            color: kPrimaryColor,
-                            size: 14.0,
-                          ),
-                        ),
+                        const RupeeIcon(),
                         const Icon(
                           Icons.photo_camera_rounded,
                           color: kSecondaryColor,

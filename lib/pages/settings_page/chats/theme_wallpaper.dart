@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
 
 import './theme_wallpaper/wallpaper_preview.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
-import 'package:ui_flutter_whatsapp/alert_dialogs/call_dialog.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
+
+const data = Data();
 
 class ThemeWallpaperPage extends StatefulWidget {
   const ThemeWallpaperPage({super.key});

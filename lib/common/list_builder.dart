@@ -18,19 +18,21 @@ class CustomListBuilder extends StatelessWidget {
     required this.itemCount,
     required this.list,
     required this.startIndex,
-    this.leadingWidth,
+    this.leadingIndent,
     required this.returnWidgetType,
     this.padding,
     this.tileMargin,
     this.titleStyle,
     this.skipItemList,
     this.checkStyle,
+    this.leadingEndIndent,
   });
 
   final int itemCount;
   final List list;
   final int startIndex;
-  final double? leadingWidth;
+  final double? leadingIndent;
+  final double? leadingEndIndent;
   final Type returnWidgetType;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? tileMargin;
@@ -99,7 +101,7 @@ class CustomListBuilder extends StatelessWidget {
 
   CustomRadioButton _buildRadioButton(int index) {
     return CustomRadioButton(
-      leadingWidth: leadingWidth,
+      leadingIndent: leadingIndent,
       value: list[index],
       optionsList: list,
       currentOption: list.first,
@@ -114,7 +116,8 @@ class CustomListBuilder extends StatelessWidget {
         startIndex: startIndex,
         index: index,
       ),
-      leadingWidth: leadingWidth,
+      leadingIndent: leadingIndent,
+      leadingEndIndent: leadingEndIndent,
       padding: tileMargin,
       leading: list[index + startIndex]['leading'],
       title: list[index + startIndex]['title'],

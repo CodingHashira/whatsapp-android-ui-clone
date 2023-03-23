@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_about.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 import 'conversation_page/actions.dart';
 import 'conversation_page/chat_box.dart';
@@ -37,6 +39,13 @@ class ConversationPage extends StatelessWidget {
         ),
         Scaffold(
           appBar: CustomAppBar(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    const ConversationAboutPage(title: 'Monica'),
+              ),
+            ),
             imageUrl: 'images/p3.jpg',
             title: 'Monica',
             isChildWidget: true,
