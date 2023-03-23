@@ -19,13 +19,40 @@ class GenerateKeyPage extends StatefulWidget {
 class _GenerateKeyPageState extends State<GenerateKeyPage> {
   bool isHidden = false;
   String buttonTitle = 'Generate your 64-digit key';
+  late List<List<String>> securityKeyList;
 
-  String generateKey() {
+  List<List<String>> generateKeys() {
     var random = Random();
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    return String.fromCharCodes(
-      List.generate(4, (_) => chars.codeUnitAt(random.nextInt(chars.length))),
-    );
+    var result = <List<String>>[];
+
+    for (var i = 0; i < 3; i++) {
+      var sublist = <String>[];
+      for (var j = 0; j < 4; j++) {
+        var key = String.fromCharCodes(
+          List.generate(
+            5,
+            (_) => chars.codeUnitAt(
+              random.nextInt(chars.length),
+            ),
+          ),
+        );
+        sublist.add(key);
+      }
+      result.add(sublist);
+    }
+    return result;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    securityKeyList = generateKeys();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void updateState() => setState(() {
@@ -81,16 +108,17 @@ class _GenerateKeyPageState extends State<GenerateKeyPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        for (int i = 0; i < 4; i++)
+                        for (var row in securityKeyList)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              for (int i = 0; i < 4; i++)
+                              for (var number in row)
                                 Text(
-                                  generateKey(),
+                                  number,
                                   style: kTitleTextStyle.copyWith(
-                                    color: kAccentColor,
-                                    fontSize: 16.0,
+                                    color: kSecondaryColor,
+                                    letterSpacing: 1.5,
+                                    fontSize: 16.5,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 )
