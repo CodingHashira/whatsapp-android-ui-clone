@@ -7,7 +7,7 @@ import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/chat_bubble.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 import 'package:ui_flutter_whatsapp/widgets/country_code_tile.dart';
-import 'package:ui_flutter_whatsapp/widgets/network_usage_page/network_tile.dart';
+import 'package:ui_flutter_whatsapp/widgets/network_usage/network_tile.dart';
 
 var previousSender = '';
 var verticalGap = 5.0;
@@ -26,6 +26,8 @@ class CustomListBuilder extends StatelessWidget {
     this.skipItemList,
     this.checkStyle,
     this.leadingEndIndent,
+    this.separator,
+    this.isEnabled,
   });
 
   final int itemCount;
@@ -39,10 +41,12 @@ class CustomListBuilder extends StatelessWidget {
   final TextStyle? titleStyle;
   final List<int>? skipItemList;
   final TextStyle? checkStyle;
+  final Widget? separator;
+  final bool? isEnabled;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
       itemCount: itemCount,
       padding: padding ?? const EdgeInsets.only(top: 0.0),
@@ -67,6 +71,9 @@ class CustomListBuilder extends StatelessWidget {
             return _buildCustomListTile(index, context);
           }
         }
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return separator != null ? separator! : const SizedBox.shrink();
       },
     );
   }
@@ -101,7 +108,6 @@ class CustomListBuilder extends StatelessWidget {
 
   CustomRadioButton _buildRadioButton(int index) {
     return CustomRadioButton(
-      leadingIndent: leadingIndent,
       value: list[index],
       optionsList: list,
       currentOption: list.first,
@@ -125,7 +131,7 @@ class CustomListBuilder extends StatelessWidget {
       subTitle: list[index + startIndex]['subTitle'],
       subTitleIndent: list[index + startIndex]['subTitleIndent'],
       trailing: list[index + startIndex]['trailing'],
-      isEnabled: list[index + startIndex]['isEnabled'],
+      isEnabled: isEnabled ?? list[index + startIndex]['isEnabled'],
     );
   }
 
