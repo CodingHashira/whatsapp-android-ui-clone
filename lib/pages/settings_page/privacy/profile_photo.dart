@@ -24,6 +24,7 @@ class ProfilePhotoPage extends StatelessWidget {
           const PaddedSettingsTextInfo(text: 'Who can see my Profile Photo'),
           CustomListBuilder(
             startIndex: 0,
+            radioCurrentOption: 1,
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             itemCount: data.genericPrivacyRadioList.length,
             list: data.genericPrivacyRadioList,

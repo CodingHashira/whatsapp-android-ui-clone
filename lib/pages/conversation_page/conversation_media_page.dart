@@ -7,7 +7,10 @@ import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_media/m
 import 'package:ui_flutter_whatsapp/widgets/conversation_media/tab.dart';
 
 class ConversationMediaPage extends StatelessWidget {
-  const ConversationMediaPage({super.key});
+  const ConversationMediaPage({
+    super.key,
+    required this.userName,
+  });
 
   static const List<Widget> myTabs = [
     MyTab(
@@ -21,6 +24,8 @@ class ConversationMediaPage extends StatelessWidget {
     ),
   ];
 
+  final String userName;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,7 +33,7 @@ class ConversationMediaPage extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           isChildWidget: true,
-          title: 'Monica',
+          title: userName,
           titleStyle: kTitleTextStyle.copyWith(
             fontSize: 20.0,
           ),

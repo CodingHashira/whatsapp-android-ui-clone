@@ -46,12 +46,13 @@ const kCountryCodeTextStyle = TextStyle(
 
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
-  fontSize: 16.5,
+  fontSize: 17.5,
+  fontWeight: FontWeight.w500,
 );
 
 const kSubTitleTextStyle = TextStyle(
   color: kSecondaryColor,
-  fontSize: 14.0,
+  fontSize: 16.0,
 );
 
 const kTimeTextStyle = TextStyle(

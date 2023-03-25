@@ -19,7 +19,7 @@ class SelectThemeDialog extends StatelessWidget {
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 230,
+        height: 240,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class SelectThemeDialog extends StatelessWidget {
             ),
             CustomListBuilder(
               startIndex: 0,
-              padding: const EdgeInsets.only(left: 0),
+              padding: const EdgeInsets.only(left: 0, top: 10.0),
               itemCount: data.themeDialogOptions.length,
               list: data.themeDialogOptions,
               leadingIndent: 0,

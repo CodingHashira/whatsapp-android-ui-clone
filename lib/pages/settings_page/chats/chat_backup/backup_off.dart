@@ -39,14 +39,19 @@ class BackupOffPage extends StatelessWidget {
             ),
             const SizedBox(height: 40.0),
             CustomRichText(
+              textAlign: TextAlign.center,
               textList: [
                 {
                   data.textData['endToEndbackup']![1][0]: kInfoTextStyle2,
                   data.textData['endToEndbackup']![1][1]:
-                      kInfoTextStyle2.copyWith(fontWeight: FontWeight.bold),
+                      kInfoTextStyle2.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                   data.textData['endToEndbackup']![1][2]: kInfoTextStyle2,
                   data.textData['endToEndbackup']![1][3]:
-                      kInfoTextStyle2.copyWith(fontWeight: FontWeight.bold),
+                      kInfoTextStyle2.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 }
               ],
             ),

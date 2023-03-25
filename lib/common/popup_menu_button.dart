@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 final double screenWidth = Data.screen.width;
@@ -69,10 +70,19 @@ class CustomPopupMenuButton extends StatelessWidget {
               ? const EdgeInsets.only(left: 10.0)
               : null, // !
           onTap: () => Future(
-            () => NavigationHelper.openRoute(
-              context: context,
-              pageRoute: value,
-            ),
+            () {
+              if (value is NewConversationActionPage) {
+                NavigationHelper.openPage(
+                  context: context,
+                  page: value,
+                );
+              } else {
+                NavigationHelper.openRoute(
+                  context: context,
+                  pageRoute: value,
+                );
+              }
+            },
           ),
           child: Text(
             label,

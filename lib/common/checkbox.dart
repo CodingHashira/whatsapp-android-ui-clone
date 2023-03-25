@@ -55,7 +55,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
           value: widget.checkValue ?? checkValue,
           activeColor: kAccentColor,
           checkColor: kPrimaryColor,
-          onChanged: widget.isEnabled == true
+          onChanged: widget.isEnabled != false
               ? (p0) => setState(() {
                     checkValue = p0!;
                   })

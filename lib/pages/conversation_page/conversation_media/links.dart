@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
+import 'package:ui_flutter_whatsapp/constants.dart';
 
 class LinksPage extends StatelessWidget {
   const LinksPage({super.key});
@@ -7,10 +7,14 @@ class LinksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: const [
-          PaddedSettingsTextInfo(text: 'Links'),
-        ],
+      body: Center(
+        child: Text(
+          'No links found',
+          style: kInfoTextStyle2.copyWith(
+            color: const Color(0xffe8edf0),
+            fontSize: 17.0,
+          ),
+        ),
       ),
     );
   }

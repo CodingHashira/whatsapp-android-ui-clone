@@ -27,6 +27,7 @@ class CustomListTile extends StatelessWidget {
     this.isEnabled = true,
     this.leadingEndIndent,
     this.tileColor,
+    this.wrapText,
   });
 
   final VoidCallback? onTap;
@@ -47,6 +48,7 @@ class CustomListTile extends StatelessWidget {
   final Alignment? trailingAlignment;
   final bool? isEnabled;
   final Color? tileColor;
+  final bool? wrapText;
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,7 @@ class CustomListTile extends StatelessWidget {
           alignment: trailingAlignment ?? Alignment.topRight,
           children: [
             Row(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: leadingAlignment ?? CrossAxisAlignment.center,
               children: [
                 SizedBox(width: leadingIndent ?? 10.0),
@@ -79,12 +82,14 @@ class CustomListTile extends StatelessWidget {
                     child: leading!,
                   ),
                 Expanded(
+                  flex: 1,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       title != null
                           ? SizedBox(
+                              height: 23.0,
                               width: screenWidth - (titleIndent ?? 90),
                               child: Text(
                                 title!,
@@ -102,7 +107,6 @@ class CustomListTile extends StatelessWidget {
                           ? SizedBox(
                               width: screenWidth - (subTitleIndent ?? 0),
                               child: Column(
-                                mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   if (subTitle != null)
@@ -110,6 +114,10 @@ class CustomListTile extends StatelessWidget {
                                       padding: const EdgeInsets.only(top: 5.0),
                                       child: Text(
                                         subTitle!,
+                                        maxLines: wrapText == true ? 1 : null,
+                                        overflow: wrapText == true
+                                            ? TextOverflow.ellipsis
+                                            : null,
                                         style: subTitleStyle ??
                                             (isEnabled ?? true
                                                 ? kSubTitleTextStyle

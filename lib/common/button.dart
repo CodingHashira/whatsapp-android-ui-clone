@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(100.0),
             side: const BorderSide(color: kTextBoxBorderColor)),
         color: buttonColor ?? const Color(0xff00a884),
-        padding: const EdgeInsets.symmetric(vertical: 13.5, horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(vertical: 11.0, horizontal: 20.0),
         onPressed: routeName != null
             ? routeName != ''
                 ? onPressed ?? () => Navigator.pushNamed(context, routeName!)

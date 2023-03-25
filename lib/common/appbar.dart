@@ -36,17 +36,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: onTap,
       child: AppBar(
         backgroundColor: backgroundColor,
-        titleSpacing: 5,
+        titleSpacing: 10.0,
         elevation: 0.0,
         toolbarHeight: 60,
-        leadingWidth: imageUrl != null ? 80 : 60,
+        leadingWidth: imageUrl != null ? 82 : 60,
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: Row(
             children: [
               isChildWidget
                   ? Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
+                      padding: const EdgeInsets.only(left: 15.0, right: 5.0),
                       child: Icon(
                         Icons.arrow_back,
                         color: iconColor ?? kPopupMenuIconColor,
@@ -66,7 +66,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
         ),
-
         title: titleWidget ??
             Text(
               title!,
@@ -77,19 +76,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.w500,
                   ),
             ),
-        // stitle: titleWidget != null
-        //     ? title != null
-        //         ? Text(
-        //             title!,
-        //             style: titleStyle ??
-        //                 const TextStyle(
-        //                   color: Colors.white,
-        //                   fontSize: 18.0,
-        //                   fontWeight: FontWeight.w500,
-        //                 ),
-        //           )
-        //         : const SizedBox.shrink()
-        //     : const SizedBox.shrink(),
         actions: actions != null ? [actions!] : null,
       ),
     );
