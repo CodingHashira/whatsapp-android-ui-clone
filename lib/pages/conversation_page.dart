@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_about.dart';
-import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 import 'conversation_page/actions.dart';
 import 'conversation_page/chat_box.dart';
@@ -17,9 +16,15 @@ class ConversationPage extends StatelessWidget {
   const ConversationPage({
     super.key,
     this.iconColor,
+    required this.imageUrl,
+    required this.userName,
+    required this.about,
   });
 
   final Color? iconColor;
+  final String imageUrl;
+  final String userName;
+  final String about;
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +47,15 @@ class ConversationPage extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    const ConversationAboutPage(title: 'Monica'),
+                builder: (context) => ConversationAboutPage(
+                  title: userName,
+                  imageUrl: imageUrl,
+                  about: about,
+                ),
               ),
             ),
-            imageUrl: 'images/p3.jpg',
-            title: 'Monica',
+            imageUrl: imageUrl,
+            title: userName,
             isChildWidget: true,
             iconColor: iconColor,
             actions: const ChatPageActions(),

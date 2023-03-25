@@ -28,6 +28,8 @@ class CustomListBuilder extends StatelessWidget {
     this.leadingEndIndent,
     this.separator,
     this.isEnabled,
+    this.radioCurrentOption,
+    this.openChat,
   });
 
   final int itemCount;
@@ -43,6 +45,8 @@ class CustomListBuilder extends StatelessWidget {
   final TextStyle? checkStyle;
   final Widget? separator;
   final bool? isEnabled;
+  final int? radioCurrentOption;
+  final bool? openChat;
 
   @override
   Widget build(BuildContext context) {
@@ -107,10 +111,11 @@ class CustomListBuilder extends StatelessWidget {
   }
 
   CustomRadioButton _buildRadioButton(int index) {
+    print(radioCurrentOption);
     return CustomRadioButton(
       value: list[index],
       optionsList: list,
-      currentOption: list.first,
+      currentOption: list[radioCurrentOption ?? startIndex],
     );
   }
 
@@ -156,16 +161,12 @@ class CustomListBuilder extends StatelessWidget {
 
   ChatTile _buildChatTile(int index) {
     return ChatTile(
-      leading: CircleAvatar(
-        radius: 23.0,
-        backgroundColor: const Color.fromARGB(255, 78, 95, 105),
-        backgroundImage: AssetImage(
-          list[index].imageUrl,
-        ),
-      ),
+      openChat: openChat ?? false,
+      imagePath: list[index].imageUrl,
       title: list[index].title,
       time: list[index].time,
       subTitle: list[index].subTitle,
+      about: list[index].about,
     );
   }
 }

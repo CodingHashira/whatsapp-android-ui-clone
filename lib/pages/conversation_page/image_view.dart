@@ -11,9 +11,13 @@ class CustomImageView extends StatefulWidget {
   const CustomImageView({
     super.key,
     required this.imagePath,
+    this.actionsList,
+    this.titleWidget,
   });
 
   final String imagePath;
+  final List<Widget>? actionsList;
+  final Widget? titleWidget;
 
   @override
   State<CustomImageView> createState() => _CustomImageViewState();
@@ -27,50 +31,54 @@ class _CustomImageViewState extends State<CustomImageView> {
       appBar: CustomAppBar(
         backgroundColor: Colors.black,
         isChildWidget: true,
-        titleWidget: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Monica',
-              style: kTitleTextStyle.copyWith(
-                fontSize: 20.0,
-              ),
+        titleWidget: widget.titleWidget ??
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Monica',
+                  style: kTitleTextStyle.copyWith(
+                    fontSize: 20.0,
+                  ),
+                ),
+                const SizedBox(height: 3.0),
+                Text(
+                  'March 20, 11:35',
+                  style: kSubTitleTextStyle.copyWith(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                )
+              ],
             ),
-            const SizedBox(height: 3.0),
-            Text(
-              'March 20, 11:35',
-              style: kSubTitleTextStyle.copyWith(
-                color: Colors.white,
-                fontSize: 12.0,
-                fontWeight: FontWeight.w300,
-              ),
-            )
-          ],
-        ),
         actions: SizedBox(
           width: 130.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () => setState(() {
-                  isfavorite = !isfavorite;
-                }),
-                child: Icon(
-                  !isfavorite ? Icons.star_border_rounded : Icons.star_rounded,
-                  size: 27.0,
-                ),
-              ),
-              const Icon(
-                Icons.share_rounded,
-                size: 25.0,
-              ),
-              CustomPopupMenuButton(
-                popupMenuItems: data.imageViewPopupMenuOptions,
-                popButtonColor: Colors.white,
-                popButtonSize: 27.0,
-              )
-            ],
+            children: widget.actionsList ??
+                [
+                  GestureDetector(
+                    onTap: () => setState(() {
+                      isfavorite = !isfavorite;
+                    }),
+                    child: Icon(
+                      !isfavorite
+                          ? Icons.star_border_rounded
+                          : Icons.star_rounded,
+                      size: 27.0,
+                    ),
+                  ),
+                  const Icon(
+                    Icons.share_rounded,
+                    size: 25.0,
+                  ),
+                  CustomPopupMenuButton(
+                    popupMenuItems: data.imageViewPopupMenuOptions,
+                    popButtonColor: Colors.white,
+                    popButtonSize: 27.0,
+                  )
+                ],
           ),
         ),
       ),

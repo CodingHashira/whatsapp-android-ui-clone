@@ -56,32 +56,17 @@ class CustomImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      // TODO: Remove after scaling
-      alignment: Alignment.center,
-      children: [
-        Container(
-          margin: margin ?? const EdgeInsets.symmetric(vertical: 35.0),
-          height: 110,
-          width: 110,
-          decoration: const BoxDecoration(
-            color: Colors.amber,
-            shape: BoxShape.circle,
-          ),
-        ),
-        Container(
-          margin: margin ?? const EdgeInsets.symmetric(vertical: 35.0),
-          padding: EdgeInsets.all(paddingValue),
-          decoration: const BoxDecoration(
-            color: Color(0xff0f3633),
-            shape: BoxShape.circle,
-          ),
-          child: Image.asset(
-            imageUrl,
-            width: width,
-          ),
-        ),
-      ],
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(vertical: 35.0),
+      padding: EdgeInsets.all(paddingValue),
+      decoration: const BoxDecoration(
+        color: Color(0xff0f3633),
+        shape: BoxShape.circle,
+      ),
+      child: Image.asset(
+        imageUrl,
+        width: width,
+      ),
     );
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ui_flutter_whatsapp/pages/home/linked_devices.dart';
+import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
+import 'package:ui_flutter_whatsapp/pages/home/starred_messages.dart';
 
 import './constants.dart';
 import './pages/testp.dart';
-import './pages/launch.dart';
+import 'pages/home.dart';
 import './pages/settings.dart';
 import './pages/archived.dart';
 import './pages/archive_settings.dart';
@@ -68,6 +71,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: kThemeData.copyWith(
         tabBarTheme: const TabBarTheme(
+          labelStyle: TextStyle(fontSize: 16.5),
+          unselectedLabelStyle: TextStyle(fontSize: 16.5),
           labelColor: kAccentColor,
           unselectedLabelColor: kSecondaryColor,
           indicatorColor: kAccentColor,
@@ -77,15 +82,17 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: kAccentColor,
+        ),
       ),
-      initialRoute: '/settingsPage',
+      initialRoute: '/homePage',
       routes: {
-        '/': (context) => const LaunchPage(),
+        '/homePage': (context) => const HomePage(),
         '/helpPage': (context) => const HelpPage(),
         '/testPage': (context) => const TestpPage(),
         '/chatsPage': (context) => const ChatsPage(),
         '/aboutPage': (context) => const AboutPage(),
-        '/launchPage': (context) => const LaunchPage(),
         '/groupsPage': (context) => const GroupsPage(),
         '/avatarPage': (context) => const AvatarPage(),
         '/appInfoPage': (context) => const AppInfoPage(),
@@ -99,12 +106,13 @@ class MyApp extends StatelessWidget {
         '/contactUsPage': (context) => const ContactUsPage(),
         '/backupOffPage': (context) => const BackupOffPage(),
         '/chatBackupPage': (context) => const ChatBackupPage(),
+        '/starredMessagesPage': (context) => const StarredMessagesPage(),
+        '/linkedDevicesPage': (context) => const LinkedDevicesPage(),
         '/chatHistoryPage': (context) => const ChatHistoryPage(),
         '/storageDataPage': (context) => const StorageDataPage(),
         '/generateKeyPage': (context) => const GenerateKeyPage(),
         '/twoStepAuthPage': (context) => const TwoStepAuthPage(),
         '/networkUsagePage': (context) => const NetworkUsagePage(),
-        '/conversationPage': (context) => const ConversationPage(),
         '/changeNumberPage': (context) => const ChangeNumberPage(),
         '/inviteFriendPage': (context) => const InviteFriendPage(),
         '/liveLocationPage': (context) => const LiveLocationPage(),
@@ -115,13 +123,12 @@ class MyApp extends StatelessWidget {
         '/notificationsPage': (context) => const NotificationsPage(),
         '/statusPrivacyPage': (context) => const StatusPrivacyPage(),
         '/themeWallpaperPage': (context) => const ThemeWallpaperPage(),
-        '/lastseenOnlinePage': (context) => const LastSeenOnlinePage(),
+        '/lastSeenOnlinePage': (context) => const LastSeenOnlinePage(),
         '/archiveSettingsPage': (context) => const ArchiveSettingsPage(),
         '/fingerprintLockPage': (context) => const FingerprintLockPage(),
         '/blockedContactsPage': (context) => const BlockedContactsPage(),
         '/createEncryptionPage': (context) => const CreateEncryptionPage(),
         '/generatePasswordPage': (context) => const GeneratePasswordPage(),
-        '/conversationMediaPage': (context) => const ConversationMediaPage(),
         '/verifySecurityCodePage': (context) => const VerifySecurityCodePage(),
         '/requestAccountInfoPage': (context) => const RequestAccountInfoPage(),
         '/conversationDisappearingMessagesPage': (context) =>

@@ -6,6 +6,7 @@ import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
@@ -30,11 +31,13 @@ class SettingsPage extends StatelessWidget {
             minVerticalPadding: 20.0,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-            leading: const Hero(
-              tag: 'profileImage',
-              child: CircleAvatar(
-                radius: 32.0,
-                backgroundImage: AssetImage('images/p1.jpg'),
+            leading: GestureDetector(
+              child: const Hero(
+                tag: 'profileImage',
+                child: CircleAvatar(
+                  radius: 32.0,
+                  backgroundImage: AssetImage('images/p1.jpg'),
+                ),
               ),
             ),
             title: Text(
