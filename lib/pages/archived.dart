@@ -8,6 +8,7 @@ import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
 import 'package:ui_flutter_whatsapp/common/rich_text.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
 
@@ -26,12 +27,18 @@ class ArchivedPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text(
-              data.archiveInfo,
-              textAlign: TextAlign.center,
-              style: kInfoTextStyle,
+          GestureDetector(
+            onTap: () => NavigationHelper.openRoute(
+              context: context,
+              pageRoute: '/chatsPage',
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                data.textData['archiveInfo']![0],
+                textAlign: TextAlign.center,
+                style: kInfoTextStyle,
+              ),
             ),
           ),
           const CustomDivider(),

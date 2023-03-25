@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
 final double screenWidth = Data.screen.width;
@@ -24,11 +27,30 @@ class ProfilePage extends StatelessWidget {
           Stack(
             alignment: Alignment.bottomRight,
             children: [
-              Hero(
-                tag: 'profileImage',
-                child: CircleAvatar(
-                  radius: screenWidth / 5.7,
-                  backgroundImage: const AssetImage('images/p1.jpg'),
+              GestureDetector(
+                onTap: () => NavigationHelper.openPage(
+                  context: context,
+                  page: const CustomImageView(
+                    imagePath: 'images/p1.jpg',
+                    titleWidget: Text('Profile'),
+                    actionsList: [
+                      Icon(
+                        Icons.edit_rounded,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.share_rounded,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                child: Hero(
+                  tag: 'profileImage',
+                  child: CircleAvatar(
+                    radius: screenWidth / 5.7,
+                    backgroundImage: const AssetImage('images/p1.jpg'),
+                  ),
                 ),
               ),
               Container(
