@@ -12,16 +12,17 @@ import 'package:ui_flutter_whatsapp/common/checkbox.dart';
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
+import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
 
 class Chat {
-  const Chat({
-    required this.imageUrl,
-    this.imageStackIcon,
-    required this.title,
-    this.time,
-    this.subTitle,
-    this.trailingIcon,
-  });
+  const Chat(
+      {required this.imageUrl,
+      this.imageStackIcon,
+      required this.title,
+      this.time,
+      this.subTitle,
+      this.trailingIcon,
+      this.about});
 
   final String imageUrl;
   final IconData? imageStackIcon;
@@ -29,6 +30,7 @@ class Chat {
   final String? time;
   final String? subTitle;
   final IconData? trailingIcon;
+  final String? about;
 }
 
 class Data {
@@ -39,39 +41,42 @@ class Data {
 
   get size => _size;
 
-  final archiveInfo =
-      'These chats stay archived when new messages are received. Tap to change';
-
   static const List<Chat> _conversationList = [
     Chat(
       imageUrl: 'images/g1.jpg',
       title: 'F.R.I.E.N.D.S 🙈',
       time: 'Yesterday',
       subTitle: 'Joey : I\'m not even sorry',
+      about: 'Six F.R.I.E.N.D.S ten seasons',
     ),
     Chat(
       imageUrl: 'images/p1.jpg',
       title: 'Joey',
       time: '2/02/23',
       subTitle: 'How you doin?',
+      about: 'Busy',
     ),
     Chat(
       imageUrl: 'images/p2.jpg',
       title: 'Rachael',
       time: '3/16/23',
       subTitle: 'Can you believe what happened today?',
+      about: 'In love 💖',
     ),
     Chat(
       imageUrl: 'images/p3.jpg',
       title: 'Monica ',
       time: '22:34',
       subTitle: 'Tomorrow?',
+      about:
+          'I wish I could pivot my way out of this week, just like Ross did with that couch',
     ),
     Chat(
       imageUrl: 'images/p4.jpg',
       title: 'Ross',
       time: 'Yesterday',
       subTitle: 'Ah. Humor Based On My Pain.',
+      about: 'Hey There 😉',
     ),
   ];
 
@@ -148,6 +153,9 @@ class Data {
   List<Chat> get inviteFriendList => _inviteFriendList;
 
   static const Map<String, List> _textData = {
+    'archiveInfo': [
+      'These chats stay archived when new messages are received. Tap to change',
+    ],
     'securityNotifications': [
       'End-to-end encryption keeps your personal messages and calls between you and the people you choose. Not even WhatsApp can read or listen to them. This includes your:',
       'Get notified when your security code changes for a contact\'s phone in an end-to-end encrypted chat. If you have multiple devices, this setting must be enabled on each device where you want to get notifications.',
@@ -220,7 +228,7 @@ class Data {
       'When turned on, your backup will be\nend-to-end encrypted before it gets uploade\nto Google Drive. NO one, not even Google or WhatsApp, will be able to access it.',
       [
         'Your current Google Drive backup size is ',
-        '122\n \t\t\t\t\t\t\t\t\t\t\t\t\tMB ',
+        '122 MB ',
         'including ',
         '33 MB media.',
       ],
@@ -228,7 +236,7 @@ class Data {
       'You chose to protect your backup with a\n64-digit encryption key. If you would rather\nprotect it with a password, you can create\none.'
     ],
     'createEncryption': [
-      'To protect your end-to-end encrypted\nbackup, create a password. You will need\nthis password to restore your backup.',
+      'To protect your end-to-end encrypted backup, create a password. You will need this password to restore your backup.',
       'If you forget your password and lose your\nphone, WhatsApp cannot help you recover\nyour backup.',
       'Instead of using a password, you can protect\nand restore your end-to-end encrypted\nbackup with your encryption key:',
       'Save your key. WhatsApp does not have a\ncopy of it. If you forget your key and lose\nyour phone, WhatsApp cannot help you\nrecover your backup.'
@@ -241,6 +249,31 @@ class Data {
       'You have security notifications disabled, would you like to enable them?',
       ' To verify that messages and calls with User\nare end-to-end encrypted, scan this code on their device. You can also compare the number above instead. ',
     ],
+    // 'conversationAbout': [
+    //   'I wish I could pivot my way out of this week, just like Ross did with that couch',
+    // ],
+    'community': [
+      'Easily organize your related groups and send announcements. Now, your communities, like neighborhoods or schools, can have their own space.',
+    ],
+    'createCallLink': [
+      'Anyone with WhatsApp can use this link to join this call. Only share it with people you trust.',
+      'https://call.whatsapp.com/video/K9UtUhydQSjf50p0AHupz8w'
+    ],
+    'starredMessages': [
+      'Tap and hold on any message in any chat to star it, so you can easily find it later.'
+    ],
+    'linkedDevices': [
+      'Use WhatsApp on Web, Desktop, and other devices. ',
+      'Your personal messages are',
+      ' end-to-end encrypted ',
+      'on all your devices.',
+      'Your personal messages are ',
+      'end-to-end encrypted ',
+      'on all your devices.',
+    ],
+    'broadcast': [
+      'Only contacts with +91 1234662749 n their adress book will receive your broadcast messages.',
+    ]
   };
 
   Map<String, List> get textData => _textData;
@@ -426,8 +459,8 @@ class Data {
   static const List<Map<String, Object>> _privacyMenu = [
     {
       'title': 'Last seen and online',
-      'subTitle': 'Nobody',
-      'pageRoute': '/lastseenOnlinePage'
+      'subTitle': 'Everyone',
+      'pageRoute': '/lastSeenOnlinePage'
     },
     {
       'title': 'Profile photo',
@@ -1027,7 +1060,7 @@ class Data {
     'Share': '',
     'Edit': '',
     'View in address book': '',
-    'Verify security code': '',
+    'Verify security code': '/verifySecurityCodePage',
   };
 
   Map<String, String> get aboutPopupMenuItemsList => _aboutPopupMenuItemsList;
@@ -1131,4 +1164,112 @@ class Data {
 
   Map<String, dynamic> get imageViewPopupMenuOptions =>
       _imageViewPopupMenuOptions;
+
+  static const Map<String, Object> _homePagePopUpMenuOptions = {
+    'New Group': NewConversationActionPage(pageType: 'group'),
+    'New broadcase': NewConversationActionPage(pageType: 'broadcast'),
+    'Linked devices': '/linkedDevicesPage',
+    'Starred messages': '/starredMessagesPage',
+    'Payments': '',
+    'Settings': '/settingsPage',
+  };
+
+  Map<String, dynamic> get homePagePopUpMenuOptions =>
+      _homePagePopUpMenuOptions;
+
+  static const List<Map<String, String>> _callHistoryList = [
+    {
+      'leading': 'images/g1.jpg',
+      'title': 'F.R.I.E.N.D.S 🙈',
+      'subTitle': '13:22',
+      'sender': 'other',
+      'attended': 'yes',
+      'type': 'video',
+      'about': 'Hey There I\'m using WhatsApp'
+    },
+    {
+      'leading': 'images/p1.jpg',
+      'title': 'Joey',
+      'subTitle': 'February 18, 11:29',
+      'sender': 'me',
+      'attended': 'yes',
+      'type': 'audio',
+      'about': 'Busy',
+    },
+    {
+      'leading': 'images/p2.jpg',
+      'title': 'Rachael',
+      'subTitle': 'February 2, 22:10',
+      'sender': 'other',
+      'attended': 'no',
+      'type': 'audio',
+      'about': 'In love 💖',
+    },
+    {
+      'leading': 'images/p3.jpg',
+      'title': 'Monica ',
+      'subTitle': 'January 11, 08:42',
+      'sender': 'other',
+      'attended': 'yes',
+      'type': 'video',
+      'about':
+          'I wish I could pivot my way out of this week, just like Ross did with that couch',
+    },
+    {
+      'leading': 'images/p4.jpg',
+      'title': 'Ross',
+      'subTitle': '10/21/22, 11:26',
+      'sender': 'me',
+      'attended': 'yes',
+      'type': 'audio',
+      'about': 'Hey There 😉',
+    },
+  ];
+
+  List<Map<String, String>> get callHistoryList => _callHistoryList;
+
+  static const List<Map<String, String>> _statusUpdateList = [
+    {
+      'leading': 'images/p1.jpg',
+      'title': 'Joey',
+      'subTitle': '22:29',
+      'statusUrl': 'images/status/s1.jpg'
+    },
+    {
+      'leading': 'images/p2.jpg',
+      'title': 'Rachael',
+      'subTitle': '22:10',
+      'statusUrl': 'images/status/s2.jpg'
+    },
+    {
+      'leading': 'images/p3.jpg',
+      'title': 'Monica ',
+      'subTitle': 'Today, 08:42',
+      'statusUrl': 'images/status/s3.jpg'
+    },
+    {
+      'leading': 'images/p4.jpg',
+      'title': 'Ross',
+      'subTitle': 'Today, 11:26',
+      'statusUrl': 'images/status/s4.jpg'
+    },
+  ];
+
+  List<Map<String, String>> get statusUpdateList => _statusUpdateList;
+
+  static const Map<String, String> _callInfoPopupMenuOptions = {
+    'Remove from call log': '',
+    'Block': '',
+  };
+
+  Map<String, String> get callInfoPopupMenuOptions => _callInfoPopupMenuOptions;
+
+  static const Map<String, String> _addCallPopupOptionsList = {
+    'Invite a friend': '',
+    'Contacts': '',
+    'Refresh': '',
+    'help': '',
+  };
+
+  Map<String, String> get addCallPopupOptionsList => _addCallPopupOptionsList;
 }
