@@ -41,9 +41,11 @@ class NavigationHelper {
   static void openDialog({
     required BuildContext context,
     Widget? dialogWidget,
+    bool? dismissible,
   }) {
     if (dialogWidget != null) {
       showDialog(
+          barrierDismissible: dismissible ?? true,
           context: context,
           builder: (context) {
             return dialogWidget;

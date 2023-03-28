@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/alert_dialogs/photo_quality.dart';
 
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/alert_dialogs/photo_quality.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
@@ -25,6 +25,7 @@ class StorageDataPage extends StatelessWidget {
         title: 'Storage and data',
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           CustomListTile(
             onTap: () => Navigator.pushNamed(context, '/manageStoragePage'),
