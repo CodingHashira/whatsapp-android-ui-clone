@@ -13,16 +13,19 @@ import 'package:ui_flutter_whatsapp/common/switch.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
 import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
+import '../alert_dialogs/choose_account.dart';
 
 class Chat {
-  const Chat(
-      {required this.imageUrl,
-      this.imageStackIcon,
-      required this.title,
-      this.time,
-      this.subTitle,
-      this.trailingIcon,
-      this.about});
+  const Chat({
+    required this.imageUrl,
+    this.imageStackIcon,
+    required this.title,
+    this.time,
+    this.subTitle,
+    this.trailingIcon,
+    this.about,
+    this.statusUrl,
+  });
 
   final String imageUrl;
   final IconData? imageStackIcon;
@@ -31,15 +34,11 @@ class Chat {
   final String? subTitle;
   final IconData? trailingIcon;
   final String? about;
+  final String? statusUrl;
 }
 
 class Data {
   const Data();
-
-  static final Size _size =
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
-
-  get size => _size;
 
   static const List<Chat> _conversationList = [
     Chat(
@@ -50,34 +49,34 @@ class Data {
       about: 'Six F.R.I.E.N.D.S ten seasons',
     ),
     Chat(
-      imageUrl: 'images/p1.jpg',
-      title: 'Joey',
-      time: '2/02/23',
-      subTitle: 'How you doin?',
-      about: 'Busy',
-    ),
+        imageUrl: 'images/p1.jpg',
+        title: 'Joey',
+        time: '2/02/23',
+        subTitle: 'How you doin?',
+        about: 'Busy',
+        statusUrl: 'images/status/s2.jpg'),
     Chat(
-      imageUrl: 'images/p2.jpg',
-      title: 'Rachael',
-      time: '3/16/23',
-      subTitle: 'Can you believe what happened today?',
-      about: 'In love 💖',
-    ),
+        imageUrl: 'images/p2.jpg',
+        title: 'Rachael',
+        time: '3/16/23',
+        subTitle: 'Can you believe what happened today?',
+        about: 'In love 💖',
+        statusUrl: 'images/status/s3.jpg'),
     Chat(
-      imageUrl: 'images/p3.jpg',
-      title: 'Monica ',
-      time: '22:34',
-      subTitle: 'Tomorrow?',
-      about:
-          'I wish I could pivot my way out of this week, just like Ross did with that couch',
-    ),
+        imageUrl: 'images/p3.jpg',
+        title: 'Monica ',
+        time: '22:34',
+        subTitle: 'Tomorrow?',
+        about:
+            'I wish I could pivot my way out of this week, just like Ross did with that couch',
+        statusUrl: 'images/status/s3.jpg'),
     Chat(
-      imageUrl: 'images/p4.jpg',
-      title: 'Ross',
-      time: 'Yesterday',
-      subTitle: 'Ah. Humor Based On My Pain.',
-      about: 'Hey There 😉',
-    ),
+        imageUrl: 'images/p4.jpg',
+        title: 'Ross',
+        time: 'Yesterday',
+        subTitle: 'Ah. Humor Based On My Pain.',
+        about: 'Hey There 😉',
+        statusUrl: 'images/status/s4.jpg'),
   ];
 
   List<Chat> get conversaionList => _conversationList;
@@ -273,7 +272,32 @@ class Data {
     ],
     'broadcast': [
       'Only contacts with +91 1234662749 n their adress book will receive your broadcast messages.',
-    ]
+    ],
+
+    'qrCode': [
+      'Your QR code is private. If you share it\nwith someone, they can scan it with their\nWhatsApp camera to add you as a contact.',
+    ],
+
+    'welcome': [
+      'Read our ',
+      'Privacy policy. ',
+      'Tap "Agree and continue" to accept the ',
+      'Terms of Service'
+    ],
+
+    'verifyNumber': [
+      'Allow WhatsApp to manage this call ',
+      'so we can call your phone number and end the call automatically.',
+      'Allow WhatsApp to do a one-time check ',
+      'and access your call log so we can confirm that you received the call.'
+    ],
+
+    'contactAccess': [
+      'To easily send messages to friends\nand family, allow WhatsApp to access your contacts.',
+    ],
+    'liveLocation': [
+      'Live location requires background location. You can manage this in your device settings.',
+    ],
   };
 
   Map<String, List> get textData => _textData;
@@ -423,9 +447,6 @@ class Data {
 
   List<Map> get settingsMenu => _settingsMenu;
 
-  static Size screen =
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
-
   static const List<Map<String, Object>> _accountMenu = [
     {
       'leading': Icon(Icons.security_rounded),
@@ -515,35 +536,35 @@ class Data {
     {
       'leading': Icon(
         Icons.chat_outlined,
-        size: 20.0,
+        size: 16.0,
       ),
       'title': 'Text and voice messages',
     },
     {
       'leading': Icon(
         Icons.call_rounded,
-        size: 20.0,
+        size: 16.0,
       ),
       'title': 'Audio and video calls',
     },
     {
       'leading': Icon(
         Icons.attachment_rounded,
-        size: 20.0,
+        size: 16.0,
       ),
       'title': 'Photos, videos and documents',
     },
     {
       'leading': Icon(
         Icons.location_on,
-        size: 20.0,
+        size: 16.0,
       ),
       'title': 'Location sharing',
     },
     {
       'leading': Icon(
         Icons.offline_bolt_outlined,
-        size: 20.0,
+        size: 16.0,
       ),
       'title': 'Status updates',
     },
@@ -1023,12 +1044,13 @@ class Data {
     {
       'leading': Icons.language_rounded,
       'title': 'Roaming',
+      'subTitle': ['0 sent', '0 received'],
       'percent': 0.0,
       'trailing': ['0kB', '0kB']
     },
   ];
 
-  List<Map<String, Object>> get networkTileList => _networkTileList;
+  List<Map<String, dynamic>> get networkTileList => _networkTileList;
 
   static const List<Map<String, Object>> _chatBackupOptionsList = [
     {
@@ -1041,6 +1063,7 @@ class Data {
       'leading': SizedBox(width: 30.0),
       'title': 'Google Account',
       'subTitle': 'example@protonmail.com',
+      'dialogWidget': ChooseBackupAccount()
     },
     {
       'leading': SizedBox(width: 30.0),
@@ -1185,7 +1208,7 @@ class Data {
       'sender': 'other',
       'attended': 'yes',
       'type': 'video',
-      'about': 'Hey There I\'m using WhatsApp'
+      'about': 'SIX F.R.I.E.N.D.S A DECADE OF SEASONS'
     },
     {
       'leading': 'images/p1.jpg',
@@ -1233,25 +1256,29 @@ class Data {
       'leading': 'images/p1.jpg',
       'title': 'Joey',
       'subTitle': '22:29',
-      'statusUrl': 'images/status/s1.jpg'
+      'statusUrl': 'images/status/s1.jpg',
+      'uploadTime': 'Yesterday, 22:29',
     },
     {
       'leading': 'images/p2.jpg',
       'title': 'Rachael',
       'subTitle': '22:10',
-      'statusUrl': 'images/status/s2.jpg'
+      'statusUrl': 'images/status/s2.jpg',
+      'uploadTime': 'Yesterday, 22:10',
     },
     {
       'leading': 'images/p3.jpg',
       'title': 'Monica ',
       'subTitle': 'Today, 08:42',
-      'statusUrl': 'images/status/s3.jpg'
+      'statusUrl': 'images/status/s3.jpg',
+      'uploadTime': 'Today, 08:42',
     },
     {
       'leading': 'images/p4.jpg',
       'title': 'Ross',
       'subTitle': 'Today, 11:26',
-      'statusUrl': 'images/status/s4.jpg'
+      'statusUrl': 'images/status/s4.jpg',
+      'uploadTime': 'Today, 11:26',
     },
   ];
 
@@ -1272,4 +1299,31 @@ class Data {
   };
 
   Map<String, String> get addCallPopupOptionsList => _addCallPopupOptionsList;
+
+  static const List<String> _chooseBackupAccountOptions = [
+    'johndoe@gmail.com',
+    'broadcast24@protonmail.com',
+    'Add account'
+  ];
+
+  List<String> get chooseBackupAccountOptions => _chooseBackupAccountOptions;
+
+  static const List<String> _callTypeRadioOptionsList = [
+    'Video',
+    'Voice',
+  ];
+
+  List<String> get callTypeRadioOptionsList => _callTypeRadioOptionsList;
+
+  static const Map<String, dynamic> _statusUpdatePopupOptions = {
+    'Mute': '',
+    'Message': '',
+    'Voice call': '',
+    'Video call': '',
+    'View contact': '',
+    'Report': '',
+  };
+
+  Map<String, dynamic> get statusUpdatePopupOptions =>
+      _statusUpdatePopupOptions;
 }
