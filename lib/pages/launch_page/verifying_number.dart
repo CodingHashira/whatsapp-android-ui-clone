@@ -23,19 +23,31 @@ class VerifyingNumberPage extends StatefulWidget {
 }
 
 class _VerifyingNumberPageState extends State<VerifyingNumberPage> {
-  var timeString = '';
+  var timeString = '1:05';
 
-  String countdown(Duration duration) {
+  void countdown(Duration duration) {
     int remainingSeconds = duration.inSeconds;
 
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      timeString =
-          '${remainingSeconds ~/ 60}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
+      setState(() {
+        timeString =
+            '${remainingSeconds ~/ 60}:${(remainingSeconds % 60).toString().padLeft(2, '0')}';
+      });
       remainingSeconds--;
 
       if (remainingSeconds < 58) timer.cancel();
     });
-    return timeString;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    countdown(const Duration(seconds: 64));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
