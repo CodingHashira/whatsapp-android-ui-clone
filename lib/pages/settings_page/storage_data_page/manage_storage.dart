@@ -1,58 +1,91 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/color_dot.dart';
 
+import 'package:ui_flutter_whatsapp/common/color_dot.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
-import 'package:ui_flutter_whatsapp/common/chat_tile.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 import 'package:ui_flutter_whatsapp/common/linear_percent_indicator.dart';
 
 const data = Data();
 
-class ManageStoragePage extends StatelessWidget {
+class ManageStoragePage extends StatefulWidget {
   const ManageStoragePage({super.key});
+
+  @override
+  State<ManageStoragePage> createState() => _ManageStoragePageState();
+}
+
+class _ManageStoragePageState extends State<ManageStoragePage>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<int> _animation;
+  int _targetValue = 83;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+
+    _animation = IntTween(begin: 0, end: _targetValue).animate(_controller);
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(isChildWidget: true, title: 'Manage storage'),
       body: ListView(
+        shrinkWrap: true,
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(12.0, 20.0, 12.0, 0.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.baseline,
               textBaseline: TextBaseline.alphabetic,
-              children: const [
-                Text(
-                  '83',
-                  style: TextStyle(
-                    color: kAccentColor,
-                    fontSize: 28.0,
-                  ),
+              children: [
+                AnimatedBuilder(
+                  animation: _animation,
+                  builder: (BuildContext context, Widget? child) {
+                    return Text(
+                      '${_animation.value}',
+                      style: const TextStyle(
+                        color: kAccentColor,
+                        fontSize: 28.0,
+                      ),
+                    );
+                  },
                 ),
-                SizedBox(width: 5.0),
-                Text(
+                const SizedBox(width: 5.0),
+                const Text(
                   'GB',
                   style: TextStyle(
                     color: kAccentColor,
                     fontSize: 16.0,
                   ),
                 ),
-                Spacer(),
-                Text(
+                const Spacer(),
+                const Text(
                   '92',
                   style: TextStyle(
                     color: kSecondaryColor,
                     fontSize: 28.0,
                   ),
                 ),
-                SizedBox(width: 5.0),
-                Text(
+                const SizedBox(width: 5.0),
+                const Text(
                   'GB',
                   style: TextStyle(
                     color: kSecondaryColor,
@@ -150,12 +183,26 @@ class ManageStoragePage extends StatelessWidget {
               ],
             ),
           ),
-          CustomListBuilder(
-            startIndex: 0,
+          ListView.builder(
+            shrinkWrap: true,
             itemCount: data.chatsList.length,
-            list: data.chatsList,
-            returnWidgetType: ChatTile,
-          )
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return CustomListTile(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 3.0),
+                leading: CircleAvatar(
+                  radius: 22.0,
+                  backgroundImage: AssetImage(data.chatsList[index].imageUrl),
+                ),
+                title: data.chatsList[index].title,
+                trailing: Text(
+                  data.chatsList[index].time!,
+                  style: kSubTitleTextStyle.copyWith(fontSize: 13.0),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
