@@ -60,7 +60,7 @@ class DeleteAccountPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 65.0),
             child: CustomButton(
               title: 'Change Number',
-              routeName: '/',
+              routeName: ' ',
             ),
           ),
           const SizedBox(height: 10.0),
@@ -123,7 +123,7 @@ class DeleteAccountPage extends StatelessWidget {
                 const CustomButton(
                   title: 'Delete my account',
                   buttonColor: kRedColor,
-                  routeName: '/',
+                  routeName: ' ',
                 ),
               ],
             ),

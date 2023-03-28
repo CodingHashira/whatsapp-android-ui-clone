@@ -37,6 +37,7 @@ import 'pages/settings_page/privacy/fingerprint_lock.dart';
 import 'pages/settings_page/privacy/last_seen_online.dart';
 import 'pages/conversation_page/verify_security_code.dart';
 import 'pages/conversation_page/disappearing_messages.dart';
+import 'package:ui_flutter_whatsapp/pages/home/payments.dart';
 import 'pages/settings_page/chats/chat_backup/backup_on.dart';
 import 'pages/settings_page/chats/chat_backup/backup_off.dart';
 import 'pages/settings_page/chats/chat_backup/generate_key.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      home: VerifySecurityCodePage(),
+      home: HomePage(),
       // initialRoute: '/welcomePage',
       routes: {
         '/homePage': (context) => const HomePage(),
@@ -88,6 +89,7 @@ class MyApp extends StatelessWidget {
         '/backupOffPage': (context) => const BackupOffPage(),
         '/chatBackupPage': (context) => const ChatBackupPage(),
         '/chatHistoryPage': (context) => const ChatHistoryPage(),
+        '/paymentsPage': (context) => const PaymentsPage(),
         '/storageDataPage': (context) => const StorageDataPage(),
         '/generateKeyPage': (context) => const GenerateKeyPage(),
         '/twoStepAuthPage': (context) => const TwoStepAuthPage(),

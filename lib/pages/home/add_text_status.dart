@@ -38,6 +38,7 @@ class _AddTextStatusPageState extends State<AddTextStatusPage> {
           Center(
             child: CustomTextField(
               hintText: 'Type a status',
+              autoFocus: true,
               controller: _controller,
               onChanged: (p0) {
                 var textLength = _controller.text.length;
@@ -110,7 +111,7 @@ class _AddTextStatusPageState extends State<AddTextStatusPage> {
               ),
               const Spacer(),
               Container(
-                height: 60.0,
+                height: 55.0,
                 color: Colors.black.withOpacity(0.5),
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Row(
@@ -132,10 +133,10 @@ class _AddTextStatusPageState extends State<AddTextStatusPage> {
                             ),
                             SizedBox(width: 5.0),
                             Text(
-                              'Status(Contacts)',
+                              'Status (Contacts)',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15.0,
+                                fontSize: 13.0,
                               ),
                             )
                           ],

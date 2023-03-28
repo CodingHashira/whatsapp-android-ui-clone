@@ -70,7 +70,7 @@ class LinkedDevicesPage extends StatelessWidget {
                 Expanded(
                   child: CustomButton(
                     title: 'Link a device',
-                    routeName: '',
+                    routeName: ' ',
                   ),
                 ),
               ],

@@ -15,6 +15,7 @@ class ChatTile extends StatelessWidget {
     this.openChat,
     required this.imagePath,
     this.about,
+    this.onLongPress,
   }) : super(key: key);
 
   final String title;
@@ -24,6 +25,7 @@ class ChatTile extends StatelessWidget {
   final IconData? trailingIcon;
   final bool? openChat;
   final String? about;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class ChatTile extends StatelessWidget {
     return CustomListTile(
       leadingEndIndent: 5.0,
       padding: const EdgeInsets.only(left: 0.0, right: 5.0),
+      onLongPress: onLongPress,
       onTap: openChat == true
           ? () => NavigationHelper.openPage(
                 context: context,

@@ -45,7 +45,7 @@ class ChatBackupPage extends StatelessWidget {
                 SizedBox(height: 15.0),
                 CustomButton(
                   title: 'Backup',
-                  routeName: '/',
+                  routeName: ' ',
                 )
               ],
             ),

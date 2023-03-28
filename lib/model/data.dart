@@ -248,9 +248,6 @@ class Data {
       'You have security notifications disabled, would you like to enable them?',
       ' To verify that messages and calls with User\nare end-to-end encrypted, scan this code on their device. You can also compare the number above instead. ',
     ],
-    // 'conversationAbout': [
-    //   'I wish I could pivot my way out of this week, just like Ross did with that couch',
-    // ],
     'community': [
       'Easily organize your related groups and send announcements. Now, your communities, like neighborhoods or schools, can have their own space.',
     ],
@@ -273,30 +270,29 @@ class Data {
     'broadcast': [
       'Only contacts with +91 1234662749 n their adress book will receive your broadcast messages.',
     ],
-
     'qrCode': [
       'Your QR code is private. If you share it\nwith someone, they can scan it with their\nWhatsApp camera to add you as a contact.',
     ],
-
     'welcome': [
       'Read our ',
       'Privacy policy. ',
       'Tap "Agree and continue" to accept the ',
       'Terms of Service'
     ],
-
     'verifyNumber': [
       'Allow WhatsApp to manage this call ',
       'so we can call your phone number and end the call automatically.',
       'Allow WhatsApp to do a one-time check ',
       'and access your call log so we can confirm that you received the call.'
     ],
-
     'contactAccess': [
       'To easily send messages to friends\nand family, allow WhatsApp to access your contacts.',
     ],
     'liveLocation': [
       'Live location requires background location. You can manage this in your device settings.',
+    ],
+    'payments': [
+      'To protect your security, WhatsApp does not store your UPI pin or full bank account number. '
     ],
   };
 
@@ -510,7 +506,7 @@ class Data {
     },
     {
       'title': 'Blocked contacts',
-      'subTitle': '1',
+      'subTitle': 'None',
       'pageRoute': '/blockedContactsPage',
     },
     {
@@ -1193,7 +1189,7 @@ class Data {
     'New broadcase': NewConversationActionPage(pageType: 'broadcast'),
     'Linked devices': '/linkedDevicesPage',
     'Starred messages': '/starredMessagesPage',
-    'Payments': '',
+    'Payments': '/paymentsPage',
     'Settings': '/settingsPage',
   };
 

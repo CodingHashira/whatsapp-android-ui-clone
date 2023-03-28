@@ -33,7 +33,7 @@ class NavigationHelper {
     required BuildContext context,
     String? pageRoute,
   }) {
-    if (pageRoute != '' && pageRoute != null) {
+    if (pageRoute != '' && pageRoute != ' ' && pageRoute != null) {
       Navigator.pushNamed(context, pageRoute);
     }
   }

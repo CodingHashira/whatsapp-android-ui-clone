@@ -73,7 +73,7 @@ class BackupOnPage extends StatelessWidget {
                   child: CustomButton(
                     title: 'Turn off',
                     buttonColor: kRedColor,
-                    routeName: '/',
+                    routeName: ' ',
                   ),
                 ),
               ],

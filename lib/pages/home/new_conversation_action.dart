@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 import '../../model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
@@ -6,6 +7,7 @@ import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'calls/create_call_link.dart';
 import 'new_conversation_action/selection_view.dart';
 
 const data = Data();
@@ -117,8 +119,12 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
           if (widget.pageType == 'call')
             Column(
               children: [
-                const CustomListTile(
-                  leading: CircleAvatar(
+                CustomListTile(
+                  onTap: () => NavigationHelper.openPage(
+                    context: context,
+                    page: const CreateCallLinksPage(),
+                  ),
+                  leading: const CircleAvatar(
                     radius: 24.0,
                     backgroundColor: kAccentColor,
                     child: Icon(

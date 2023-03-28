@@ -54,7 +54,7 @@ class AppInfoPage extends StatelessWidget {
               titleStyle: TextStyle(
                 fontSize: 16.0,
               ),
-              routeName: '/',
+              routeName: ' ',
             )
           ],
         ),

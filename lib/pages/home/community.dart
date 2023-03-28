@@ -52,7 +52,7 @@ class HomeCommunityPage extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       title: 'Start your community',
-                      routeName: '/',
+                      routeName: ' ',
                     ),
                   ),
                 ],

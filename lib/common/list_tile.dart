@@ -7,6 +7,8 @@ class CustomListTile extends StatelessWidget {
     super.key,
     this.contentPadding,
     this.leading,
+    this.leadingIndent,
+    this.leadingEndIndent,
     this.leadingAlignment,
     this.title,
     this.titleStyle,
@@ -19,12 +21,11 @@ class CustomListTile extends StatelessWidget {
     this.onTap,
     this.trailingAlignment,
     this.padding,
-    this.leadingIndent,
     this.isEnabled = true,
-    this.leadingEndIndent,
     this.tileColor,
     this.wrapText,
     this.titleWidget,
+    this.onLongPress,
   });
 
   final VoidCallback? onTap;
@@ -47,6 +48,7 @@ class CustomListTile extends StatelessWidget {
   final bool? isEnabled;
   final Color? tileColor;
   final bool? wrapText;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +61,11 @@ class CustomListTile extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return ListTile(
+      onLongPress: onLongPress,
+      onTap: isEnabled != false ? onTap : null,
       tileColor: tileColor,
       dense: leading is Icon ? true : false,
       visualDensity: VisualDensity(vertical: leading == CircleAvatar ? -4 : 0),
-      onTap: isEnabled != false ? onTap : null,
       contentPadding: padding ?? const EdgeInsets.all(5.0),
       minLeadingWidth: leadingEndIndent ?? 0.0,
       leading: leading != null

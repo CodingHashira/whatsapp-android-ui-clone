@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -35,7 +37,11 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 11.0, horizontal: 20.0),
         onPressed: routeName != null
             ? routeName != ''
-                ? onPressed ?? () => Navigator.pushNamed(context, routeName!)
+                ? onPressed ??
+                    () => NavigationHelper.openRoute(
+                          context: context,
+                          pageRoute: routeName,
+                        )
                 : null
             : onPressed,
         child: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 class CustomPopupMenuButton extends StatelessWidget {
@@ -67,13 +68,12 @@ class CustomPopupMenuButton extends StatelessWidget {
               : null, // !
           onTap: () => Future(
             () {
-              // if (value is NewConversationActionPage) {
-              //   NavigationHelper.openPage(
-              //     context: context,
-              //     page: value,
-              //   );
-              // } else
-              if (value is Widget) {
+              if (value is NewConversationActionPage) {
+                NavigationHelper.openPage(
+                  context: context,
+                  page: value,
+                );
+              } else if (value is Widget) {
                 NavigationHelper.openDialog(
                   context: context,
                   dialogWidget: value,

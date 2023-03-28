@@ -49,7 +49,7 @@ class AvatarPage extends StatelessWidget {
                       Expanded(
                         child: CustomButton(
                           title: 'Create your Avatar',
-                          routeName: '/',
+                          routeName: ' ',
                         ),
                       ),
                     ],

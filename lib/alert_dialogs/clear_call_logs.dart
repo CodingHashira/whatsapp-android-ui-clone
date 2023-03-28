@@ -17,7 +17,7 @@ class ClearCallLogsDialog extends StatelessWidget {
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 120.0,
+        height: 100.0,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

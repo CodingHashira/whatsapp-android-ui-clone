@@ -30,6 +30,7 @@ class CustomListBuilder extends StatelessWidget {
     this.isEnabled,
     this.radioCurrentOption,
     this.openChat,
+    this.onLongPress,
   });
 
   final int itemCount;
@@ -47,6 +48,7 @@ class CustomListBuilder extends StatelessWidget {
   final bool? isEnabled;
   final int? radioCurrentOption;
   final bool? openChat;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -160,6 +162,7 @@ class CustomListBuilder extends StatelessWidget {
 
   ChatTile _buildChatTile(int index) {
     return ChatTile(
+      onLongPress: onLongPress,
       openChat: openChat ?? false,
       imagePath: list[index].imageUrl,
       title: list[index].title,

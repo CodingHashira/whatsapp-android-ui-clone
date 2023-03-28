@@ -37,6 +37,7 @@ class ChatBox extends StatelessWidget {
                       constraints: const BoxConstraints(maxHeight: 40),
                       child: CustomTextField(
                         onChanged: onChanged,
+                        keyBoardType: TextInputType.multiline,
                         controller: controller,
                         hideBorder: true,
                         prefix: const Icon(
