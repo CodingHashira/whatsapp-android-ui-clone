@@ -115,7 +115,6 @@ class _GetPhoneNumberPageState extends State<GetPhoneNumberPage> {
                         ),
                       ),
                     ),
-                    // label: 'Phone',
                   ),
                 ),
                 const SizedBox(width: 10.0),
