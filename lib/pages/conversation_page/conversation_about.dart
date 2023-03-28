@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
 
+import 'conversation_media_page.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/button_bar.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/content_gap.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_media_page.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/custom_tile.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
-
-const data = Data();
 
 class ConversationAboutPage extends StatefulWidget {
   const ConversationAboutPage({
@@ -96,6 +93,7 @@ class _ConversationAboutPageState extends State<ConversationAboutPage> {
                             imagePath: widget.imageUrl,
                             titleWidget: Text(widget.title),
                             actionsList: const [],
+                            title: widget.title,
                           ),
                         ),
                         child: Hero(
@@ -149,7 +147,6 @@ class _ConversationAboutPageState extends State<ConversationAboutPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      // data.textData['conversationAbout']![0],
                       widget.about,
                       style: kInfoTextStyle2.copyWith(
                         fontSize: 16.0,
@@ -205,7 +202,11 @@ class _ConversationAboutPageState extends State<ConversationAboutPage> {
                         return GestureDetector(
                           onTap: () => NavigationHelper.openPage(
                             context: context,
-                            page: CustomImageView(imagePath: imagePath),
+                            page: CustomImageView(
+                              imagePath: imagePath,
+                              title: widget.title,
+                              titleWidget: widget,
+                            ),
                           ),
                           child: Container(
                             height: 70.0,
@@ -259,7 +260,6 @@ class _ConversationAboutPageState extends State<ConversationAboutPage> {
                   child: const Icon(
                     Icons.people,
                     color: Colors.white,
-                    // size: 22.0,
                   ),
                 ),
                 title: 'Create group with ${widget.title}',
@@ -296,7 +296,7 @@ class _ConversationAboutPageState extends State<ConversationAboutPage> {
               child: CustomAppBar(
                 isChildWidget: true,
                 title: widget.title,
-                imageUrl: 'images/p3.jpg',
+                imageUrl: widget.imageUrl,
               ),
             ),
           ),

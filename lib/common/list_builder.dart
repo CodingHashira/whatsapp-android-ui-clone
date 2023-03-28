@@ -111,7 +111,6 @@ class CustomListBuilder extends StatelessWidget {
   }
 
   CustomRadioButton _buildRadioButton(int index) {
-    print(radioCurrentOption);
     return CustomRadioButton(
       value: list[index],
       optionsList: list,

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/checkbox.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
-import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-
-import '../common/text_button.dart';
+import 'package:ui_flutter_whatsapp/common/text_button.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class DeleteAllChatsDialog extends StatelessWidget {
   const DeleteAllChatsDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:

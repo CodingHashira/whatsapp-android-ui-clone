@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class HomeCommunityPage extends StatelessWidget {
   const HomeCommunityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -50,7 +52,7 @@ class HomeCommunityPage extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       title: 'Start your community',
-                      routeName: '',
+                      routeName: '/',
                     ),
                   ),
                 ],

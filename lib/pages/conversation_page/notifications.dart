@@ -41,6 +41,7 @@ class _ConversationNotificationsPageState
         ),
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(20.0, 20.0, 10.0, 10.0),

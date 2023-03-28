@@ -4,11 +4,9 @@ import 'package:ui_flutter_whatsapp/common/checkbox.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-
-import '../common/text_button.dart';
+import 'package:ui_flutter_whatsapp/common/text_button.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class MobileDataDialog extends StatelessWidget {
   const MobileDataDialog({
@@ -20,12 +18,14 @@ class MobileDataDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 285,
+        height: 290,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,6 +42,7 @@ class MobileDataDialog extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 5.0),
             CustomListBuilder(
               startIndex: 0,
               itemCount: data.mobileDataDialogList.length,

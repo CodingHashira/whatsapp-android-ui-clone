@@ -13,11 +13,15 @@ class CustomImageView extends StatefulWidget {
     required this.imagePath,
     this.actionsList,
     this.titleWidget,
+    required this.title,
+    this.uploadTime,
   });
 
   final String imagePath;
   final List<Widget>? actionsList;
   final Widget? titleWidget;
+  final String title;
+  final String? uploadTime;
 
   @override
   State<CustomImageView> createState() => _CustomImageViewState();
@@ -36,14 +40,14 @@ class _CustomImageViewState extends State<CustomImageView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Monica',
+                  widget.title,
                   style: kTitleTextStyle.copyWith(
                     fontSize: 20.0,
                   ),
                 ),
                 const SizedBox(height: 3.0),
                 Text(
-                  'March 20, 11:35',
+                  widget.uploadTime ?? 'March 20, 11:35',
                   style: kSubTitleTextStyle.copyWith(
                     color: Colors.white,
                     fontSize: 12.0,
@@ -53,7 +57,9 @@ class _CustomImageViewState extends State<CustomImageView> {
               ],
             ),
         actions: SizedBox(
-          width: 130.0,
+          width: widget.actionsList != null
+              ? widget.actionsList!.length * 40
+              : 130,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: widget.actionsList ??
@@ -66,23 +72,30 @@ class _CustomImageViewState extends State<CustomImageView> {
                       !isfavorite
                           ? Icons.star_border_rounded
                           : Icons.star_rounded,
-                      size: 27.0,
+                      color: Colors.white,
+                      size: 24.0,
                     ),
                   ),
                   const Icon(
                     Icons.share_rounded,
-                    size: 25.0,
+                    color: Colors.white,
+                    size: 22.0,
                   ),
                   CustomPopupMenuButton(
                     popupMenuItems: data.imageViewPopupMenuOptions,
-                    popButtonColor: Colors.white,
-                    popButtonSize: 27.0,
+                    // popButtonColor: kSecondaryColor,
+                    popButtonSize: 24.0,
                   )
                 ],
           ),
         ),
       ),
-      body: Center(child: Image.asset(widget.imagePath)),
+      body: Center(
+        child: Image.asset(
+          widget.imagePath,
+          // fit: BoxFit.fitWidth,
+        ),
+      ),
     );
   }
 }

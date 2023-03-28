@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/alert_dialogs/conversation_call.dart';
 
+import 'package:ui_flutter_whatsapp/alert_dialogs/conversation_call.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
-class ChatPageActions extends StatelessWidget {
-  static const data = Data();
+const data = Data();
 
+class ChatPageActions extends StatelessWidget {
   const ChatPageActions({
     Key? key,
   }) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/alert_dialogs/call_type.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
-
-const data = Data();
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 class CreateCallLinksPage extends StatelessWidget {
   const CreateCallLinksPage({super.key});
@@ -48,8 +48,13 @@ class CreateCallLinksPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const CustomListTile(
-                padding: EdgeInsets.only(left: 10.0, top: 20.0, bottom: 25.0),
+              CustomListTile(
+                onTap: () => NavigationHelper.openDialog(
+                  context: context,
+                  dialogWidget: const CallTypeDialog(),
+                ),
+                padding:
+                    const EdgeInsets.only(left: 10.0, top: 20.0, bottom: 25.0),
                 leadingIndent: 65.0,
                 title: 'Call type',
                 subTitle: 'Video',

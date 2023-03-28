@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './button_bar_ite.dart';
+import './button_bar_item.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/rupee_icon.dart';
 

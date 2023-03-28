@@ -8,7 +8,6 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class VerifySecurityCodePage extends StatefulWidget {
   const VerifySecurityCodePage({
@@ -59,12 +58,13 @@ class _VerifySecurityCodePageState extends State<VerifySecurityCodePage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: CustomAppBar(
-        appBarHeight: 90,
+        appBarHeight: 70,
         titleStyle: kTitleTextStyle.copyWith(fontSize: 20.0),
         isChildWidget: true,
-        // title: 'Verify security code',
         titleWidget: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,6 +92,7 @@ class _VerifySecurityCodePageState extends State<VerifySecurityCodePage> {
       body: Column(
         children: [
           Stack(
+            alignment: Alignment.topCenter,
             children: [
               Center(
                 child: Column(
@@ -112,31 +113,32 @@ class _VerifySecurityCodePageState extends State<VerifySecurityCodePage> {
                   ],
                 ),
               ),
-              Visibility(
-                visible: showBanner,
-                child: CustomListTile(
-                  tileColor: const Color(0xff182329),
-                  leadingIndent: 5.0,
-                  leading: GestureDetector(
-                      onTap: () => setState(() {
-                            showBanner = false;
-                          }),
-                      child: const Icon(Icons.close_rounded)),
-                  subTitle: data.textData['verifySecurityCode']![0],
-                  subTitleIndent: 120,
-                  trailing: const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'Enable',
-                      style: TextStyle(
-                        color: kAccentColor,
-                        fontSize: 15.0,
+              showBanner
+                  ? Container(
+                      color: const Color(0xff182329),
+                      child: CustomListTile(
+                        leadingIndent: 5.0,
+                        leading: GestureDetector(
+                            onTap: () => setState(() {
+                                  showBanner = false;
+                                }),
+                            child: const Icon(Icons.close_rounded)),
+                        subTitle: data.textData['verifySecurityCode']![0],
+                        subTitleIndent: 120,
+                        trailing: const Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child: Text(
+                            'Enable',
+                            style: TextStyle(
+                              color: kAccentColor,
+                              fontSize: 15.0,
+                            ),
+                          ),
+                        ),
+                        trailingAlignment: Alignment.centerRight,
                       ),
-                    ),
-                  ),
-                  trailingAlignment: Alignment.centerRight,
-                ),
-              ),
+                    )
+                  : const SizedBox.shrink(),
             ],
           ),
           const SizedBox(height: 40.0),
@@ -170,10 +172,14 @@ class _VerifySecurityCodePageState extends State<VerifySecurityCodePage> {
             textAlign: TextAlign.center,
             textList: [
               {
-                data.textData['verifySecurityCode']![1]:
-                    kTitleTextStyle.copyWith(height: 1.5),
-                'Learn more': kTitleTextStyle.copyWith(
+                data.textData['verifySecurityCode']![1]: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  height: 1.5,
+                ),
+                'Learn more': const TextStyle(
                   color: kTextLinkColor,
+                  fontSize: 16.0,
                 )
               }
             ],

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
-
-import '../../model/data.dart';
 import 'new_conversation_action/selection_view.dart';
 
 const data = Data();
@@ -50,27 +49,6 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
   bool getVisibilityStatus(int index) => selectedIndexList.contains(index);
 
   @override
-  void initState() {
-    super.initState();
-    title = widget.pageType == 'group'
-        ? 'New Group'
-        : widget.pageType == 'contact'
-            ? 'Select contact'
-            : 'New broadcast';
-
-    subTitle = widget.pageType == 'group'
-        ? 'Add participant'
-        : widget.pageType == 'contact'
-            ? '${data.conversaionList.length} contacts'
-            : '${selectedContactList.length} of ${data.conversaionList.length} selected';
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: widget.pageType != 'call'
@@ -89,14 +67,20 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
         titleWidget: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title),
+            Text(
+              widget.pageType == 'group'
+                  ? 'New Group'
+                  : widget.pageType == 'call'
+                      ? 'Select contact'
+                      : 'New broadcast',
+            ),
             Text(
               widget.pageType == 'group'
                   ? selectedContactList.isNotEmpty
-                      ? '${selectedContactList.length} of ${data.conversaionList.length} selected'
+                      ? '${selectedContactList.length} of ${data.conversaionList.length - 1} selected'
                       : 'Add participant'
                   : widget.pageType == 'broadcast'
-                      ? '${selectedContactList.length} of ${data.conversaionList.length} selected'
+                      ? '${selectedContactList.length} of ${data.conversaionList.length - 1} selected'
                       : '${data.conversaionList.length} contacts',
               style: const TextStyle(
                 color: Colors.white,
@@ -127,7 +111,6 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
           ),
         ),
       ),
-      // ! BODY
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -137,12 +120,24 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
                 const CustomListTile(
                   leading: CircleAvatar(
                     radius: 24.0,
+                    backgroundColor: kAccentColor,
+                    child: Icon(
+                      Icons.link_rounded,
+                      size: 25.0,
+                      color: Colors.white,
+                    ),
                   ),
                   title: 'New call link',
                 ),
                 const CustomListTile(
                   leading: CircleAvatar(
                     radius: 24.0,
+                    backgroundColor: kAccentColor,
+                    child: Icon(
+                      Icons.people,
+                      size: 25.0,
+                      color: Colors.white,
+                    ),
                   ),
                   title: 'New group call',
                 ),
@@ -150,6 +145,12 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
                   onTap: () {},
                   leading: const CircleAvatar(
                     radius: 24.0,
+                    backgroundColor: kAccentColor,
+                    child: Icon(
+                      Icons.person_add_rounded,
+                      size: 25.0,
+                      color: Colors.white,
+                    ),
                   ),
                   title: 'New contact',
                   trailing: const Icon(
@@ -209,7 +210,10 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
             itemCount: data.conversaionList.length - 1,
             itemBuilder: (context, index) {
               return CustomListTile(
-                onTap: () => addSelection(index + 1),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                onTap: widget.pageType != 'call'
+                    ? () => addSelection(index + 1)
+                    : null,
                 wrapText: true,
                 subTitleIndent: 100,
                 leading: Stack(
@@ -236,6 +240,24 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
                 ),
                 title: data.conversaionList[index + 1].title,
                 subTitle: data.conversaionList[index + 1].about,
+                trailing: widget.pageType == 'call'
+                    ? SizedBox(
+                        width: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Icon(
+                              Icons.call_rounded,
+                              color: kAccentColor,
+                            ),
+                            Icon(
+                              Icons.videocam_rounded,
+                              color: kAccentColor,
+                            ),
+                          ],
+                        ),
+                      )
+                    : null,
               );
             },
           ),

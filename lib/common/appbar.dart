@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -14,6 +13,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleStyle,
     this.titleWidget,
     this.appBarHeight,
+    this.bottom,
+    this.centerTitle,
   }) : super(key: key);
 
   final bool isChildWidget;
@@ -26,6 +27,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TextStyle? titleStyle;
   final Widget? titleWidget;
   final double? appBarHeight;
+  final PreferredSizeWidget? bottom;
+  final bool? centerTitle;
 
   @override
   Size get preferredSize => Size.fromHeight(appBarHeight ?? 60.0);
@@ -36,6 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: onTap,
       child: AppBar(
         backgroundColor: backgroundColor,
+        centerTitle: centerTitle ?? false,
         titleSpacing: 10.0,
         elevation: 0.0,
         toolbarHeight: 60,
@@ -49,7 +53,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       padding: const EdgeInsets.only(left: 15.0, right: 5.0),
                       child: Icon(
                         Icons.arrow_back,
-                        color: iconColor ?? kPopupMenuIconColor,
+                        color: iconColor ?? Colors.white,
                         size: 25,
                       ),
                     )
@@ -77,6 +81,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
             ),
         actions: actions != null ? [actions!] : null,
+        bottom: bottom,
       ),
     );
   }

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/text_button.dart';
-
-const data = Data();
-final double screenWidth = Data.screen.width;
 
 class ArchiveChatsDialog extends StatelessWidget {
   const ArchiveChatsDialog({
@@ -14,6 +10,8 @@ class ArchiveChatsDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:

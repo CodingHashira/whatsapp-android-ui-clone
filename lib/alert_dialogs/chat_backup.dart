@@ -7,19 +7,20 @@ import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 import 'package:ui_flutter_whatsapp/common/radio_button.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class ChatBackupDialog extends StatelessWidget {
   const ChatBackupDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 330,
+        height: 335,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

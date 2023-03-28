@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
 
 class HomePageTab extends StatelessWidget {
   const HomePageTab({

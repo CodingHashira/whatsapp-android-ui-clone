@@ -6,13 +6,14 @@ import 'package:ui_flutter_whatsapp/common/checkbox.dart';
 import 'package:ui_flutter_whatsapp/common/text_button.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class ClearAllChatsDialog extends StatelessWidget {
   const ClearAllChatsDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:

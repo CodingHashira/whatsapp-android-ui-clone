@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/appbar.dart';
+
+import './conversation_media/media.dart';
+import './conversation_media/links.dart';
+import './conversation_media/docs.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_media/docs.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_media/links.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_media/media.dart';
-import 'package:ui_flutter_whatsapp/widgets/conversation_media/tab.dart';
+import 'package:ui_flutter_whatsapp/common/appbar.dart';
+import 'package:ui_flutter_whatsapp/widgets/conversation_page/tab.dart';
 
 class ConversationMediaPage extends StatelessWidget {
   const ConversationMediaPage({
@@ -44,12 +45,14 @@ class ConversationMediaPage extends StatelessWidget {
               color: kAppBarColor,
               child: const TabBar(tabs: myTabs),
             ),
-            const Expanded(
+            Expanded(
               child: TabBarView(
                 children: [
-                  MediaPage(),
-                  DocsPage(),
-                  LinksPage(),
+                  MediaPage(
+                    title: userName,
+                  ),
+                  const DocsPage(),
+                  const LinksPage(),
                 ],
               ),
             )

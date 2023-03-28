@@ -43,11 +43,13 @@ class ArchivedPage extends StatelessWidget {
           ),
           const CustomDivider(),
           CustomListBuilder(
+            openChat: true,
             startIndex: 0,
             itemCount: data.conversaionList.length,
             list: data.conversaionList,
             returnWidgetType: ChatTile,
           ),
+          const SizedBox(height: 5.0),
           const CustomDivider(),
           const SizedBox(height: 15.0),
           Row(

@@ -6,13 +6,14 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class LightDialog extends StatelessWidget {
   const LightDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -34,6 +35,7 @@ class LightDialog extends StatelessWidget {
               ),
             ),
             CustomListBuilder(
+              padding: const EdgeInsets.only(left: 5.0),
               startIndex: 0,
               itemCount: data.lightDialogOptionList.length,
               list: data.lightDialogOptionList,

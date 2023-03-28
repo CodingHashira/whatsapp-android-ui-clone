@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
@@ -9,13 +10,14 @@ import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/content_gap.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class LinkedDevicesPage extends StatelessWidget {
   const LinkedDevicesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const CustomAppBar(
         isChildWidget: true,
@@ -87,7 +89,7 @@ class LinkedDevicesPage extends StatelessWidget {
             textStyle: kSubTitleTextStyle.copyWith(fontSize: 14.0),
           ),
           CustomListTile(
-            padding: const EdgeInsets.only(left: 10.0, top: 20.0, bottom: 20.0),
+            padding: const EdgeInsets.only(left: 10.0, top: 8.0, bottom: 8.0),
             leading: CircleAvatar(
               backgroundColor: Colors.transparent,
               radius: 22.0,

@@ -22,8 +22,10 @@ class _CustomSwitchState extends State<CustomSwitch> {
   @override
   Widget build(BuildContext context) {
     return Switch(
-      thumbColor: switchValue == true ? kThumbActiveColor : kThumbInctiveColor,
-      trackColor: switchValue == true ? kTrackActiveColor : kTrackInctiveColor,
+      activeColor: kAccentColor,
+      inactiveThumbColor: const Color(0xff82939d),
+      inactiveTrackColor: const Color(0xff334048),
+      activeTrackColor: const Color(0xff0d463f),
       value: widget.isEnabled ?? switchValue,
       onChanged: widget.onChanged ??
           (p0) => setState(() {
