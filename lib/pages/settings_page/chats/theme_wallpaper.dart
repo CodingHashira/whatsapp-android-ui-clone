@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
 
+import 'package:ui_flutter_whatsapp/model/data.dart';
 import './theme_wallpaper/wallpaper_preview.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';

@@ -7,7 +7,6 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class GeneratePasswordPage extends StatelessWidget {
   const GeneratePasswordPage({super.key});

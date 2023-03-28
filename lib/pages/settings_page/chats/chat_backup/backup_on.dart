@@ -6,13 +6,14 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class BackupOnPage extends StatelessWidget {
   const BackupOnPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const CustomAppBar(
         backgroundColor: Color(0xff121b22),
@@ -72,7 +73,7 @@ class BackupOnPage extends StatelessWidget {
                   child: CustomButton(
                     title: 'Turn off',
                     buttonColor: kRedColor,
-                    routeName: '',
+                    routeName: '/',
                   ),
                 ),
               ],

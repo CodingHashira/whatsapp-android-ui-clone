@@ -28,15 +28,14 @@ class InviteFriendPage extends StatelessWidget {
         ),
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
-          CustomListTile(
-            leading: Container(
-              decoration: const BoxDecoration(
-                color: kAccentColor,
-                shape: BoxShape.circle,
-              ),
-              padding: const EdgeInsets.all(8.0),
-              child: const Icon(
+          const CustomListTile(
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            leading: CircleAvatar(
+              radius: 22.0,
+              backgroundColor: kAccentColor,
+              child: Icon(
                 Icons.share,
                 color: Colors.white,
                 size: 27.0,

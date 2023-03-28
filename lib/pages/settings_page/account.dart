@@ -21,6 +21,8 @@ class AccountPage extends StatelessWidget {
         children: [
           const SizedBox(height: 8.0),
           CustomListBuilder(
+            tileMargin:
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 3.5),
             startIndex: 0,
             itemCount: data.accountMenu.length,
             leadingIndent: 8.0,

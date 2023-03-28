@@ -1,5 +1,5 @@
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
@@ -68,16 +68,15 @@ class _RequestAccountInfoPageState extends State<RequestAccountInfoPage> {
                 ? const Icon(Icons.schedule_rounded)
                 : const Icon(Icons.description_rounded),
             title: 'Request report',
-            subTitleWidget: Visibility(
-              visible: isRequested,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 3.0),
-                child: Text(
-                  getReadyDate(),
-                  style: kSubTitleTextStyle,
-                ),
-              ),
-            ),
+            subTitleWidget: isRequested
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 3.0),
+                    child: Text(
+                      getReadyDate(),
+                      style: kSubTitleTextStyle,
+                    ),
+                  )
+                : null,
           ),
           const CustomDivider(),
           const SizedBox(height: 10.0),

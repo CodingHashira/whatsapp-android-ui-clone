@@ -22,6 +22,7 @@ class PrivacyPage extends StatelessWidget {
         title: 'Privacy',
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -46,6 +47,7 @@ class PrivacyPage extends StatelessWidget {
             returnWidgetType: CustomListTile,
           ),
           CustomListTile(
+            trailingAlignment: Alignment.topRight,
             title: 'Read receipts',
             subTitle: data.textData['readReceiptSwitch']![0],
             subTitleIndent: 90,

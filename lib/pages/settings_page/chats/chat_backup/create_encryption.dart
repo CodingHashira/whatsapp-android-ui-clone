@@ -6,7 +6,6 @@ import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class CreateEncryptionPage extends StatelessWidget {
   const CreateEncryptionPage({super.key});

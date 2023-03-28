@@ -7,7 +7,6 @@ import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'dart:math';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class GenerateKeyPage extends StatefulWidget {
   const GenerateKeyPage({super.key});
@@ -162,6 +161,8 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20.0),
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

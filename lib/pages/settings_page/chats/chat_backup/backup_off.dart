@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/common/rich_text.dart';

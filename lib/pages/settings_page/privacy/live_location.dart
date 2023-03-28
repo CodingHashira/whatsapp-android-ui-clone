@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
+import 'package:ui_flutter_whatsapp/model/data.dart';
+
+const data = Data();
 
 class LiveLocationPage extends StatelessWidget {
   const LiveLocationPage({super.key});
@@ -15,22 +18,23 @@ class LiveLocationPage extends StatelessWidget {
         title: 'Live location',
       ),
       body: Column(
-        children: const [
-          CustomImageContainer(
+        children: [
+          const CustomImageContainer(
             imageUrl: 'images/location.jpg',
             width: 72,
             paddingValue: 20,
           ),
-          Text(
+          const Text(
             'You aren\'t sharing live location in any chats',
             style: kInfoTextStyle2,
           ),
-          SizedBox(height: 15.0),
-          CustomDivider(),
+          const SizedBox(height: 15.0),
+          const CustomDivider(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
             child: Text(
-              'Live location requires background location. You can manage this in your device settings.',
+              data.textData['liveLocation']![0],
               style: kInfoTextStyle,
             ),
           ),

@@ -21,13 +21,12 @@ class ChatBackupPage extends StatelessWidget {
         isChildWidget: true,
         title: 'Chat backup',
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           CustomListTile(
             padding:
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            leadingAlignment: CrossAxisAlignment.start,
+            leadingAlignment: MainAxisAlignment.start,
             leading: const Icon(Icons.cloud_upload_rounded),
             title: 'Last Backup',
             titleStyle: kSubTitleTextStyle.copyWith(
@@ -46,7 +45,7 @@ class ChatBackupPage extends StatelessWidget {
                 SizedBox(height: 15.0),
                 CustomButton(
                   title: 'Backup',
-                  routeName: '',
+                  routeName: '/',
                 )
               ],
             ),
@@ -54,7 +53,7 @@ class ChatBackupPage extends StatelessWidget {
           CustomListTile(
             onTap: () => NavigationHelper.openRoute(
                 context: context, pageRoute: '/backupOffPage'),
-            leadingAlignment: CrossAxisAlignment.start,
+            leadingAlignment: MainAxisAlignment.start,
             leading: const Icon(Icons.lock_rounded),
             title: 'End-to-end encrypted backup',
             subTitle: 'On',
@@ -63,7 +62,7 @@ class ChatBackupPage extends StatelessWidget {
           CustomListTile(
             padding:
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            leadingAlignment: CrossAxisAlignment.start,
+            leadingAlignment: MainAxisAlignment.start,
             leading: const Icon(Icons.add_to_drive_rounded),
             title: 'Google Drive settings',
             titleStyle: kSubTitleTextStyle.copyWith(

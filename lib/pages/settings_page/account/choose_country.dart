@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/constants.dart';
 
+import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
@@ -26,6 +26,7 @@ class ChooseCountry extends StatelessWidget {
         ),
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           CustomListBuilder(
             startIndex: 0,

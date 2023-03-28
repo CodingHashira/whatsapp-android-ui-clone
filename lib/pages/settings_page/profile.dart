@@ -9,7 +9,6 @@ import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -27,29 +26,30 @@ class ProfilePage extends StatelessWidget {
           Stack(
             alignment: Alignment.bottomRight,
             children: [
-              GestureDetector(
-                onTap: () => NavigationHelper.openPage(
-                  context: context,
-                  page: const CustomImageView(
-                    imagePath: 'images/p1.jpg',
-                    titleWidget: Text('Profile'),
-                    actionsList: [
-                      Icon(
-                        Icons.edit_rounded,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.share_rounded,
-                        color: Colors.white,
-                      ),
-                    ],
+              Hero(
+                tag: 'profileImage',
+                child: GestureDetector(
+                  onTap: () => NavigationHelper.openPage(
+                    context: context,
+                    page: const CustomImageView(
+                      imagePath: 'images/p1.jpg',
+                      titleWidget: Text('Profile'),
+                      title: 'Joey',
+                      actionsList: [
+                        Icon(
+                          Icons.edit_rounded,
+                          color: Colors.white,
+                        ),
+                        Icon(
+                          Icons.share_rounded,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                child: Hero(
-                  tag: 'profileImage',
-                  child: CircleAvatar(
-                    radius: screenWidth / 5.7,
-                    backgroundImage: const AssetImage('images/p1.jpg'),
+                  child: const CircleAvatar(
+                    radius: 80,
+                    backgroundImage: AssetImage('images/p1.jpg'),
                   ),
                 ),
               ),
@@ -68,7 +68,7 @@ class ProfilePage extends StatelessWidget {
           CustomListTile(
             padding: const EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
             leadingIndent: 15.0,
-            leadingAlignment: CrossAxisAlignment.start,
+            leadingAlignment: MainAxisAlignment.start,
             leading: const Icon(
               Icons.person,
               color: kSecondaryColor,

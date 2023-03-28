@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter_whatsapp/common/custom_round_button.dart';
 
 import './preview_chatbox.dart';
 import './preview_chat_bubble.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/mic_button.dart';
 
 final double screenWidth =
     MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
@@ -95,7 +95,7 @@ class WallpaperPreview extends StatelessWidget {
           Row(
             children: const [
               PreviewChatBox(),
-              MicButton(
+              CustomRoundButton(
                 iconSize: 12.0,
                 padding: 5.0,
               )

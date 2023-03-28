@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/button.dart';
 import 'package:ui_flutter_whatsapp/common/rich_text.dart';
 import 'package:ui_flutter_whatsapp/common/text_field.dart';
-
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
@@ -10,13 +10,14 @@ import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 
 const data = Data();
-final double screenHeight = Data.screen.height;
 
 class ContactUsPage extends StatelessWidget {
   const ContactUsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: const CustomAppBar(
         isChildWidget: true,
@@ -115,7 +116,7 @@ class ContactUsPage extends StatelessWidget {
                 ),
                 const CustomButton(
                   title: 'Next',
-                  routeName: '',
+                  routeName: '/',
                 )
               ],
             )
