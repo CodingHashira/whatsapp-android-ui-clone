@@ -51,6 +51,19 @@ class _NewConversationActionPageState extends State<NewConversationActionPage> {
   bool getVisibilityStatus(int index) => selectedIndexList.contains(index);
 
   @override
+  void initState() {
+    super.initState();
+
+    selectedContactList.clear();
+    selectedIndexList.clear();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: widget.pageType != 'call'
