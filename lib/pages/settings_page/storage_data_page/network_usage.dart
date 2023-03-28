@@ -11,7 +11,6 @@ import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 import 'package:ui_flutter_whatsapp/widgets/network_usage/network_tile.dart';
 
 const data = Data();
-final double screenWidth = Data.screen.width;
 
 class NetworkUsagePage extends StatelessWidget {
   const NetworkUsagePage({super.key});
@@ -21,16 +20,15 @@ class NetworkUsagePage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(isChildWidget: true, title: 'Network usage'),
       body: ListView(
+        shrinkWrap: true,
         children: [
-          CustomListTile(
-            padding: const EdgeInsets.fromLTRB(60.0, 20.0, 0.0, 20.0),
+          const CustomListTile(
+            padding: EdgeInsets.fromLTRB(55.0, 15.0, 0.0, 0.0),
             title: 'Usage',
-            titleStyle: kTitleTextStyle.copyWith(fontSize: 15.0),
             subTitle: 'Since 3/12/23',
-            subTitleStyle: kSubTitleTextStyle.copyWith(fontSize: 13.0),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 70.0),
+            padding: const EdgeInsets.fromLTRB(70.0, 10.0, 0.0, 25.0),
             child: Row(
               textBaseline: TextBaseline.alphabetic,
               crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -52,56 +50,21 @@ class NetworkUsagePage extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 15.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                textBaseline: TextBaseline.ideographic,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                children: [
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.arrow_upward_rounded,
-                        size: 13.0,
-                      ),
-                      Text(
-                        'Sent',
-                        style: kSubTitleTextStyle,
-                      ),
-                    ],
-                  ),
-                  const Text(
-                    '22.9MB',
-                    style: kInfoTextStyle2,
-                  )
-                ],
+            children: const [
+              TransmittedDataText(
+                dataSize: '22.9MB',
+                dataType: DataType.sent,
               ),
-              Column(
-                children: [
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.arrow_downward_rounded,
-                        size: 13.0,
-                      ),
-                      Text(
-                        'Received',
-                        style: kSubTitleTextStyle,
-                      ),
-                    ],
-                  ),
-                  const Text(
-                    '281.1MB',
-                    style: kInfoTextStyle2,
-                  )
-                ],
+              TransmittedDataText(
+                dataSize: '281.1MB',
+                dataType: DataType.received,
               ),
             ],
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 70.0, top: 20.0, bottom: 10.0),
+            padding: EdgeInsets.only(left: 70.0, top: 20.0, bottom: 5.0),
             child: CustomDivider(),
           ),
           CustomListBuilder(
@@ -111,9 +74,10 @@ class NetworkUsagePage extends StatelessWidget {
             list: data.networkTileList,
             returnWidgetType: NetworkTile,
           ),
+          const SizedBox(height: 5.0),
           const CustomDivider(),
           CustomListTile(
-            padding: const EdgeInsets.only(left: 65.0, top: 20.0),
+            padding: const EdgeInsets.only(left: 55, top: 5.0),
             onTap: () => NavigationHelper.openDialog(
               context: context,
               dialogWidget: const ResetNetworkUsageDialog(),
@@ -123,6 +87,54 @@ class NetworkUsagePage extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+enum DataType {
+  sent,
+  received,
+}
+
+class TransmittedDataText extends StatelessWidget {
+  const TransmittedDataText({
+    super.key,
+    required this.dataType,
+    required this.dataSize,
+  });
+
+  final DataType dataType;
+  final String dataSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
+      children: [
+        Row(
+          children: [
+            Icon(
+              dataType == DataType.sent
+                  ? Icons.arrow_upward_rounded
+                  : Icons.arrow_downward_rounded,
+              size: 13.0,
+            ),
+            Text(
+              dataType == DataType.sent ? ' Sent' : ' Received',
+              style: kSubTitleTextStyle,
+            ),
+          ],
+        ),
+        const SizedBox(height: 5.0),
+        Padding(
+          padding: const EdgeInsets.only(left: 3.0),
+          child: Text(
+            dataSize,
+            style: kInfoTextStyle2,
+          ),
+        )
+      ],
     );
   }
 }
