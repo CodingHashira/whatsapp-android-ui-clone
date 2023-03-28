@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import './constants.dart';
 import './pages/home.dart';
-import './pages/testp.dart';
 import './pages/settings.dart';
 import './pages/archived.dart';
 import './pages/archive_settings.dart';
@@ -73,7 +72,6 @@ class MyApp extends StatelessWidget {
         '/homePage': (context) => const HomePage(),
         '/welcomePage': (context) => const WelcomePage(),
         '/helpPage': (context) => const HelpPage(),
-        '/testPage': (context) => const TestpPage(),
         '/chatsPage': (context) => const ChatsPage(),
         '/aboutPage': (context) => const AboutPage(),
         '/groupsPage': (context) => const GroupsPage(),
