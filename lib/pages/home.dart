@@ -6,10 +6,7 @@ import 'package:ui_flutter_whatsapp/pages/home/community.dart';
 import 'package:ui_flutter_whatsapp/pages/home/status.dart';
 import 'package:ui_flutter_whatsapp/pages/home/tab.dart';
 import 'package:ui_flutter_whatsapp/widgets/home/appbar.dart';
-import '../model/data.dart';
-
-final double screenWidth = Data.screen.width;
-final tabWidth = screenWidth / 4.8;
+import 'package:ui_flutter_whatsapp/common/floating_action_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,8 +28,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   void _handleTabSelection() => setState(() {
         currentTabIndex = _tabController.index;
-        print(currentTabIndex);
       });
+
+  List<IconData> iconList = [
+    Icons.chat_rounded,
+    Icons.camera_alt_rounded,
+    Icons.add_ic_call_rounded,
+  ];
 
   @override
   void dispose() {
@@ -42,6 +44,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var tabWidth = MediaQuery.of(context).size.width / 4.8;
     List<Widget> myTabs = [
       const HomePageTab(
         icon: Icons.groups_rounded,
@@ -65,29 +68,42 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
       ),
     ];
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: LaunchPageAppBar(
-          title: 'WhatsApp',
-          bottom: TabBar(
-            tabs: myTabs,
-            isScrollable: true,
-          ),
-        ),
-        body: Column(
-          children: const [
-            Expanded(
-              child: TabBarView(
-                children: [
-                  HomeCommunityPage(),
-                  HomeChatsPage(),
-                  HomeStatusPage(),
-                  HomeCallsPage(),
-                ],
-              ),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          floatingActionButton: currentTabIndex != 0
+              ? CustomFloatingActionButton(
+                  icon: iconList[currentTabIndex - 1],
+                  showEditButton: currentTabIndex == 2 ? true : false,
+                  index: currentTabIndex,
+                )
+              : const SizedBox.shrink(),
+          appBar: LaunchPageAppBar(
+            title: 'WhatsApp',
+            tabIndex: currentTabIndex,
+            bottom: TabBar(
+              controller: _tabController,
+              tabs: myTabs,
+              isScrollable: true,
             ),
-          ],
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: const [
+                    HomeCommunityPage(),
+                    HomeChatsPage(),
+                    HomeStatusPage(),
+                    HomeCallsPage(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

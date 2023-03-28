@@ -43,24 +43,18 @@ class HomeCallsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   heroTag: 'fab',
-      //   onPressed: () {},
-      //   child: const Icon(Icons.add_ic_call_rounded),
-      // ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           CustomListTile(
             onTap: () => NavigationHelper.openPage(
               context: context,
               page: const CreateCallLinksPage(),
             ),
-            leading: Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: const BoxDecoration(
-                color: kAccentColor,
-                shape: BoxShape.circle,
-              ),
+            padding: const EdgeInsets.only(left: 10.0, top: 5.0),
+            leading: CircleAvatar(
+              radius: 23.0,
+              backgroundColor: kAccentColor,
               child: Transform.rotate(
                 angle: 2.4,
                 child: const Icon(
@@ -73,12 +67,16 @@ class HomeCallsPage extends StatelessWidget {
             title: 'Create call link',
             subTitle: 'Share a link for your WhatsApp call',
           ),
-          const PaddedSettingsTextInfo(text: 'Recent'),
+          const PaddedSettingsTextInfo(
+            text: 'Recent',
+            padding: EdgeInsets.only(left: 25.0, top: 5.0, bottom: 5.0),
+          ),
           ListView.builder(
             shrinkWrap: true,
             itemCount: data.callHistoryList.length,
             itemBuilder: (context, index) {
               return CustomListTile(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 onTap: () => NavigationHelper.openPage(
                   context: context,
                   page: CallInfoPage(
@@ -91,7 +89,7 @@ class HomeCallsPage extends StatelessWidget {
                   ),
                 ),
                 leading: CircleAvatar(
-                  radius: 23.0,
+                  radius: 24.0,
                   backgroundImage: AssetImage(
                     data.callHistoryList[index]['leading']!,
                   ),
@@ -100,7 +98,6 @@ class HomeCallsPage extends StatelessWidget {
                 titleStyle: kTitleTextStyle.copyWith(
                   fontSize: 16.0,
                 ),
-                contentPadding: 3.0,
                 subTitleWidget: Row(
                   children: [
                     getIcon(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
 
@@ -20,6 +21,13 @@ class CustomTextField extends StatefulWidget {
     this.borderWidth,
     this.textAlign,
     this.autoFocus,
+    this.fontSize,
+    this.hintStyle,
+    this.cursorColor,
+    this.controller,
+    this.onChanged,
+    this.focusNode,
+    this.inputFormatters,
   });
   final String? value;
   final String? hintText;
@@ -36,6 +44,13 @@ class CustomTextField extends StatefulWidget {
   final double? borderWidth;
   final TextAlign? textAlign;
   final bool? autoFocus;
+  final double? fontSize;
+  final TextStyle? hintStyle;
+  final Color? cursorColor;
+  final TextEditingController? controller;
+  final Function(String)? onChanged;
+  final FocusNode? focusNode;
+  final TextInputFormatter? inputFormatters;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -54,14 +69,26 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      focusNode: widget.focusNode,
+      onChanged: widget.onChanged,
       autofocus: widget.autoFocus ?? false,
       textAlign: widget.textAlign ?? TextAlign.start,
+      maxLines: null,
       onTap: widget.onTap,
       keyboardType: widget.keyBoardType,
       maxLength: widget.maxLength,
-      cursorColor: kAccentColor,
-      style: const TextStyle(color: Colors.white),
-      controller: _controller,
+      inputFormatters: [
+        widget.inputFormatters ??
+            FilteringTextInputFormatter.allow(
+              RegExp(r'^[a-zA-Z0-9]+(?:\s+[a-zA-Z0-9]+)*$'),
+            )
+      ],
+      cursorColor: widget.cursorColor ?? kAccentColor,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: widget.fontSize,
+      ),
+      controller: widget.controller ?? _controller,
       readOnly: widget.isReadOnly ?? false,
       decoration: InputDecoration(
         counterText: '',
@@ -74,15 +101,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hintText,
         hoverColor: const Color(0xff757575),
-        hintStyle: TextStyle(
-          color: kSecondaryColor,
-          height: widget.textHeight ?? 1.2,
-        ),
+        hintStyle: widget.hintStyle ??
+            TextStyle(
+              color: kSecondaryColor,
+              height: widget.textHeight ?? 1.2,
+            ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: widget.hideBorder == true
                 ? Colors.transparent
-                : const Color(0xff757575),
+                : widget.borderColor ?? const Color(0xff757575),
             width: widget.borderWidth ?? 1.5,
           ),
         ),

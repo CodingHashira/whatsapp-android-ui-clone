@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+
+import 'package:ui_flutter_whatsapp/model/data.dart';
+import '../../conversation_page/conversation_about.dart';
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/conversation_about.dart';
 import 'package:ui_flutter_whatsapp/pages/home/calls.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
+import 'package:ui_flutter_whatsapp/common/padded_settings_textinfo.dart';
 
 const data = Data();
 
@@ -67,6 +68,9 @@ class CallInfoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomListTile(
+            wrapText: true,
+            padding: const EdgeInsets.only(
+                left: 15.0, top: 8.0, right: 10.0, bottom: 8.0),
             leading: CircleAvatar(
               radius: 25.0,
               backgroundImage: AssetImage(imageUrl),
@@ -74,7 +78,7 @@ class CallInfoPage extends StatelessWidget {
             title: title,
             subTitle: about,
             trailing: SizedBox(
-              width: 90,
+              width: 65,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -86,13 +90,12 @@ class CallInfoPage extends StatelessWidget {
                     Icons.videocam_rounded,
                     color: kAccentColor,
                   ),
-                  SizedBox(),
                 ],
               ),
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 80.0),
+            padding: EdgeInsets.only(left: 75.0),
             child: CustomDivider(),
           ),
           PaddedSettingsTextInfo(
@@ -100,9 +103,9 @@ class CallInfoPage extends StatelessWidget {
             text: subTitle.contains(',') ? subTitle.split(',')[0] : 'Yesterday',
           ),
           CustomListTile(
-            leadingAlignment: CrossAxisAlignment.start,
-            leadingIndent: 25.0,
-            leadingEndIndent: 20.0,
+            leadingEndIndent: 45.0,
+            trailingAlignment: Alignment.topRight,
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             leading: HomeCallsPage.getIcon(
               sender: sender,
               attended: attended,
@@ -110,13 +113,10 @@ class CallInfoPage extends StatelessWidget {
             ),
             title: sender == 'me' ? 'Outgoing' : 'Incoming',
             subTitle:
-                subTitle.contains(',') ? subTitle.split(',')[0] : subTitle,
-            trailing: Padding(
-              padding: const EdgeInsets.only(right: 15.0),
-              child: Text(
-                attended ? 'Answered' : 'Not answered',
-                style: kSubTitleTextStyle,
-              ),
+                subTitle.contains(',') ? subTitle.split(',')[1] : subTitle,
+            trailing: Text(
+              attended ? 'Answered' : 'Not answered',
+              style: kSubTitleTextStyle,
             ),
           ),
         ],

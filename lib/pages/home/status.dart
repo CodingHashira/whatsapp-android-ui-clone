@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
+import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
+import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
 
@@ -12,19 +15,18 @@ class HomeStatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: const StatusFloatingActionButton(),
-      body: Column(
+      body: ListView(
+        shrinkWrap: true,
         children: [
-          CustomListTile(
+          ListTile(
+            contentPadding:
+                const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
             leading: Stack(
               alignment: Alignment.bottomRight,
               children: [
-                const SizedBox(
-                  width: 55.0,
-                  child: CircleAvatar(
-                    radius: 24.0,
-                    backgroundImage: AssetImage('images/p1.jpg'),
-                  ),
+                const CircleAvatar(
+                  radius: 25.0,
+                  backgroundImage: AssetImage('images/p1.jpg'),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -40,20 +42,36 @@ class HomeStatusPage extends StatelessWidget {
                 )
               ],
             ),
-            title: 'My status',
-            subTitle: 'Tap to add status update',
+            title: const Text(
+              'My status',
+              style: kTitleTextStyle,
+            ),
+            subtitle: const Text(
+              'Tap to add status update',
+              style: kSubTitleTextStyle,
+            ),
           ),
           ListView.builder(
+            shrinkWrap: true,
             padding: const EdgeInsets.all(0.0),
             itemCount: data.statusUpdateList.length,
-            shrinkWrap: true,
             itemBuilder: (context, index) {
               var subTitle = data.statusUpdateList[index]['subTitle']!;
               return CustomListTile(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 10.0,
+                onTap: () => NavigationHelper.openPage(
+                  context: context,
+                  page: CustomImageView(
+                    imagePath: data.statusUpdateList[index]['statusUrl']!,
+                    title: data.statusUpdateList[index]['title']!,
+                    uploadTime: data.statusUpdateList[index]['uploadTime'],
+                    actionsList: [
+                      CustomPopupMenuButton(
+                        popupMenuItems: data.statusUpdatePopupOptions,
+                      )
+                    ],
+                  ),
                 ),
+                padding: const EdgeInsets.only(left: 5.0),
                 leading: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -74,48 +92,6 @@ class HomeStatusPage extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class StatusFloatingActionButton extends StatelessWidget {
-  const StatusFloatingActionButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          bottom: 90.0,
-          right: 5.0,
-          child: SizedBox(
-            height: 40.0,
-            child: FloatingActionButton(
-              backgroundColor: kAppBarColor,
-              onPressed: () {
-                // Handle first button press
-              },
-              child: const Icon(
-                Icons.edit_rounded,
-                size: 24.0,
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 16.0,
-          right: 5.0,
-          child: FloatingActionButton(
-            heroTag: 'fab',
-            onPressed: () {
-              // Handle second button press
-            },
-            child: const Icon(Icons.camera_alt_rounded),
-          ),
-        ),
-      ],
     );
   }
 }

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
-import 'package:ui_flutter_whatsapp/model/data.dart';
-import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
-
-final double screenWidth = Data.screen.width;
 
 class CustomPopupMenuButton extends StatelessWidget {
   const CustomPopupMenuButton({
@@ -71,10 +67,16 @@ class CustomPopupMenuButton extends StatelessWidget {
               : null, // !
           onTap: () => Future(
             () {
-              if (value is NewConversationActionPage) {
-                NavigationHelper.openPage(
+              // if (value is NewConversationActionPage) {
+              //   NavigationHelper.openPage(
+              //     context: context,
+              //     page: value,
+              //   );
+              // } else
+              if (value is Widget) {
+                NavigationHelper.openDialog(
                   context: context,
-                  page: value,
+                  dialogWidget: value,
                 );
               } else {
                 NavigationHelper.openRoute(
@@ -84,10 +86,13 @@ class CustomPopupMenuButton extends StatelessWidget {
               }
             },
           ),
-          child: Text(
-            label,
-            style: const TextStyle(
-              color: kTextPrimaryColor,
+          child: SizedBox(
+            width: menuItemsLength == 1 ? 130 : null,
+            child: Text(
+              label,
+              style: const TextStyle(
+                color: kTextPrimaryColor,
+              ),
             ),
           ),
         );

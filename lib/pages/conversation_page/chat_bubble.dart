@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_bubble/chat_bubble.dart';
 
 import './delivery_indicator.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 
 class CustomChatBubble extends StatelessWidget {

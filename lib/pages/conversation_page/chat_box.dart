@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/common/rupee_icon.dart';
 
 import 'package:ui_flutter_whatsapp/constants.dart';
+import 'package:ui_flutter_whatsapp/common/rupee_icon.dart';
 import 'package:ui_flutter_whatsapp/common/text_field.dart';
 
 class ChatBox extends StatelessWidget {
   const ChatBox({
     Key? key,
+    this.onChanged,
+    this.controller,
   }) : super(key: key);
+
+  final Function(String)? onChanged;
+  final TextEditingController? controller;
 
   static const iconSize = 23.0;
   static final double screenWidth =
@@ -30,9 +35,11 @@ class ChatBox extends StatelessWidget {
                   Expanded(
                     child: Container(
                       constraints: const BoxConstraints(maxHeight: 40),
-                      child: const CustomTextField(
+                      child: CustomTextField(
+                        onChanged: onChanged,
+                        controller: controller,
                         hideBorder: true,
-                        prefix: Icon(
+                        prefix: const Icon(
                           Icons.emoji_emotions_rounded,
                           color: kSecondaryColor,
                         ),

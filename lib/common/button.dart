@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
     this.buttonColor,
     this.titleStyle,
     this.onPressed,
+    this.width,
   });
 
   final String title;
@@ -16,6 +17,7 @@ class CustomButton extends StatelessWidget {
   final Color? buttonColor;
   final TextStyle? titleStyle;
   final VoidCallback? onPressed;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class CustomButton extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 2.0),
       child: MaterialButton(
         elevation: 0.0,
+        minWidth: width,
         disabledTextColor: kDisabledTextColor,
         disabledColor: const Color(0xff1f2c34),
         shape: RoundedRectangleBorder(
@@ -33,8 +36,8 @@ class CustomButton extends StatelessWidget {
         onPressed: routeName != null
             ? routeName != ''
                 ? onPressed ?? () => Navigator.pushNamed(context, routeName!)
-                : () {}
-            : null,
+                : null
+            : onPressed,
         child: Text(
           title,
           style: titleStyle,

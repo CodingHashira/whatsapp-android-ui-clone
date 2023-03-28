@@ -19,15 +19,9 @@ class SelectionView extends StatelessWidget {
       itemCount: selectedContactList.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {
-            print('IMPL : $index');
-            onTap(index);
-          },
-          // onTap: () => setState(() {
-          //   widget.selectedContactList.removeAt(index);
-          // }),
+          onTap: () => onTap(index),
           child: SizedBox(
-            width: 47.0,
+            width: 65.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -35,7 +29,7 @@ class SelectionView extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   children: [
                     CircleAvatar(
-                      radius: 22.0,
+                      radius: 26.0,
                       backgroundImage:
                           AssetImage(selectedContactList[index]['imageUrl']),
                     ),
@@ -53,7 +47,7 @@ class SelectionView extends StatelessWidget {
                 const SizedBox(height: 3.0),
                 Text(
                   selectedContactList[index]['title'],
-                  style: kSubTitleTextStyle.copyWith(fontSize: 14.0),
+                  style: kSubTitleTextStyle.copyWith(fontSize: 13.0),
                   overflow: TextOverflow.ellipsis,
                 ),
               ],

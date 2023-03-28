@@ -6,8 +6,8 @@ import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/list_builder.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
+import 'package:ui_flutter_whatsapp/pages/settings_page/qr_code.dart';
 
 const data = Data();
 
@@ -22,6 +22,7 @@ class SettingsPage extends StatelessWidget {
         title: 'Settings',
       ),
       body: ListView(
+        shrinkWrap: true,
         children: [
           ListTile(
             onTap: () => NavigationHelper.openRoute(
@@ -50,11 +51,17 @@ class SettingsPage extends StatelessWidget {
             ),
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(
-                  Icons.qr_code_rounded,
-                  color: kAccentColor,
-                  size: 30.0,
+              children: [
+                GestureDetector(
+                  onTap: () => NavigationHelper.openPage(
+                    context: context,
+                    page: const QrCodePage(),
+                  ),
+                  child: const Icon(
+                    Icons.qr_code_rounded,
+                    color: kAccentColor,
+                    size: 30.0,
+                  ),
                 ),
               ],
             ),
@@ -63,10 +70,10 @@ class SettingsPage extends StatelessWidget {
           CustomListBuilder(
             startIndex: 0,
             tileMargin:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
             itemCount: data.settingsMenu.length,
             leadingIndent: 10.0,
-            leadingEndIndent: 20.0,
+            leadingEndIndent: 40.0,
             list: data.settingsMenu,
             returnWidgetType: CustomListTile,
           ),
