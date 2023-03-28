@@ -67,8 +67,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: kThemeData,
-      home: HomePage(),
-      // initialRoute: '/welcomePage',
+      initialRoute: '/welcomePage',
       routes: {
         '/homePage': (context) => const HomePage(),
         '/welcomePage': (context) => const WelcomePage(),
