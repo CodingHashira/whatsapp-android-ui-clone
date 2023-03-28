@@ -7,7 +7,6 @@ import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/rich_text.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
-import 'package:ui_flutter_whatsapp/common/list_builder.dart';
 
 const data = Data();
 
@@ -20,8 +19,7 @@ class SecurityNotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           const CustomAppBar(
             isChildWidget: true,
@@ -53,13 +51,30 @@ class SecurityNotificationsPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15.0),
-          CustomListBuilder(
-            tileMargin: const EdgeInsets.symmetric(vertical: 5.0),
-            itemCount: data.securityNotificationsInfoList.length,
-            list: data.securityNotificationsInfoList,
-            startIndex: 0,
-            returnWidgetType: CustomListTile,
-            titleStyle: kSubTitleTextStyle,
+          ListView.separated(
+            padding: const EdgeInsets.only(left: 22.0),
+            itemCount: data.notificationsOptionList.length - 1,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  data.securityNotificationsInfoList[index]['leading']
+                      as Widget,
+                  const SizedBox(width: 10.0),
+                  Text(
+                    data.securityNotificationsInfoList[index]['title']
+                        as String,
+                    style: kSubTitleTextStyle.copyWith(
+                      fontSize: 14.0,
+                    ),
+                  )
+                ],
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(height: 8.0);
+            },
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
