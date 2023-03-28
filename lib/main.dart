@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ui_flutter_whatsapp/pages/home/linked_devices.dart';
-import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
-import 'package:ui_flutter_whatsapp/pages/home/starred_messages.dart';
 
 import './constants.dart';
+import './pages/home.dart';
 import './pages/testp.dart';
-import 'pages/home.dart';
 import './pages/settings.dart';
 import './pages/archived.dart';
 import './pages/archive_settings.dart';
-import './pages/conversation_page.dart';
+import 'pages/launch_page/welcome.dart';
+import 'pages/home/linked_devices.dart';
+import 'pages/home/starred_messages.dart';
 import './pages/settings_page/chats.dart';
 import './pages/settings_page/avatar.dart';
 import './pages/settings_page/profile.dart';
@@ -21,7 +20,7 @@ import 'pages/settings_page/notifications.dart';
 import 'pages/settings_page/help/app_info.dart';
 import 'pages/settings_page/privacy/about.dart';
 import 'pages/settings_page/privacy/groups.dart';
-import './pages/settings_page/invite_friend.dart';
+import 'pages/settings_page/invite_friend.dart';
 import 'pages/conversation_page/notifications.dart';
 import 'pages/settings_page/help/contact_us.dart';
 import 'pages/settings_page/chats/chat_backup.dart';
@@ -39,7 +38,6 @@ import 'pages/settings_page/privacy/fingerprint_lock.dart';
 import 'pages/settings_page/privacy/last_seen_online.dart';
 import 'pages/conversation_page/verify_security_code.dart';
 import 'pages/conversation_page/disappearing_messages.dart';
-import 'pages/conversation_page/conversation_media_page.dart';
 import 'pages/settings_page/chats/chat_backup/backup_on.dart';
 import 'pages/settings_page/chats/chat_backup/backup_off.dart';
 import 'pages/settings_page/chats/chat_backup/generate_key.dart';
@@ -64,31 +62,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: kThemeData.copyWith(
-        tabBarTheme: const TabBarTheme(
-          labelStyle: TextStyle(fontSize: 16.5),
-          unselectedLabelStyle: TextStyle(fontSize: 16.5),
-          labelColor: kAccentColor,
-          unselectedLabelColor: kSecondaryColor,
-          indicatorColor: kAccentColor,
-          indicator: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 2.5, color: kAccentColor),
-            ),
-          ),
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: kAccentColor,
-        ),
-      ),
-      initialRoute: '/homePage',
+      theme: kThemeData,
+      home: VerifySecurityCodePage(),
+      // initialRoute: '/welcomePage',
       routes: {
         '/homePage': (context) => const HomePage(),
+        '/welcomePage': (context) => const WelcomePage(),
         '/helpPage': (context) => const HelpPage(),
         '/testPage': (context) => const TestpPage(),
         '/chatsPage': (context) => const ChatsPage(),
@@ -106,8 +89,6 @@ class MyApp extends StatelessWidget {
         '/contactUsPage': (context) => const ContactUsPage(),
         '/backupOffPage': (context) => const BackupOffPage(),
         '/chatBackupPage': (context) => const ChatBackupPage(),
-        '/starredMessagesPage': (context) => const StarredMessagesPage(),
-        '/linkedDevicesPage': (context) => const LinkedDevicesPage(),
         '/chatHistoryPage': (context) => const ChatHistoryPage(),
         '/storageDataPage': (context) => const StorageDataPage(),
         '/generateKeyPage': (context) => const GenerateKeyPage(),
@@ -117,6 +98,7 @@ class MyApp extends StatelessWidget {
         '/inviteFriendPage': (context) => const InviteFriendPage(),
         '/liveLocationPage': (context) => const LiveLocationPage(),
         '/profilePhotoPage': (context) => const ProfilePhotoPage(),
+        '/linkedDevicesPage': (context) => const LinkedDevicesPage(),
         '/deleteAccountPage': (context) => const DeleteAccountPage(),
         '/manageStoragePage': (context) => const ManageStoragePage(),
         '/proxySettingsPage': (context) => const ProxySettingsPage(),
@@ -125,6 +107,7 @@ class MyApp extends StatelessWidget {
         '/themeWallpaperPage': (context) => const ThemeWallpaperPage(),
         '/lastSeenOnlinePage': (context) => const LastSeenOnlinePage(),
         '/archiveSettingsPage': (context) => const ArchiveSettingsPage(),
+        '/starredMessagesPage': (context) => const StarredMessagesPage(),
         '/fingerprintLockPage': (context) => const FingerprintLockPage(),
         '/blockedContactsPage': (context) => const BlockedContactsPage(),
         '/createEncryptionPage': (context) => const CreateEncryptionPage(),
