@@ -47,12 +47,11 @@ const kCountryCodeTextStyle = TextStyle(
 const kTitleTextStyle = TextStyle(
   color: kTextPrimaryColor,
   fontSize: 17.5,
-  fontWeight: FontWeight.w500,
 );
 
 const kSubTitleTextStyle = TextStyle(
   color: kSecondaryColor,
-  fontSize: 16.0,
+  fontSize: 15.0,
 );
 
 const kTimeTextStyle = TextStyle(
@@ -76,7 +75,13 @@ const kInfoTextStyle2 = TextStyle(
 final kThemeData = ThemeData(
   scaffoldBackgroundColor: kPrimaryColor,
   iconTheme: const IconThemeData(color: kSecondaryColor),
-  appBarTheme: const AppBarTheme(backgroundColor: kAppBarColor),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: kAppBarColor,
+    iconTheme: IconThemeData(
+      color: kSecondaryColor,
+      size: 22.0,
+    ),
+  ),
   textSelectionTheme: TextSelectionThemeData(
     selectionColor: kAccentColor.withOpacity(0.5),
     selectionHandleColor: kAccentColor,
@@ -85,4 +90,24 @@ final kThemeData = ThemeData(
   highlightColor: Colors.transparent,
   splashFactory: NoSplash.splashFactory,
   unselectedWidgetColor: const Color(0xff3c4a55),
+  listTileTheme: const ListTileThemeData(iconColor: kSecondaryColor),
+  tabBarTheme: const TabBarTheme(
+    labelStyle: TextStyle(fontSize: 16.5),
+    unselectedLabelStyle: TextStyle(fontSize: 16.5),
+    labelColor: kAccentColor,
+    unselectedLabelColor: kSecondaryColor,
+    indicatorColor: kAccentColor,
+    indicator: BoxDecoration(
+      border: Border(
+        bottom: BorderSide(width: 2.5, color: kAccentColor),
+      ),
+    ),
+  ),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: kAccentColor,
+  ),
+  switchTheme: const SwitchThemeData(
+    thumbColor: kThumbActiveColor,
+    trackColor: kTrackInctiveColor,
+  ),
 );
