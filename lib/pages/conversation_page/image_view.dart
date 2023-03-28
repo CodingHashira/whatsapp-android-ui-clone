@@ -94,28 +94,29 @@ class _CustomImageViewState extends State<CustomImageView> {
           ),
         ),
       ),
-      body: Stack(
-        alignment: Alignment.bottomCenter,
+      body: Column(
         children: [
-          const SizedBox(height: 20.0),
-          SizedBox(
-            height: screenHeight / 1.2,
-            child: Image.asset(
-              widget.imagePath,
-            ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              const SizedBox(height: 20.0),
+              SizedBox(
+                height: screenHeight / 1.2,
+                child: Image.asset(
+                  widget.imagePath,
+                ),
+              ),
+              widget.statusText != null
+                  ? Container(
+                      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      child: Text(
+                        widget.statusText!,
+                        style: kTitleTextStyle.copyWith(fontSize: 20.0),
+                      ),
+                    )
+                  : const SizedBox.shrink()
+            ],
           ),
-          widget.statusText != null
-              ? Container(
-                  padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-                  child: Positioned(
-                    bottom: 0.0,
-                    child: Text(
-                      widget.statusText!,
-                      style: kTitleTextStyle.copyWith(fontSize: 20.0),
-                    ),
-                  ),
-                )
-              : const SizedBox.shrink()
         ],
       ),
     );
