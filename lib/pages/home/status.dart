@@ -64,6 +64,7 @@ class HomeStatusPage extends StatelessWidget {
                     imagePath: data.statusUpdateList[index]['statusUrl']!,
                     title: data.statusUpdateList[index]['title']!,
                     uploadTime: data.statusUpdateList[index]['uploadTime'],
+                    statusText: data.statusUpdateList[index]['statusText'],
                     actionsList: [
                       CustomPopupMenuButton(
                         popupMenuItems: data.statusUpdatePopupOptions,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
@@ -15,6 +16,7 @@ class CustomImageView extends StatefulWidget {
     this.titleWidget,
     required this.title,
     this.uploadTime,
+    this.statusText,
   });
 
   final String imagePath;
@@ -22,6 +24,7 @@ class CustomImageView extends StatefulWidget {
   final Widget? titleWidget;
   final String title;
   final String? uploadTime;
+  final String? statusText;
 
   @override
   State<CustomImageView> createState() => _CustomImageViewState();
@@ -30,6 +33,7 @@ class CustomImageView extends StatefulWidget {
 class _CustomImageViewState extends State<CustomImageView> {
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: CustomAppBar(
@@ -90,11 +94,29 @@ class _CustomImageViewState extends State<CustomImageView> {
           ),
         ),
       ),
-      body: Center(
-        child: Image.asset(
-          widget.imagePath,
-          // fit: BoxFit.fitWidth,
-        ),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          const SizedBox(height: 20.0),
+          SizedBox(
+            height: screenHeight / 1.2,
+            child: Image.asset(
+              widget.imagePath,
+            ),
+          ),
+          widget.statusText != null
+              ? Container(
+                  padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                  child: Positioned(
+                    bottom: 0.0,
+                    child: Text(
+                      widget.statusText!,
+                      style: kTitleTextStyle.copyWith(fontSize: 20.0),
+                    ),
+                  ),
+                )
+              : const SizedBox.shrink()
+        ],
       ),
     );
   }

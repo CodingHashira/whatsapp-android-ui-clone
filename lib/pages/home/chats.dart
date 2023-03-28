@@ -55,7 +55,7 @@ class HomeChatsPage extends StatelessWidget {
               'Tap and hold on a chat for more options',
               style: kSubTitleTextStyle.copyWith(
                 fontSize: 14.0,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),

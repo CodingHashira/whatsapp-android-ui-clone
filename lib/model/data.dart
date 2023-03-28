@@ -1254,6 +1254,7 @@ class Data {
       'subTitle': '22:29',
       'statusUrl': 'images/status/s1.jpg',
       'uploadTime': 'Yesterday, 22:29',
+      'statusText': 'A slice a day keeps the doctor away 😜🍕'
     },
     {
       'leading': 'images/p2.jpg',
@@ -1261,6 +1262,7 @@ class Data {
       'subTitle': '22:10',
       'statusUrl': 'images/status/s2.jpg',
       'uploadTime': 'Yesterday, 22:10',
+      'statusText': 'Can\'t decide which one to wear first ⌚🤔💅'
     },
     {
       'leading': 'images/p3.jpg',
@@ -1268,6 +1270,7 @@ class Data {
       'subTitle': 'Today, 08:42',
       'statusUrl': 'images/status/s3.jpg',
       'uploadTime': 'Today, 08:42',
+      'statusText': 'Saucy and proud 🍅👩‍🍳'
     },
     {
       'leading': 'images/p4.jpg',
@@ -1275,6 +1278,7 @@ class Data {
       'subTitle': 'Today, 11:26',
       'statusUrl': 'images/status/s4.jpg',
       'uploadTime': 'Today, 11:26',
+      'statusText': 'I\'ve always had a thing for the gentle giants 🦕💕'
     },
   ];
 
