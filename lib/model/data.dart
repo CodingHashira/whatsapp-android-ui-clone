@@ -14,6 +14,7 @@ import 'package:ui_flutter_whatsapp/alert_dialogs/chat_backup.dart';
 import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
 import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
 import '../alert_dialogs/choose_account.dart';
+import '../alert_dialogs/font_size.dart';
 
 class Chat {
   const Chat({
@@ -730,7 +731,7 @@ class Data {
     {
       'title': 'Font size',
       'subTitle': 'Small',
-      // 'dialogRoute': '/SelectThemeDialog',
+      'dialogWidget': FontSizeDialog(),
     },
   ];
 
@@ -1326,4 +1327,12 @@ class Data {
 
   Map<String, dynamic> get statusUpdatePopupOptions =>
       _statusUpdatePopupOptions;
+
+  static const List<String> _fontSizeRadioOptions = [
+    'Small',
+    'Medium',
+    'Large',
+  ];
+
+  List<String> get fontSizeRadioOptions => _fontSizeRadioOptions;
 }
