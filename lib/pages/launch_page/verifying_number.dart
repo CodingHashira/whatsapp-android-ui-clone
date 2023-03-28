@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:ui_flutter_whatsapp/common/appbar.dart';
@@ -24,6 +23,7 @@ class VerifyingNumberPage extends StatefulWidget {
 
 class _VerifyingNumberPageState extends State<VerifyingNumberPage> {
   var timeString = '1:05';
+  var hintText = '-';
 
   void countdown(Duration duration) {
     int remainingSeconds = duration.inSeconds;
@@ -35,7 +35,15 @@ class _VerifyingNumberPageState extends State<VerifyingNumberPage> {
       });
       remainingSeconds--;
 
-      if (remainingSeconds < 58) timer.cancel();
+      if (remainingSeconds == 59) {
+        setState(() {
+          hintText = '•';
+        });
+      }
+
+      if (remainingSeconds < 58) {
+        timer.cancel();
+      }
     });
   }
 
@@ -140,11 +148,12 @@ class _VerifyingNumberPageState extends State<VerifyingNumberPage> {
                     ),
                     SizedBox(
                       width: screenWidth / 2.0,
-                      child: const CustomTextField(
+                      child: CustomTextField(
                         textAlign: TextAlign.center,
                         borderColor: kAccentColor,
-                        hintText: '- - -  - - -',
-                        hintStyle: TextStyle(
+                        hintText:
+                            '$hintText $hintText $hintText  $hintText $hintText $hintText',
+                        hintStyle: const TextStyle(
                             color: kSecondaryColor,
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
