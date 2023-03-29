@@ -41,13 +41,13 @@ class MyCodePage extends StatelessWidget {
                         'WhatsApp contact',
                         style: kSubTitleTextStyle.copyWith(fontSize: 12.0),
                       ),
-                      const SizedBox(height: 10.0),
+                      const SizedBox(height: 20.0),
                       SizedBox(
-                        height: 210.0,
-                        width: 210.0,
+                        height: 190.0,
+                        width: 190.0,
                         child: Image.asset(
                           'images/qr_whatsapp.jpg',
-                          scale: 1.2,
+                          scale: 0.2,
                         ),
                       ),
                       const SizedBox(height: 5.0),
