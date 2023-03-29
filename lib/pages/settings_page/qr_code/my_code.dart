@@ -30,7 +30,7 @@ class MyCodePage extends StatelessWidget {
                     children: [
                       const SizedBox(height: 40.0),
                       Text(
-                        'Joey',
+                        'Nikhil',
                         style: kTitleTextStyle.copyWith(
                           fontSize: 22.0,
                           fontWeight: FontWeight.w500,
@@ -62,7 +62,7 @@ class MyCodePage extends StatelessWidget {
                         border: Border.all(color: kAppBarColor, width: 2.2)),
                     child: const CircleAvatar(
                       radius: 24.0,
-                      backgroundImage: AssetImage('images/p1.jpg'),
+                      backgroundImage: AssetImage('images/u1.jpg'),
                     ),
                   ),
                 )
@@ -72,7 +72,7 @@ class MyCodePage extends StatelessWidget {
           const SizedBox(height: 20.0),
           Text(
             data.textData['qrCode']![0],
-            style: kSubTitleTextStyle.copyWith(fontSize: 14.0),
+            style: kSubTitleTextStyle.copyWith(fontSize: 15.0),
             textAlign: TextAlign.center,
           )
         ],

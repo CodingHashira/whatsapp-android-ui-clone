@@ -20,7 +20,7 @@ class PhotoQualityDialog extends StatelessWidget {
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 320,
+        height: 310,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -15,15 +15,11 @@ class NumberConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-      content: SizedBox(
-        height: 190.0,
-        width: screenWidth,
+      content: IntrinsicHeight(
         child: Padding(
           padding: const EdgeInsets.only(left: 10.0, top: 15.0, right: 10.0),
           child: Column(

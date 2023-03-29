@@ -15,6 +15,7 @@ import 'package:ui_flutter_whatsapp/alert_dialogs/select_theme.dart';
 import 'package:ui_flutter_whatsapp/pages/home/new_conversation_action.dart';
 import '../alert_dialogs/choose_account.dart';
 import '../alert_dialogs/font_size.dart';
+import '../alert_dialogs/mute_notifications.dart';
 
 class Chat {
   const Chat({
@@ -295,6 +296,9 @@ class Data {
     'payments': [
       'To protect your security, WhatsApp does not store your UPI pin or full bank account number. '
     ],
+    'muteNotifications': [
+      'Weather participants will not see that you muted this chat. You will still be notified if you are mentioned.',
+    ]
   };
 
   Map<String, List> get textData => _textData;
@@ -309,8 +313,8 @@ class Data {
     'View contact': '',
     'Media, links, and docs': '',
     'Search': '',
-    'Mute notifications': '',
-    'Disappearing messages': '/disapperingMessageForItem',
+    'Mute notifications': MuteNotificationsDialog(),
+    'Disappearing messages': '/conversationDisappearingMessagesPage',
     'Wallpaper': '/themeWallpaperPage',
     'More': morePopupMenuItems,
   };
@@ -1111,7 +1115,7 @@ class Data {
     {
       'leading': Icon(Icons.timelapse_rounded),
       'title': 'Disappearing messages',
-      'subTitle': 'Off',
+      'subTitle': '24 hours',
       'pageRoute': '/conversationDisappearingMessagesPage'
     },
   ];
@@ -1255,7 +1259,7 @@ class Data {
       'subTitle': '22:29',
       'statusUrl': 'images/status/s1.jpg',
       'uploadTime': 'Yesterday, 22:29',
-      'statusText': 'A slice a day keeps the doctor away 😜🍕'
+      'statusText': 'A slice a day keeps the doctor away\n😜🍕'
     },
     {
       'leading': 'images/p2.jpg',
@@ -1335,4 +1339,13 @@ class Data {
   ];
 
   List<String> get fontSizeRadioOptions => _fontSizeRadioOptions;
+
+  static const List<String> _muteNotificationsRadioOptions = [
+    '8 hours',
+    '1 week',
+    'Always',
+  ];
+
+  List<String> get muteNotificationsRadioOptions =>
+      _muteNotificationsRadioOptions;
 }

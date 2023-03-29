@@ -11,7 +11,7 @@ import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/button_bar.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/content_gap.dart';
 import 'package:ui_flutter_whatsapp/pages/conversation_page/custom_tile.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/common/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 class ConversationAboutPage extends StatefulWidget {

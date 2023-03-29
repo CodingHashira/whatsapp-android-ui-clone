@@ -156,7 +156,7 @@ class _ManageStoragePageState extends State<ManageStoragePage>
           CustomListTile(
             onTap: () =>
                 Navigator.pushNamed(context, '/disappearingMessagesPage'),
-            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 20.0),
+            padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 20.0),
             leading: const Icon(
               Icons.timelapse_rounded,
               size: 28.0,

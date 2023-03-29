@@ -20,12 +20,13 @@ class NetworkUsagePage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(isChildWidget: true, title: 'Network usage'),
       body: ListView(
-        shrinkWrap: true,
+        // shrinkWrap: true,
         children: [
-          const CustomListTile(
-            padding: EdgeInsets.fromLTRB(55.0, 15.0, 0.0, 0.0),
+          CustomListTile(
+            padding: const EdgeInsets.fromLTRB(55.0, 5.0, 0.0, 0.0),
             title: 'Usage',
             subTitle: 'Since 3/12/23',
+            titleStyle: kTitleTextStyle.copyWith(fontSize: 15.0),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(70.0, 10.0, 0.0, 25.0),
@@ -69,7 +70,6 @@ class NetworkUsagePage extends StatelessWidget {
           ),
           CustomListBuilder(
             startIndex: 0,
-            tileMargin: const EdgeInsets.symmetric(vertical: 0.0),
             itemCount: data.networkTileList.length,
             list: data.networkTileList,
             returnWidgetType: NetworkTile,

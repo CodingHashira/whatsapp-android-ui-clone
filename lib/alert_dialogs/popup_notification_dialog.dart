@@ -10,15 +10,11 @@ class PopupNotificationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return AlertDialog(
       backgroundColor: kAppBarColor,
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-      content: SizedBox(
-        height: 115.0,
-        width: screenWidth,
+      content: IntrinsicHeight(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -20,7 +20,7 @@ class ChatBackupDialog extends StatelessWidget {
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       content: SizedBox(
-        height: 335,
+        height: 345,
         width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +36,7 @@ class ChatBackupDialog extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 10.0),
             CustomListBuilder(
               startIndex: 0,
               leadingIndent: 0.0,

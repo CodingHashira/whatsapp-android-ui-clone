@@ -37,12 +37,12 @@ class SettingsPage extends StatelessWidget {
                 tag: 'profileImage',
                 child: CircleAvatar(
                   radius: 32.0,
-                  backgroundImage: AssetImage('images/p1.jpg'),
+                  backgroundImage: AssetImage('images/u1.jpg'),
                 ),
               ),
             ),
             title: Text(
-              'Joey',
+              'Nikhil',
               style: kTitleTextStyle.copyWith(fontSize: 18.0),
             ),
             subtitle: const Text(
@@ -92,10 +92,9 @@ class SettingsPage extends StatelessWidget {
                   const SizedBox(height: 3.0),
                   Row(
                     children: [
-                      const Icon(
-                        Icons.line_axis_sharp,
-                        color: Color(0xffc7c8ca),
-                        size: 18.0,
+                      Image.asset(
+                        'images/meta.png',
+                        width: 15.0,
                       ),
                       const SizedBox(width: 5.0),
                       Text(

@@ -5,7 +5,7 @@ import 'package:ui_flutter_whatsapp/common/divider.dart';
 import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/common/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
@@ -32,9 +32,9 @@ class ProfilePage extends StatelessWidget {
                   onTap: () => NavigationHelper.openPage(
                     context: context,
                     page: const CustomImageView(
-                      imagePath: 'images/p1.jpg',
+                      imagePath: 'images/u1.jpg',
                       titleWidget: Text('Profile'),
-                      title: 'Joey',
+                      title: 'Nikhil',
                       actionsList: [
                         Icon(
                           Icons.edit_rounded,
@@ -49,7 +49,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   child: const CircleAvatar(
                     radius: 80,
-                    backgroundImage: AssetImage('images/p1.jpg'),
+                    backgroundImage: AssetImage('images/u1.jpg'),
                   ),
                 ),
               ),
@@ -83,7 +83,7 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 3.0),
                 Text(
-                  'Joey',
+                  'Nikhil',
                   style: kInfoTextStyle2.copyWith(fontSize: 17.0),
                 ),
                 const SizedBox(height: 8.0),

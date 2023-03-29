@@ -30,7 +30,7 @@ class StorageDataPage extends StatelessWidget {
           CustomListTile(
             onTap: () => Navigator.pushNamed(context, '/manageStoragePage'),
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             leading: const Icon(Icons.folder),
             title: 'Manage storage',
             subTitle: '83.1 MB',
@@ -41,14 +41,13 @@ class StorageDataPage extends StatelessWidget {
               context: context,
               pageRoute: '/networkUsagePage',
             ),
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 10.0),
             leading: const Icon(Icons.network_ping_sharp),
             title: 'Network usage',
             subTitle: '22.9 MB sent • 281.1 MB received',
           ),
           const CustomListTile(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
             leading: SizedBox(width: 30.0),
             title: 'Use less data for calls',
             trailing: CustomSwitch(),
@@ -64,8 +63,9 @@ class StorageDataPage extends StatelessWidget {
           ),
           CustomListBuilder(
             startIndex: 0,
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            tileMargin:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 5.0),
             itemCount: data.storageDataOptionList.length,
             list: data.storageDataOptionList,
             returnWidgetType: CustomListTile,
@@ -84,8 +84,7 @@ class StorageDataPage extends StatelessWidget {
               context: context,
               dialogWidget: const PhotoQualityDialog(),
             ),
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 5.0, bottom: 10.0),
             leading: const SizedBox(width: 30.0),
             title: 'Photo upload quality',
             subTitle: 'Auto(recommended)',
@@ -94,7 +93,7 @@ class StorageDataPage extends StatelessWidget {
           const PaddedSettingsTextInfo(text: 'Proxy'),
           CustomListTile(
             onTap: () => Navigator.pushNamed(context, '/proxySettingsPage'),
-            padding: const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 20.0),
+            padding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
             leading: const SizedBox(width: 30.0),
             title: 'Proxy settings',
             subTitle: 'Off',

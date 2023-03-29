@@ -4,7 +4,7 @@ import 'package:ui_flutter_whatsapp/common/list_tile.dart';
 import 'package:ui_flutter_whatsapp/common/popup_menu_button.dart';
 import 'package:ui_flutter_whatsapp/constants.dart';
 import 'package:ui_flutter_whatsapp/model/data.dart';
-import 'package:ui_flutter_whatsapp/pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/common/image_view.dart';
 import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 const data = Data();
@@ -65,6 +65,7 @@ class HomeStatusPage extends StatelessWidget {
                     title: data.statusUpdateList[index]['title']!,
                     uploadTime: data.statusUpdateList[index]['uploadTime'],
                     statusText: data.statusUpdateList[index]['statusText'],
+                    userImageUrl: data.statusUpdateList[index]['leading'],
                     actionsList: [
                       CustomPopupMenuButton(
                         popupMenuItems: data.statusUpdatePopupOptions,

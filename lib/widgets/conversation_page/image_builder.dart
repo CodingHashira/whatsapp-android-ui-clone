@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
-import '../../pages/conversation_page/image_view.dart';
+import 'package:ui_flutter_whatsapp/common/image_view.dart';
+import 'package:ui_flutter_whatsapp/services/handle_navigation.dart';
 
 class ImageBuilder extends StatelessWidget {
   const ImageBuilder({
