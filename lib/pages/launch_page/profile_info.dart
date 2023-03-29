@@ -66,7 +66,6 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                 children: [
                   Expanded(
                     child: CustomTextField(
-                      autoFocus: true,
                       focusNode: node,
                       controller: controller,
                       onChanged: (p0) {
