@@ -1,15 +1,15 @@
 # WhatsApp UI Clone in Flutter
-### This is a Flutter project that aims to replicate the user interface of WhatsApp using Flutter. This project was created for educational purposes to showcase how Flutter can be used to create beautiful and functional user interfaces.
+#### This is a Flutter project that aims to replicate the user interface of WhatsApp using Flutter. This project was created for educational purposes to showcase how Flutter can be used to create beautiful and functional user interfaces.
 
 <br>
 
 ## Project Structure
-### The project structure is organized in the following way:
+ #### The project structure is organized in the following way:
 
-### lib: contains the main Dart code for the application
-### pages: contains the different screens for the application (e.g. Home, Chat, Calls, etc.)
-### common: contains the various widgets used throughout the application (e.g. chat bubbles, contact cards, etc.)
-### images: contains any necessary images used in the application 
+ #### lib: contains the main Dart code for the application
+ #### pages: contains the different screens for the application (e.g. Home, Chat, Calls, etc.)
+ #### common: contains the various widgets used throughout the application (e.g. chat bubbles, contact cards, etc.)
+ #### images: contains any necessary images used in the application 
 
 <br>
 
@@ -62,4 +62,4 @@ Settings Screen
 <img src="./screenshots/settings.jpg" alt="Example Image" width="300"><br><br>
 
 ## Conclusion
-### This WhatsApp clone is a demonstration of how Flutter can be used to create beautiful and functional user interfaces. The code is open source and can be used as a starting point for your own Flutter projects.
+#### This WhatsApp clone is a demonstration of how Flutter can be used to create beautiful and functional user interfaces. The code is open source and can be used as a starting point for your own Flutter projects.
