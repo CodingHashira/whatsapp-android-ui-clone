@@ -1,35 +1,32 @@
 # WhatsApp UI Clone in Flutter
-#### This is a Flutter project that aims to replicate the user interface of WhatsApp using Flutter. This project was created for educational purposes to showcase how Flutter can be used to create beautiful and functional user interfaces.
+This is a Flutter project that aims to replicate the user interface of WhatsApp using Flutter. This project was created for educational purposes to showcase how Flutter can be used to create beautiful and functional user interfaces.
 
-<br>
-
-## Project Structure
+### Project Structure
  #### The project structure is organized in the following way:
 
- #### lib: contains the main Dart code for the application
- #### pages: contains the different screens for the application (e.g. Home, Chat, Calls, etc.)
- #### common: contains the various widgets used throughout the application (e.g. chat bubbles, contact cards, etc.)
- #### images: contains any necessary images used in the application 
+* lib: contains the main Dart code for the application
+* pages: contains the different screens for the application (e.g. Home, Chat, Calls, etc.)
+* common: contains the various widgets used throughout the application (e.g. chat bubbles, contact cards, etc.)
+* images: contains any necessary images used in the application 
 
-<br>
-
-## Installation
-Clone the repository using the following command:
-    
-    git clone https://github.com/iamkartiknayak/UI_Flutter_WhatsApp.git
-
-## Navigate to the project directory:
-    cd whatsapp-clone-flutter
-
-## Install the dependencies:
-    flutter pub get
-
-## Run the application:
-    flutter run
-
-<br>
-
-## Screenshots
+### Installation
+#### Clone the repository using the following command:
+```bash    
+git clone https://github.com/iamkartiknayak/Flutter_UI_Clone_WhatsApp_Android_App.git
+```
+#### Navigate to the project directory:
+```bash 
+cd whatsapp-clone-flutter
+```
+#### Install the dependencies:
+```bash 
+flutter pub get
+```
+#### Run the application:
+```bash 
+flutter run
+```
+### Screenshots
 
 <img src="./screenshots/home.jpg" alt="Example Image" width="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="./screenshots/chats.jpg" alt="Example Image" width="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
