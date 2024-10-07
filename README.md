@@ -12,15 +12,15 @@ This is a Flutter project that aims to replicate the user interface of WhatsApp 
 ### Installation
 #### Clone the repository using the following command:
 ```bash    
-git clone https://github.com/iamkartiknayak/Flutter_UI_Clone_WhatsApp_Android_App.git
+git clone https://github.com/iamkartiknayak/whatsapp-android-ui-clone.git
 ```
 #### Rename the project directory before running flutter commands
 ```bash
-mv Flutter_UI_Clone_WhatsApp_Android_App whatsapp_clone
+mv whatsapp-android-ui-clone whatsapp_clone
 ```
 #### Navigate to the project directory:
 ```bash 
-cd whatsapp-clone-flutter
+cd whatsapp_clone
 ```
 #### Install the dependencies:
 ```bash 
